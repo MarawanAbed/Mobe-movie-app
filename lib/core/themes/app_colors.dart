@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppColors{
-  static const kBackGround = Color(0xFF1E1E29);
+  static const kBackGround = Color(0xFF303030);
+  static const kBackGroundNavBar = Color(0xFF1E1E29);
   static const kOnBoarding1Color = Color(0xFF8C250A);
   static const kOnBoarding2Color = Color(0xFF557882);
   static const kOnBoarding3Color = Color(0xFFEA7416);

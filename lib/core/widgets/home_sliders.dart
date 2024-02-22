@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeSliders extends StatefulWidget {
-  const HomeSliders({Key? key}) : super(key: key);
+  const HomeSliders({Key? key, required this.images}) : super(key: key);
 
+  final List<String>images;
   @override
   _HomeSlidersState createState() => _HomeSlidersState();
 }
@@ -12,11 +13,6 @@ class HomeSliders extends StatefulWidget {
 class _HomeSlidersState extends State<HomeSliders> {
   int _currentIndex = 0;
   final CarouselController _carouselController = CarouselController();
-  final List<String> images = [
-    // Assets.slider,
-    // Assets.slider,
-    // Assets.slider,
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +20,9 @@ class _HomeSlidersState extends State<HomeSliders> {
       children: [
         CarouselSlider(
           items: [
-            for (var i = 0; i < images.length; i++)
+            for (var i = 0; i < widget.images.length; i++)
               Image.asset(
-                images[i],
+                widget.images[i],
                 fit: BoxFit.cover,
                 width: MediaQuery.of(context).size.width,
               ),
@@ -51,7 +47,7 @@ class _HomeSlidersState extends State<HomeSliders> {
           left: MediaQuery.of(context).size.width / 2 - 36,
           child: AnimatedSmoothIndicator(
             activeIndex: _currentIndex,
-            count: images.length,
+            count: widget.images.length,
             effect: const ExpandingDotsEffect(
               expansionFactor: 4,
               spacing: 8.0,
