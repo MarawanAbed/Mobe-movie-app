@@ -6,6 +6,10 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OnBoardingScreen();
+    return const SafeArea(
+      child: Scaffold(
+        body: OnBoardingScreen(),
+      ),
+    );
   }
 }

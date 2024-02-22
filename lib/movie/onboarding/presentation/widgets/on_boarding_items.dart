@@ -1,9 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/di/dependancy_injection.dart';
+import 'package:movie_app/core/helpers/cache.dart';
+import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/utils/strings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingItems extends StatelessWidget {
   const OnBoardingItems({
@@ -76,7 +78,7 @@ class OnBoardingItems extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 20),
+            HelperMethod.verticalSpace(20),
             Text(
               subTitle,
               textAlign: TextAlign.center,
@@ -122,8 +124,8 @@ class OnBoardingItems extends StatelessWidget {
               curve: Curves.easeIn,
             );
           } else {
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            prefs.setBool(AppStrings.onBoardingKey, true);
+            await getIt<CacheHelper>()
+                .saveData(key: AppStrings.onBoardingKey, value: true);
             await Navigators.pushReplacementNamed(Routes.homeScreen);
           }
         },
@@ -144,8 +146,8 @@ class OnBoardingItems extends StatelessWidget {
       alignment: Alignment.topRight,
       child: TextButton(
         onPressed: () async {
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-          prefs.setBool(AppStrings.onBoardingKey, true);
+          await getIt<CacheHelper>()
+              .saveData(key: AppStrings.onBoardingKey, value: true);
           await Navigators.pushReplacementNamed(Routes.homeScreen);
         },
         child: const Text(

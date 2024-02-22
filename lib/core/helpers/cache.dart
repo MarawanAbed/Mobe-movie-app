@@ -1,11 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
-  late final SharedPreferences preferences;
+  final SharedPreferences preferences;
 
-  Future<void> init() async {
-    preferences = await SharedPreferences.getInstance();
-  }
+  CacheHelper(this.preferences);
 
   getData({
     required String key,

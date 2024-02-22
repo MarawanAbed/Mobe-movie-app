@@ -54,24 +54,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: PageView.builder(
+    return PageView.builder(
+      controller: _controller,
+      itemCount: onBoarding.length,
+      itemBuilder: (context, index) {
+        return OnBoardingItems(
+          image: onBoarding[index].image,
+          length: onBoarding.length,
+          title: onBoarding[index].title,
+          subTitle: onBoarding[index].subTitle,
           controller: _controller,
-          itemCount: onBoarding.length,
-          itemBuilder: (context, index) {
-            return OnBoardingItems(
-              image: onBoarding[index].image,
-              length: onBoarding.length,
-              title: onBoarding[index].title,
-              subTitle: onBoarding[index].subTitle,
-              controller: _controller,
-              currentPage: _currentPage,
-              colors: onBoarding[index].colors,
-            );
-          },
-        ),
-      ),
+          currentPage: _currentPage,
+          colors: onBoarding[index].colors,
+        );
+      },
     );
   }
 }
