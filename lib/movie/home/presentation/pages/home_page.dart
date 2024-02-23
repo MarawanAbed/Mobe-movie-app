@@ -36,10 +36,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  BottomBarItem buildBottomBarItem(IconData icon, String title) {
+  BottomBarItem buildBottomBarItem(IconData icon, String title,Color color) {
     return BottomBarItem(
-      icon: Icon(icon),
-      selectedColor: Colors.blue,
+      icon: Icon(icon,color: color,),
+      selectedColor: color,
       unSelectedColor: Colors.blueGrey,
       title: Text(title),
     );
@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
+          automaticallyImplyLeading: false,
           title: Text(titles[_currentIndex]),
           centerTitle: true,
           actions: [
@@ -71,10 +72,10 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: AppColors.kBackGroundNavBar,
           onTap: onTabTapped,
           items: [
-            buildBottomBarItem(Icons.movie, 'Movie'),
-            buildBottomBarItem(Icons.tv, 'Tv'),
-            buildBottomBarItem(Icons.category, 'Category'),
-            buildBottomBarItem(Icons.favorite, 'Favorite'),
+            buildBottomBarItem(Icons.movie, 'Movie',Colors.red),
+            buildBottomBarItem(Icons.tv, 'Tv',Colors.green),
+            buildBottomBarItem(Icons.category, 'Category',Colors.blue),
+            buildBottomBarItem(Icons.favorite, 'Favorite',Colors.purple),
           ],
           option: AnimatedBarOptions(
             iconSize: 32,

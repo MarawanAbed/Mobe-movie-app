@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/routes.dart';
+import 'package:movie_app/movie/home/presentation/pages/genre_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/view_all_page.dart';
 import 'package:movie_app/movie/onboarding/presentation/pages/onboarding_page.dart';
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -10,6 +12,14 @@ class AppRouter {
         return _onboardingRoute();
       case Routes.homeScreen:
         return _homeRoute();
+      case Routes.genreScreen:
+        final String title = settings.arguments as String;
+        return _genreRoute(title);
+      case Routes.viewAllScreen:
+        final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
+        final String title = arguments['title'] as String;
+        final bool isMovie = arguments['isMovie'] as bool;
+        return _viewAllRoute({'title': title, 'isMovie': isMovie});
       default:
         return _defaultRoute(settings);
     }
@@ -27,6 +37,23 @@ Route _onboardingRoute() {
 Route _homeRoute() {
   return MaterialPageRoute(
     builder: (_) => const HomePage(),
+  );
+}
+
+Route _genreRoute(String title) {
+  return MaterialPageRoute(
+    builder: (_) => GenrePage(title:title ,),
+  );
+}
+
+Route _viewAllRoute(Map<String, dynamic> arguments) {
+  final String title = arguments['title'] as String;
+  final bool isMovie = arguments['isMovie'] as bool;
+  return MaterialPageRoute(
+    builder: (_) => ViewAllPage(
+      title: title,
+      isMovie: isMovie,
+    ),
   );
 }
 Route _defaultRoute(RouteSettings settings) {

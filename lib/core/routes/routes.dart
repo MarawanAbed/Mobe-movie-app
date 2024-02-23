@@ -6,6 +6,8 @@ class Routes {
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String verifyEmailScreen = '/verifyEmailScreen';
   static const String homeScreen = '/homeScreen';
+  static const String genreScreen = '/genreScreen';
+  static const String viewAllScreen = '/viewAllScreen';
   static const String chatScreen = '/chatScreen';
 
   static const String searchScreen = '/searchScreen';
