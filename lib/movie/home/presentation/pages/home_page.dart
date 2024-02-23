@@ -24,6 +24,12 @@ class _HomePageState extends State<HomePage> {
     const FavoritePage(),
   ];
 
+  final List<String>titles = [
+    'Movie',
+    'Tv',
+    'Category',
+    'Favorite',
+  ];
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -43,26 +49,38 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: _children[_currentIndex],
-        bottomNavigationBar: Container(
-          margin: const EdgeInsets.all(20),
-          child: StylishBottomBar(
-            borderRadius: BorderRadius.circular(30),
-            currentIndex: _currentIndex,
-            backgroundColor: AppColors.kBackGroundNavBar,
-            onTap: onTabTapped,
-            items: [
-              buildBottomBarItem(Icons.movie, 'Movie'),
-              buildBottomBarItem(Icons.tv, 'Tv'),
-              buildBottomBarItem(Icons.category, 'Category'),
-              buildBottomBarItem(Icons.favorite, 'Favorite'),
-            ],
-            option: AnimatedBarOptions(
-              iconSize: 32,
-              barAnimation: BarAnimation.fade,
-              iconStyle: IconStyle.animated,
-              opacity: 0.3,
+        appBar: AppBar(
+          elevation: 0,
+          title: Text(titles[_currentIndex]),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+              },
             ),
+          ],
+        ),
+        body: _children[_currentIndex],
+        bottomNavigationBar: StylishBottomBar(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          currentIndex: _currentIndex,
+          backgroundColor: AppColors.kBackGroundNavBar,
+          onTap: onTabTapped,
+          items: [
+            buildBottomBarItem(Icons.movie, 'Movie'),
+            buildBottomBarItem(Icons.tv, 'Tv'),
+            buildBottomBarItem(Icons.category, 'Category'),
+            buildBottomBarItem(Icons.favorite, 'Favorite'),
+          ],
+          option: AnimatedBarOptions(
+            iconSize: 32,
+            barAnimation: BarAnimation.fade,
+            iconStyle: IconStyle.animated,
+            opacity: 0.3,
           ),
         ),
       ),

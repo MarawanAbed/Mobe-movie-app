@@ -17,7 +17,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   final List<OnBoardingEntity> onBoarding = [
     OnBoardingEntity(
-      title: 'Welcome to Mobe',
+      title: 'Welcome to Mobe Movie',
       image: AppImages.onBoarding1,
       subTitle: 'The best place to discover new movies and tv series',
       colors: AppColors.kOnBoarding1Color,

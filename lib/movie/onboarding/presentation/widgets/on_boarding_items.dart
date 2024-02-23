@@ -72,6 +72,7 @@ class OnBoardingItems extends StatelessWidget {
           children: [
             Text(
               title,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30,
@@ -126,7 +127,7 @@ class OnBoardingItems extends StatelessWidget {
           } else {
             await getIt<CacheHelper>()
                 .saveData(key: AppStrings.onBoardingKey, value: true);
-            await Navigators.pushReplacementNamed(Routes.homeScreen);
+            await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen,);
           }
         },
         child: Text(
@@ -148,7 +149,7 @@ class OnBoardingItems extends StatelessWidget {
         onPressed: () async {
           await getIt<CacheHelper>()
               .saveData(key: AppStrings.onBoardingKey, value: true);
-          await Navigators.pushReplacementNamed(Routes.homeScreen);
+          await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen);
         },
         child: const Text(
           'Skip',
