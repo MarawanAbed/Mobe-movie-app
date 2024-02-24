@@ -1,10 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/presentation/pages/genre_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/home_details_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/search_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/type_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/view_all_page.dart';
 import 'package:movie_app/movie/onboarding/presentation/pages/onboarding_page.dart';
+
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -16,17 +19,22 @@ class AppRouter {
         final String title = settings.arguments as String;
         return _genreRoute(title);
       case Routes.viewAllScreen:
-        final Map<String, dynamic> arguments = settings.arguments as Map<String, dynamic>;
+        final Map<String, dynamic> arguments =
+            settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
         return _viewAllRoute({'title': title, 'isMovie': isMovie});
+      case Routes.homeDetailsScreen:
+        return _homeDetailsRoute();
+      case Routes.typeScreen:
+        return _typeRoute();
+      case Routes.searchScreen:
+        return _searchRoute();
       default:
         return _defaultRoute(settings);
     }
   }
 }
-
-
 
 Route _onboardingRoute() {
   return MaterialPageRoute(
@@ -40,9 +48,23 @@ Route _homeRoute() {
   );
 }
 
+Route _typeRoute() {
+  return MaterialPageRoute(
+    builder: (_) => const TypePage(),
+  );
+}
+
+Route _searchRoute() {
+  return MaterialPageRoute(
+    builder: (_) => const SearchPage(),
+  );
+}
+
 Route _genreRoute(String title) {
   return MaterialPageRoute(
-    builder: (_) => GenrePage(title:title ,),
+    builder: (_) => GenrePage(
+      title: title,
+    ),
   );
 }
 
@@ -56,6 +78,13 @@ Route _viewAllRoute(Map<String, dynamic> arguments) {
     ),
   );
 }
+
+Route _homeDetailsRoute() {
+  return MaterialPageRoute(
+    builder: (_) => const HomePageDetails(),
+  );
+}
+
 Route _defaultRoute(RouteSettings settings) {
   return MaterialPageRoute(
     builder: (_) => Scaffold(

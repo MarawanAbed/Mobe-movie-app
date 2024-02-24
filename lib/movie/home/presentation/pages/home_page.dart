@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/routes/routes.dart';
+import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
 import 'package:movie_app/movie/home/presentation/pages/tv_page.dart';
 import 'package:stylish_bottom_bar/model/bar_items.dart';
@@ -58,6 +60,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
+                Navigators.pushNamed(Routes.searchScreen);
               },
             ),
           ],

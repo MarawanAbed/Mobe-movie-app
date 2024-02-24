@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/movie/home/presentation/widgets/gallery_3d.dart';
+import 'package:movie_app/movie/home/presentation/widgets/build_item_images.dart';
 
 import '../widgets/row_view_all.dart';
 
@@ -16,16 +16,16 @@ class TvBody extends StatelessWidget {
       child: Column(
         children: [
           RowViewAll(
-            title: 'Upcoming',
+            title: 'Airing Today',
             onTap: () {
               Navigators.pushNamed(Routes.viewAllScreen, arguments: {
-                'title': 'Upcoming',
+                'title': 'Airing Today',
                 'isMovie': false,
               });
             },
           ),
           HelperMethod.verticalSpace(20),
-          const Gallery3DItems(),
+          const BuildItemImages(),
           HelperMethod.verticalSpace(20),
           RowViewAll(
             title: 'Popular',
@@ -37,7 +37,7 @@ class TvBody extends StatelessWidget {
             },
           ),
           HelperMethod.verticalSpace(20),
-          const Gallery3DItems(),
+          const BuildItemImages(),
           HelperMethod.verticalSpace(20),
           RowViewAll(
             title: 'Top Rated',
@@ -49,7 +49,7 @@ class TvBody extends StatelessWidget {
             },
           ),
           HelperMethod.verticalSpace(20),
-          const Gallery3DItems(),
+          const BuildItemImages(),
         ],
       ),
     );

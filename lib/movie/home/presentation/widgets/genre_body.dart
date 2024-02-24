@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/routes/routes.dart';
+import 'package:movie_app/core/services/navigator.dart';
 
 class GenreBody extends StatefulWidget {
   const GenreBody({super.key, required this.title});
@@ -69,6 +71,9 @@ class GenreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        Navigators.pushNamed(Routes.typeScreen);
+      },
       title: Text(title),
       trailing: const Icon(Icons.arrow_forward_ios),
     );

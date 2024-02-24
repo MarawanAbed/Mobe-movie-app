@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/assets/images.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
+import 'package:movie_app/movie/home/presentation/widgets/info_items.dart';
 
 class ViewAllItems extends StatelessWidget {
   const ViewAllItems({
@@ -11,22 +12,22 @@ class ViewAllItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       height: MediaQuery.of(context).size.height * 0.25,
       decoration: BoxDecoration(
         color: AppColors.kBackGround,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               child: Image.asset(
                 AppImages.onBoarding1,
-                fit: BoxFit.fill,
-                height: MediaQuery.of(context).size.height,
+                fit: BoxFit.fitHeight,
+                height: MediaQuery.of(context).size.height * 0.25,
               ),
             ),
           ),
@@ -43,39 +44,13 @@ class ViewAllItems extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 HelperMethod.verticalSpace(10),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.red.withOpacity(0.9),
-                      ),
-                      child: const Text(
-                        '2022',
-                      ),
-                    ),
-                    HelperMethod.horizontalSpace(10),
-                    const Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text('9.0'),
-                      ],
-                    ),
-                  ],
-                ),
+                const InfoItems(),
                 HelperMethod.verticalSpace(10),
                 const Expanded(
                   child: Text(
                     'Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
                     textAlign: TextAlign.justify,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 16),
                   ),
@@ -88,3 +63,5 @@ class ViewAllItems extends StatelessWidget {
     );
   }
 }
+
+
