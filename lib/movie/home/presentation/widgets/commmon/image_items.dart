@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 
 class ImageItems extends StatelessWidget {
   const ImageItems({
     super.key,
+    required this.screen,
   });
+
+  final String screen;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigators.pushNamed(Routes.homeDetailsScreen);
+        Navigators.pushNamed(screen);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),

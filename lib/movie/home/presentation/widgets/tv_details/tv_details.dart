@@ -4,8 +4,8 @@ import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 
-class MovieDetails extends StatelessWidget {
-  const MovieDetails({super.key});
+class TvDetails extends StatelessWidget {
+  const TvDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MovieDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Movie Title',
+            'Tv Title',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -37,7 +37,7 @@ class MovieDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           const Text(
-            'Movie Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
+            'Tv Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
           ),
           HelperMethod.verticalSpace(10),
           Row(
@@ -69,7 +69,7 @@ class MovieDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           const BuildItemImages(
-            screen: Routes.homeDetailsScreen,
+            screen: Routes.tvDetailsScreen,
           ),
         ],
       ),

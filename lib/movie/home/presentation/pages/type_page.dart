@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/movie/home/presentation/widgets/type/type_body.dart';
 
 class TypePage extends StatelessWidget {
-  const TypePage({super.key});
-
+  const TypePage({super.key, required this.title, required this.isMovie});
+  final String title;
+  final bool isMovie;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Type Page'),
+          title: Text('$title Page'),
         ),
-        body: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: TypeBody(),
+        body:  Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: TypeBody(
+            isMovie: isMovie,
+          ),
         ),
       ),
     );

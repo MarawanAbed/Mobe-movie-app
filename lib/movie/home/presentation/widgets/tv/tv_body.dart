@@ -22,7 +22,9 @@ class TvBody extends StatelessWidget {
           },
         ),
         HelperMethod.verticalSpace(20),
-        const BuildItemImages(),
+        const BuildItemImages(
+          screen: Routes.tvDetailsScreen,
+        ),
         HelperMethod.verticalSpace(20),
       ],
     );

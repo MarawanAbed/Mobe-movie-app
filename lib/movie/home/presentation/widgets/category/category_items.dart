@@ -6,19 +6,22 @@ class CategoryItems extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color color;
-
+  final bool isMovie;
   const CategoryItems({
     Key? key,
     required this.title,
     required this.icon,
-    required this.color,
+    required this.color, required this.isMovie,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigators.pushNamed(Routes.genreScreen, arguments: title);
+        Navigators.pushNamed(Routes.genreScreen, arguments: {
+          'title': title,
+          'isMovie': isMovie,
+        });
       },
       child: ListTile(
         leading: Icon(

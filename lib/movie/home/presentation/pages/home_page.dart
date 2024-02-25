@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/movie/home/presentation/pages/tv_page.dart';
-import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar.dart';
+import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_category_and_favorite.dart';
+import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_movie_and_tv.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_bottom_bar.dart';
 
 import 'category_page.dart';
@@ -40,7 +41,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: titles[_currentIndex]),
+        appBar: titles[_currentIndex] == 'Category' || titles[_currentIndex] == 'Favorite'
+            ? CustomAppBarCategoryAndFavorite(title: titles[_currentIndex],) as PreferredSizeWidget?
+            : CustomAppBarMovieAndTv(
+                title: titles[_currentIndex],
+              ),
         body: _children[_currentIndex],
         bottomNavigationBar: CustomStylishBottomBar(
           currentIndex: _currentIndex,
@@ -50,3 +55,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

@@ -16,7 +16,9 @@ class ViewAllPage extends StatelessWidget {
         appBar: AppBar(
           title: isMovie ? Text('$title Movie') : Text('$title Tv'),
         ),
-        body: const ViewAllBody(),
+        body: ViewAllBody(
+          isMovie: isMovie,
+        ),
       ),
     );
   }

@@ -127,7 +127,7 @@ class OnBoardingItems extends StatelessWidget {
           } else {
             await getIt<CacheHelper>()
                 .saveData(key: AppStrings.onBoardingKey, value: true);
-            await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen,);
+            await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen);
           }
         },
         child: Text(

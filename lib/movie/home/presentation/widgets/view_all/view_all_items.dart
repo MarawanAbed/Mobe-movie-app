@@ -7,7 +7,10 @@ import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dar
 class ViewAllItems extends StatelessWidget {
   const ViewAllItems({
     super.key,
+    required this.isMovie,
   });
+
+  final bool isMovie;
 
   @override
   Widget build(BuildContext context) {
@@ -37,22 +40,25 @@ class ViewAllItems extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Title movie',
+                Text(
+                  isMovie ? 'Movie Title' : 'Tv Title',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 HelperMethod.verticalSpace(10),
                 const InfoItems(),
                 HelperMethod.verticalSpace(10),
-                const Expanded(
+                Expanded(
                   child: Text(
-                    'Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
+                    isMovie
+                        ? 'Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription'
+                        : 'Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
                     textAlign: TextAlign.justify,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ],
@@ -63,5 +69,3 @@ class ViewAllItems extends StatelessWidget {
     );
   }
 }
-
-

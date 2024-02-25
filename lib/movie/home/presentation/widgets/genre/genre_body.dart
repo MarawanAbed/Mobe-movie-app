@@ -3,16 +3,17 @@ import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 
 class GenreBody extends StatefulWidget {
-  const GenreBody({super.key, required this.title});
+  const GenreBody({super.key, required this.title, required this.isMovie});
+
   final String title;
+  final bool isMovie;
+
   @override
   State<GenreBody> createState() => _GenreBodyState();
 }
 
 class _GenreBodyState extends State<GenreBody> {
-
-  final List<String> movieGenre=
-  [
+  final List<String> movieGenre = [
     'Action',
     'Adventure',
     'Animation',
@@ -34,7 +35,7 @@ class _GenreBodyState extends State<GenreBody> {
     'Western',
   ];
 
-  final List<String>tvGenre=[
+  final List<String> tvGenre = [
     'Action & Adventure',
     'Animation',
     'Comedy',
@@ -52,27 +53,42 @@ class _GenreBodyState extends State<GenreBody> {
     'War & Politics',
     'Western',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if(widget.title=='Movie')
-          ...movieGenre.map((e) => GenreItem(title: e)).toList(),
-        if(widget.title=='Tv')
-          ...tvGenre.map((e) => GenreItem(title: e)).toList(),
+        if (widget.title == 'Movie')
+          ...movieGenre
+              .map((e) => GenreItem(
+                    title: e,
+                    isMovie: widget.isMovie,
+                  ))
+              .toList(),
+        if (widget.title == 'Tv')
+          ...tvGenre
+              .map((e) => GenreItem(
+                    title: e,
+                    isMovie: widget.isMovie,
+                  ))
+              .toList(),
       ],
     );
   }
 }
 
 class GenreItem extends StatelessWidget {
-  const GenreItem({super.key, required this.title});
+  const GenreItem({super.key, required this.title, required this.isMovie});
+
   final String title;
+  final bool isMovie;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigators.pushNamed(Routes.typeScreen);
+        Navigators.pushNamed(Routes.typeScreen,
+            arguments: {'title': title, 'isMovie': isMovie});
       },
       title: Text(title),
       trailing: const Icon(Icons.arrow_forward_ios),

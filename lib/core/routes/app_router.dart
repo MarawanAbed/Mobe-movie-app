@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/presentation/pages/genre_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/home_details_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/movie_details_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/search_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/tv_details_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/type_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/view_all_page.dart';
 import 'package:movie_app/movie/onboarding/presentation/pages/onboarding_page.dart';
@@ -16,8 +17,11 @@ class AppRouter {
       case Routes.homeScreen:
         return _homeRoute();
       case Routes.genreScreen:
-        final String title = settings.arguments as String;
-        return _genreRoute(title);
+        final Map<String, dynamic> arguments =
+        settings.arguments as Map<String, dynamic>;
+        final String title = arguments['title'] as String;
+        final bool isMovie = arguments['isMovie'] as bool;
+        return _genreRoute({'title': title, 'isMovie': isMovie});
       case Routes.viewAllScreen:
         final Map<String, dynamic> arguments =
             settings.arguments as Map<String, dynamic>;
@@ -27,9 +31,15 @@ class AppRouter {
       case Routes.homeDetailsScreen:
         return _homeDetailsRoute();
       case Routes.typeScreen:
-        return _typeRoute();
+        final Map<String, dynamic> arguments =
+            settings.arguments as Map<String, dynamic>;
+        final String title = arguments['title'] as String;
+        final bool isMovie = arguments['isMovie'] as bool;
+        return _typeRoute({'title': title, 'isMovie': isMovie});
       case Routes.searchScreen:
         return _searchRoute();
+      case Routes.tvDetailsScreen:
+        return _tvDetailsRoute();
       default:
         return _defaultRoute(settings);
     }
@@ -48,9 +58,20 @@ Route _homeRoute() {
   );
 }
 
-Route _typeRoute() {
+Route _typeRoute(Map<String, dynamic> arguments) {
+  final String title = arguments['title'] as String;
+  final bool isMovie = arguments['isMovie'] as bool;
   return MaterialPageRoute(
-    builder: (_) => const TypePage(),
+    builder: (_) => TypePage(
+      title: title,
+      isMovie: isMovie,
+    ),
+  );
+}
+
+Route _tvDetailsRoute() {
+  return MaterialPageRoute(
+    builder: (_) => const TvPageDetails(),
   );
 }
 
@@ -60,10 +81,13 @@ Route _searchRoute() {
   );
 }
 
-Route _genreRoute(String title) {
+Route _genreRoute(Map<String, dynamic> arguments) {
+  final String title = arguments['title'] as String;
+  final bool isMovie = arguments['isMovie'] as bool;
   return MaterialPageRoute(
     builder: (_) => GenrePage(
       title: title,
+      isMovie: isMovie,
     ),
   );
 }
@@ -81,7 +105,7 @@ Route _viewAllRoute(Map<String, dynamic> arguments) {
 
 Route _homeDetailsRoute() {
   return MaterialPageRoute(
-    builder: (_) => const HomePageDetails(),
+    builder: (_) => const MoviePageDetails(),
   );
 }
 

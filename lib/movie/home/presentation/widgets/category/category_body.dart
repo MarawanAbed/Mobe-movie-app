@@ -9,11 +9,13 @@ class CategoryBody extends StatelessWidget {
     return const Column(
       children: [
         CategoryItems(
+          isMovie: true,
           title: 'Movie',
           icon: Icons.movie,
           color: Colors.red,
         ),
         CategoryItems(
+          isMovie: false,
           title: 'Tv',
           icon: Icons.tv,
           color: Colors.green,

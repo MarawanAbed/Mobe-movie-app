@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarMovieAndTv extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBarMovieAndTv({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
