@@ -69,7 +69,7 @@ class TvDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           const BuildItemImages(
-            screen: Routes.tvDetailsScreen,
+            screen: Routes.tvDetails,
           ),
         ],
       ),

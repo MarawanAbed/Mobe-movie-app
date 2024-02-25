@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
             ? CustomAppBarCategoryAndFavorite(title: titles[_currentIndex],) as PreferredSizeWidget?
             : CustomAppBarMovieAndTv(
                 title: titles[_currentIndex],
-              ),
+                 isMovie: _currentIndex == 0, // Pass isMovie here
+
+        ),
         body: _children[_currentIndex],
         bottomNavigationBar: CustomStylishBottomBar(
           currentIndex: _currentIndex,

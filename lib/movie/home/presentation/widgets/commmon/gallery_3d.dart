@@ -44,7 +44,7 @@ class _Gallery3DItemsState extends State<Gallery3DItems> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            Navigators.pushNamed(Routes.homeDetailsScreen);
+            Navigators.pushNamed(Routes.movieDetails);
           },
           child: Image.asset(
             images[index],

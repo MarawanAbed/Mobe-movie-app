@@ -69,7 +69,7 @@ class MovieDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           const BuildItemImages(
-            screen: Routes.homeDetailsScreen,
+            screen: Routes.movieDetails,
           ),
         ],
       ),

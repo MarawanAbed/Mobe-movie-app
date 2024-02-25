@@ -15,7 +15,7 @@ class TypeBody extends StatelessWidget {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) => ImageItems(
-       screen: isMovie ? Routes.homeDetailsScreen: Routes.tvDetailsScreen,
+       screen: isMovie ? Routes.movieDetails: Routes.tvDetails,
       ),
       itemCount: 8,
     );

@@ -21,7 +21,7 @@ class MovieApp extends StatelessWidget {
         darkTheme: Themes.darkThemeData(context),
         themeMode: ThemeMode.dark,
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: isOnBoarding? Routes.homeScreen :Routes.onBoarding ,
+        initialRoute: isOnBoarding? Routes.home :Routes.onBoarding ,
       ),
     );
   }

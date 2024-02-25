@@ -87,7 +87,7 @@ class GenreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigators.pushNamed(Routes.typeScreen,
+        Navigators.pushNamed(Routes.type,
             arguments: {'title': title, 'isMovie': isMovie});
       },
       title: Text(title),

@@ -127,7 +127,7 @@ class OnBoardingItems extends StatelessWidget {
           } else {
             await getIt<CacheHelper>()
                 .saveData(key: AppStrings.onBoardingKey, value: true);
-            await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen);
+            await Navigators.pushNamedAndRemoveUntil(Routes.home);
           }
         },
         child: Text(
@@ -149,7 +149,7 @@ class OnBoardingItems extends StatelessWidget {
         onPressed: () async {
           await getIt<CacheHelper>()
               .saveData(key: AppStrings.onBoardingKey, value: true);
-          await Navigators.pushNamedAndRemoveUntil(Routes.homeScreen);
+          await Navigators.pushNamedAndRemoveUntil(Routes.home);
         },
         child: const Text(
           'Skip',

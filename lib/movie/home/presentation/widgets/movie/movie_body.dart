@@ -14,7 +14,7 @@ class MovieBody extends StatelessWidget {
         RowViewAll(
           title: title,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAllScreen, arguments: {
+            Navigators.pushNamed(Routes.viewAll, arguments: {
               'title': title,
               'isMovie': isMovie,
             });

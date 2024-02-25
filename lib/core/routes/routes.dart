@@ -1,10 +1,12 @@
 class Routes {
   static const String onBoarding = '/onBoarding';
-  static const String homeScreen = '/homeScreen';
-  static const String homeDetailsScreen = '/homeDetailsScreen';
-  static const String tvDetailsScreen = '/tvDetailsScreen';
-  static const String genreScreen = '/genreScreen';
-  static const String viewAllScreen = '/viewAllScreen';
-  static const String typeScreen = '/typeScreen';
-  static const String searchScreen = '/searchScreen';
+  static const String home = '/homeScreen';
+  static const String movieDetails = '/homeDetailsScreen';
+  static const String tvDetails = '/tvDetailsScreen';
+  static const String genre = '/genreScreen';
+  static const String viewAll = '/viewAllScreen';
+  static const String type = '/typeScreen';
+  static const String searchMovie = '/searchMovie';
+
+  static const String searchTv = '/searchTv';
 }

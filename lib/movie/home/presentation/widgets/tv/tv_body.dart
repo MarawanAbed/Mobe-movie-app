@@ -15,7 +15,7 @@ class TvBody extends StatelessWidget {
         RowViewAll(
           title: title,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAllScreen, arguments: {
+            Navigators.pushNamed(Routes.viewAll, arguments: {
               'title': title,
               'isMovie': isMovie,
             });
@@ -23,7 +23,7 @@ class TvBody extends StatelessWidget {
         ),
         HelperMethod.verticalSpace(20),
         const BuildItemImages(
-          screen: Routes.tvDetailsScreen,
+          screen: Routes.tvDetails,
         ),
         HelperMethod.verticalSpace(20),
       ],

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/widgets/app_text_form.dart';
 
-class SearchBody extends StatelessWidget {
-  const SearchBody({super.key});
+class SearchTvBody extends StatelessWidget {
+  const SearchTvBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,6 @@ class SearchBody extends StatelessWidget {
             hintStyle: const TextStyle(
               color: Colors.grey,
             ),
-
-
           ),
           const SizedBox(
             height: 20.0,

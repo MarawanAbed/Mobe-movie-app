@@ -4,21 +4,24 @@ import 'package:movie_app/core/services/navigator.dart';
 
 class CustomAppBarMovieAndTv extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-
-  const CustomAppBarMovieAndTv({super.key, required this.title});
+  final bool isMovie;
+  const CustomAppBarMovieAndTv({super.key, required this.title, required this.isMovie});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      automaticallyImplyLeading: false,
       title: Text(title),
       centerTitle: true,
       actions: [
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () {
-            Navigators.pushNamed(Routes.searchScreen);
+            if (isMovie) {
+              Navigators.pushNamed(Routes.searchMovie);
+            } else {
+              Navigators.pushNamed(Routes.searchTv);
+            }
           },
         ),
       ],

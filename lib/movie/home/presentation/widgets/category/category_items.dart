@@ -18,7 +18,7 @@ class CategoryItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigators.pushNamed(Routes.genreScreen, arguments: {
+        Navigators.pushNamed(Routes.genre, arguments: {
           'title': title,
           'isMovie': isMovie,
         });

@@ -3,7 +3,8 @@ import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/presentation/pages/genre_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/movie_details_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/search_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/search_movie_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/search_tv_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/tv_details_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/type_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/view_all_page.dart';
@@ -14,31 +15,33 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onBoarding:
         return _onboardingRoute();
-      case Routes.homeScreen:
+      case Routes.home:
         return _homeRoute();
-      case Routes.genreScreen:
+      case Routes.genre:
         final Map<String, dynamic> arguments =
         settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
         return _genreRoute({'title': title, 'isMovie': isMovie});
-      case Routes.viewAllScreen:
+      case Routes.viewAll:
         final Map<String, dynamic> arguments =
             settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
         return _viewAllRoute({'title': title, 'isMovie': isMovie});
-      case Routes.homeDetailsScreen:
+      case Routes.movieDetails:
         return _homeDetailsRoute();
-      case Routes.typeScreen:
+      case Routes.type:
         final Map<String, dynamic> arguments =
             settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
         return _typeRoute({'title': title, 'isMovie': isMovie});
-      case Routes.searchScreen:
-        return _searchRoute();
-      case Routes.tvDetailsScreen:
+      case Routes.searchMovie:
+        return _searchMovieRoute();
+      case Routes.searchTv:
+        return _searchTvRoute();
+      case Routes.tvDetails:
         return _tvDetailsRoute();
       default:
         return _defaultRoute(settings);
@@ -75,12 +78,16 @@ Route _tvDetailsRoute() {
   );
 }
 
-Route _searchRoute() {
+Route _searchMovieRoute() {
   return MaterialPageRoute(
-    builder: (_) => const SearchPage(),
+    builder: (_) => const SearchMoviePage(),
   );
 }
-
+Route _searchTvRoute() {
+  return MaterialPageRoute(
+    builder: (_) => const SearchTvPage(),
+  );
+}
 Route _genreRoute(Map<String, dynamic> arguments) {
   final String title = arguments['title'] as String;
   final bool isMovie = arguments['isMovie'] as bool;
