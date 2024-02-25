@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/movie/home/presentation/widgets/image_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/commmon/image_items.dart';
 
 class BuildItemImages extends StatelessWidget {
   const BuildItemImages({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/movie_body.dart';
+import '../widgets/movie/movie_body.dart';
 
 class MoviePage extends StatelessWidget {
   const MoviePage({super.key});

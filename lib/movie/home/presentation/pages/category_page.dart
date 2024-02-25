@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/movie/home/presentation/widgets/category_body.dart';
+import 'package:movie_app/movie/home/presentation/widgets/category/category_body.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});

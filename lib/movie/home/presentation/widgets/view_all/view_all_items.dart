@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/assets/images.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
-import 'package:movie_app/movie/home/presentation/widgets/info_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 
 class ViewAllItems extends StatelessWidget {
   const ViewAllItems({

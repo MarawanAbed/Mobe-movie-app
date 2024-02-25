@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/movie/home/presentation/widgets/view_all_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/view_all/view_all_items.dart';
 
 class ViewAllBody extends StatelessWidget {
   const ViewAllBody({super.key});

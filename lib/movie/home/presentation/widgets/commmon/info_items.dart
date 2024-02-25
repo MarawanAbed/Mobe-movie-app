@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/movie/home/presentation/widgets/commmon/release_date.dart';
 
 class InfoItems extends StatelessWidget {
   const InfoItems({
@@ -10,16 +11,7 @@ class InfoItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.red.withOpacity(0.9),
-          ),
-          child: const Text(
-            '2022',
-          ),
-        ),
+        const ReleaseDate(),
         HelperMethod.horizontalSpace(20),
         const Row(
           children: [

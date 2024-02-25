@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
-import 'package:movie_app/movie/home/presentation/widgets/view_all_body.dart';
+import 'package:movie_app/movie/home/presentation/widgets/view_all/view_all_body.dart';
 
 class ViewAllPage extends StatelessWidget {
   const ViewAllPage({super.key, required this.title, required this.isMovie});

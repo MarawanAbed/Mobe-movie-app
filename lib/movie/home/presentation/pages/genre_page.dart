@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/movie/home/presentation/widgets/genre_body.dart';
+import 'package:movie_app/movie/home/presentation/widgets/genre/genre_body.dart';
 
 class GenrePage extends StatelessWidget {
   const GenrePage({super.key, required this.title});
