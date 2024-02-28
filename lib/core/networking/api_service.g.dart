@@ -43,7 +43,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -69,7 +69,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -95,7 +95,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -121,7 +121,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -147,7 +147,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -173,7 +173,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -205,7 +205,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -237,7 +237,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -326,7 +326,7 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
@@ -355,17 +355,17 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    return _result.data!;
+return _result.data!;
   }
 
   @override
-  Future<List<GenresModel>> getMovieGenres(String apiKey) async {
+  Future<Map<String, dynamic>> getMovieGenres(String apiKey) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<GenresModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -381,20 +381,17 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => GenresModel.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
+return _result.data!;
   }
 
   @override
-  Future<List<GenresModel>> getTvGenres(String apiKey) async {
+  Future<Map<String, dynamic>> getTvGenres(String apiKey) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<GenresModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -410,10 +407,71 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    var value = _result.data!
-        .map((dynamic i) => GenresModel.fromJson(i as Map<String, dynamic>))
-        .toList();
-    return value;
+return _result.data!;
+  }
+
+  @override
+  Future<Map<String, dynamic>> getMovieByGenre(
+    String apiKey,
+    int genreId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'with_genres': genreId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/discover/movie',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+return _result.data!;
+  }
+
+  @override
+  Future<Map<String, dynamic>> getTvByGenre(
+    String apiKey,
+    int genreId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'with_genres': genreId,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/discover/tv',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+return _result.data!;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

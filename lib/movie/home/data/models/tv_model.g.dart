@@ -11,7 +11,7 @@ TvModel _$TvModelFromJson(Map<String, dynamic> json) => TvModel(
       name: json['name'] as String,
       overview: json['overview'] as String,
       posterPath: json['poster_path'] as String,
-      voteAverage: json['vote_average'] as double,
+      voteAverage: (json['vote_average'] as num).toDouble(),
       firstAirDate: json['first_air_date'] as String,
     );
 

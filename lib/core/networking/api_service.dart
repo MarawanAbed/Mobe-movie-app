@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/networking/api_constant.dart';
-import 'package:movie_app/movie/home/data/models/genres_model.dart';
 import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
 import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -78,12 +77,24 @@ abstract class ApiService {
   );
 
   @GET(ApiConstant.genreMovie)
-  Future<List<GenresModel>> getMovieGenres(
+  Future<Map<String, dynamic>> getMovieGenres(
     @Query('api_key') String apiKey,
   );
 
   @GET(ApiConstant.genreTv)
-  Future<List<GenresModel>> getTvGenres(
+  Future<Map<String, dynamic>> getTvGenres(
     @Query('api_key') String apiKey,
+  );
+
+  @GET(ApiConstant.movieByGenre)
+  Future<Map<String, dynamic>> getMovieByGenre(
+    @Query('api_key') String apiKey,
+    @Query('with_genres') int genreId,
+  );
+
+  @GET(ApiConstant.tvByGenre)
+  Future<Map<String, dynamic>> getTvByGenre(
+    @Query('api_key') String apiKey,
+    @Query('with_genres') int genreId,
   );
 }

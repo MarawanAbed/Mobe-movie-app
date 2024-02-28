@@ -34,6 +34,8 @@ abstract class RemoteDataSource {
   Future<List<GenresModel>> getMovieGenres();
 
   Future<List<GenresModel>> getTvGenres();
+  Future<List<MovieModel>>getMoviesByGenre(int id);
+  Future<List<TvModel>>getTvByGenre(int id);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -55,7 +57,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   @override
   Future<List<GenresModel>> getMovieGenres()async {
-    return await apiService.getMovieGenres(ApiConstant.apiKey);
+    final result=await apiService.getMovieGenres(ApiConstant.apiKey);
+    return List<GenresModel>.from((result["genres"] as List)
+        .map((e) => GenresModel.fromJson(e)));
   }
 
   @override
@@ -105,7 +109,9 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   @override
   Future<List<GenresModel>> getTvGenres()async {
-    return await apiService.getTvGenres(ApiConstant.apiKey);
+    final result=await apiService.getTvGenres(ApiConstant.apiKey);
+    return List<GenresModel>.from((result["genres"] as List)
+        .map((e) => GenresModel.fromJson(e)));
   }
 
   @override
@@ -124,6 +130,20 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<List<TvModel>> searchTv(String query)async {
     final result=await apiService.searchTv(ApiConstant.apiKey,query);
+    return List<TvModel>.from((result["results"] as List)
+        .map((e) => TvModel.fromJson(e)));
+  }
+
+  @override
+  Future<List<MovieModel>> getMoviesByGenre(int id) async{
+    final result=await apiService.getMovieByGenre(ApiConstant.apiKey,id);
+    return List<MovieModel>.from((result["results"] as List)
+        .map((e) => MovieModel.fromJson(e)));
+  }
+
+  @override
+  Future<List<TvModel>> getTvByGenre(int id) async{
+    final result=await apiService.getTvByGenre(ApiConstant.apiKey,id);
     return List<TvModel>.from((result["results"] as List)
         .map((e) => TvModel.fromJson(e)));
   }

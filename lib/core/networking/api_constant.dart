@@ -17,6 +17,10 @@ class ApiConstant {
   static const String genreMovie = "/genre/movie/list";
   static const String genreTv = "/genre/tv/list";
 
+  static const String movieByGenre= "/discover/movie";
+
+  static const String tvByGenre= "/discover/tv";
+
 }
 class ApiErrors {
   static const String badRequestError = "badRequestError";

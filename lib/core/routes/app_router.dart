@@ -3,11 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/data/models/movie_model.dart';
 import 'package:movie_app/movie/home/data/models/tv_model.dart';
+import 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_movies_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/search/search_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/airing_today/get_airing_today_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/tv/by_genre/get_tv_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/details/get_tv_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/tv/genre/get_tv_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popular_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
@@ -43,9 +47,11 @@ class AppRouter {
             settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
-        final List<MovieModel>?movies = arguments['movies'] as List<MovieModel>?;
-        final List<TvModel>?tv = arguments['tv'] as List<TvModel>?;
-        return _viewAllRoute({'title': title, 'isMovie': isMovie, 'movies': movies, 'tv': tv});
+        final List<MovieModel>? movies =
+            arguments['movies'] as List<MovieModel>?;
+        final List<TvModel>? tv = arguments['tv'] as List<TvModel>?;
+        return _viewAllRoute(
+            {'title': title, 'isMovie': isMovie, 'movies': movies, 'tv': tv});
       case Routes.movieDetails:
         return _homeDetailsRoute();
       case Routes.type:
@@ -53,7 +59,8 @@ class AppRouter {
             settings.arguments as Map<String, dynamic>;
         final String title = arguments['title'] as String;
         final bool isMovie = arguments['isMovie'] as bool;
-        return _typeRoute({'title': title, 'isMovie': isMovie});
+        final int id = arguments['id'] as int;
+        return _typeRoute({'title': title, 'isMovie': isMovie, 'id': id});
       case Routes.searchMovie:
         return _searchMovieRoute();
       case Routes.searchTv:
@@ -77,13 +84,16 @@ Route _homeRoute() {
     builder: (_) => MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<GetUpComingMoviesCubit>()..getUpComingMovies(),
+          create: (context) =>
+              getIt<GetUpComingMoviesCubit>()..getUpComingMovies(),
         ),
         BlocProvider(
-          create: (context) => getIt<GetTopRatedMoviesCubit>()..getTopRatedMovies(),
+          create: (context) =>
+              getIt<GetTopRatedMoviesCubit>()..getTopRatedMovies(),
         ),
         BlocProvider(
-          create: (context) => getIt<GetPopularMoviesCubit>()..getPopularMovies(),
+          create: (context) =>
+              getIt<GetPopularMoviesCubit>()..getPopularMovies(),
         ),
         BlocProvider(
           create: (context) => getIt<GetAiringTodayCubit>()..getAiringToday(),
@@ -103,10 +113,22 @@ Route _homeRoute() {
 Route _typeRoute(Map<String, dynamic> arguments) {
   final String title = arguments['title'] as String;
   final bool isMovie = arguments['isMovie'] as bool;
+  final int id = arguments['id'] as int;
   return MaterialPageRoute(
-    builder: (_) => TypePage(
-      title: title,
-      isMovie: isMovie,
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetMoviesByGenreCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GetTvByGenreCubit>(),
+        ),
+      ],
+      child: TypePage(
+        title: title,
+        isMovie: isMovie,
+        id: id,
+      ),
     ),
   );
 }
@@ -142,9 +164,19 @@ Route _genreRoute(Map<String, dynamic> arguments) {
   final String title = arguments['title'] as String;
   final bool isMovie = arguments['isMovie'] as bool;
   return MaterialPageRoute(
-    builder: (_) => GenrePage(
-      title: title,
-      isMovie: isMovie,
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetTvGenresCubit>()..getTvGenres(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<GetMovieGenresCubit>()..getMovieGenres(),
+        ),
+      ],
+      child: GenrePage(
+        title: title,
+        isMovie: isMovie,
+      ),
     ),
   );
 }
@@ -152,14 +184,14 @@ Route _genreRoute(Map<String, dynamic> arguments) {
 Route _viewAllRoute(Map<String, dynamic> arguments) {
   final String title = arguments['title'] as String;
   final bool isMovie = arguments['isMovie'] as bool;
-  final List<MovieModel>?movies = arguments['movies'] as List<MovieModel>?;
-  final List<TvModel>?tv = arguments['tv'] as List<TvModel>?;
+  final List<MovieModel>? movies = arguments['movies'] as List<MovieModel>?;
+  final List<TvModel>? tv = arguments['tv'] as List<TvModel>?;
   return MaterialPageRoute(
     builder: (_) => ViewAllPage(
       title: title,
       isMovie: isMovie,
-      movies: movies??[],
-      tv: tv??[],
+      movies: movies ?? [],
+      tv: tv ?? [],
     ),
   );
 }

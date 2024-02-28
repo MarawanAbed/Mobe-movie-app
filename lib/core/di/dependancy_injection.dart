@@ -5,6 +5,7 @@ import 'package:movie_app/core/networking/dio_factory.dart';
 import 'package:movie_app/movie/home/data/repositories/repo_impl.dart';
 import 'package:movie_app/movie/home/domain/repositories/repo.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_airing_today_tv.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_movie_by_genre.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_details.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_geners.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_popular_movies.dart';
@@ -13,11 +14,13 @@ import 'package:movie_app/movie/home/domain/use_cases/get_similar_movie.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_similar_tv.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_top_rated_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_top_rated_tv.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_tv_by_genre.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_tv_details.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_tv_geners.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_upcoming_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/search_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/search_tv.dart';
+import 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_movies_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
@@ -26,6 +29,7 @@ import 'package:movie_app/movie/home/presentation/manager/movie/similar/similar_
 import 'package:movie_app/movie/home/presentation/manager/movie/top_rated/get_top_rated_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/upcoming/get_up_coming_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/airing_today/get_airing_today_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/tv/by_genre/get_tv_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/details/get_tv_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/genre/get_tv_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popular_cubit.dart';
@@ -83,6 +87,9 @@ _setupUseCases() {
       () => GetUpComingMovies(getIt()));
   getIt.registerLazySingleton<SearchMovie>(() => SearchMovie(getIt()));
   getIt.registerLazySingleton<SearchTv>(() => SearchTv(getIt()));
+
+  getIt.registerLazySingleton<GetMovieByGenre>(() => GetMovieByGenre(getIt()));
+  getIt.registerLazySingleton<GetTvByGenre>(() => GetTvByGenre(getIt()));
 }
 
 _setupCubits() {
@@ -99,6 +106,8 @@ _setupCubits() {
       () => GetTopRatedMoviesCubit(getIt()));
   getIt.registerFactory<GetUpComingMoviesCubit>(
       () => GetUpComingMoviesCubit(getIt()));
+  getIt.registerFactory<GetMoviesByGenreCubit>(
+      () => GetMoviesByGenreCubit(getIt()));
 
   //tv
   getIt.registerFactory<GetTvDetailsCubit>(() => GetTvDetailsCubit(getIt()));
@@ -109,6 +118,8 @@ _setupCubits() {
   getIt.registerFactory<GetTvTopRatedCubit>(() => GetTvTopRatedCubit(getIt()));
   getIt
       .registerFactory<GetAiringTodayCubit>(() => GetAiringTodayCubit(getIt()));
+  getIt.registerFactory<GetTvByGenreCubit>(
+      () => GetTvByGenreCubit(getIt()));
 }
 
 _setUpServices() async {

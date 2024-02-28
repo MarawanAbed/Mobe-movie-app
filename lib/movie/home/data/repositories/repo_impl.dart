@@ -196,4 +196,30 @@ class RepoImpl implements Repo
     }
   }
 
+  @override
+  Future<ApiResult<List<MovieModel>>> getMoviesByGenre(int id)async {
+    try
+    {
+      final result = await _remoteDataSource.getMoviesByGenre(id);
+      return ApiResult.success(result);
+    }catch(error)
+    {
+      HelperMethod.showErrorToast(error.toString());
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
+
+  @override
+  Future<ApiResult<List<TvModel>>> getTvByGenre(int id)async {
+    try
+    {
+      final result = await _remoteDataSource.getTvByGenre(id);
+      return ApiResult.success(result);
+    }catch(error)
+    {
+      HelperMethod.showErrorToast(error.toString());
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
+
 }

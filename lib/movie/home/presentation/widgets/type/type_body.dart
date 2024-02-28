@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/routes/routes.dart';
-import 'package:movie_app/movie/home/presentation/widgets/commmon/image_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/type/type_movie_bloc_builder.dart';
+import 'package:movie_app/movie/home/presentation/widgets/type/type_tv_bloc_builder.dart';
 
 class TypeBody extends StatelessWidget {
-  const TypeBody({super.key, required this.isMovie});
+  const TypeBody({super.key, required this.isMovie, required this.id});
+
   final bool isMovie;
+  final int id;
+
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        childAspectRatio: 0.7,
-        mainAxisSpacing: 10,
-      ),
-      itemBuilder: (context, index) => ImageItems(
-        image: 'https://image.tmdb.org/t/p/w500/24CL0ySodCF8bcm38xtBeHzHp7W.jpg',
-       screen: isMovie ? Routes.movieDetails: Routes.tvDetails,
-      ),
-      itemCount: 8,
-    );
+    return isMovie
+        ? TypeMovieBlocBuilder(isMovie: isMovie, id: id)
+        : TypeTvBlocBuilder(isMovie: isMovie, id: id);
   }
 }
