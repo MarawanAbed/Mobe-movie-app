@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
+import '../../widgets/tv/tv_body.dart';
 
-import '../widgets/movie/movie_body.dart';
-
-class MoviePage extends StatelessWidget {
-  const MoviePage({super.key});
+class TvPage extends StatelessWidget {
+  const TvPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          child: MovieBody(),
+          child: TvBody(),
         ),
       ),
     );
   }
 }
-
-

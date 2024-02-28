@@ -15,6 +15,7 @@ class TypeBody extends StatelessWidget {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) => ImageItems(
+        image: 'https://image.tmdb.org/t/p/w500/24CL0ySodCF8bcm38xtBeHzHp7W.jpg',
        screen: isMovie ? Routes.movieDetails: Routes.tvDetails,
       ),
       itemCount: 8,

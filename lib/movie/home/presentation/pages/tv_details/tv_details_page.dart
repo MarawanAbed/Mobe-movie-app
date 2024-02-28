@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/movie/home/presentation/widgets/tv_details/tv_details_body.dart';
 
-import '../../../../core/themes/app_colors.dart';
+import '../../../../../core/themes/app_colors.dart';
 
 class TvPageDetails extends StatelessWidget {
   const TvPageDetails({super.key});

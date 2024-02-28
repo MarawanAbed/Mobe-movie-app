@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/core/routes/routes.dart';
-import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 
 class MovieDetails extends StatelessWidget {
@@ -68,9 +66,9 @@ class MovieDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          const BuildItemImages(
-            screen: Routes.movieDetails,
-          ),
+          // const BuildItemImages(
+          //   screen: Routes.movieDetails,
+          // ),
         ],
       ),
     );

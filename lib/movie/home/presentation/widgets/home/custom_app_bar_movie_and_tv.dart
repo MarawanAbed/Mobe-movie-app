@@ -9,22 +9,26 @@ class CustomAppBarMovieAndTv extends StatelessWidget implements PreferredSizeWid
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      elevation: 0,
-      title: Text(title),
-      centerTitle: true,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {
-            if (isMovie) {
-              Navigators.pushNamed(Routes.searchMovie);
-            } else {
-              Navigators.pushNamed(Routes.searchTv);
-            }
-          },
-        ),
-      ],
+    return PopScope(
+      canPop: false,
+      child: AppBar(
+        elevation: 0,
+        title: Text(title),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              if (isMovie) {
+                Navigators.pushNamed(Routes.searchMovie);
+              } else {
+                Navigators.pushNamed(Routes.searchTv);
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 

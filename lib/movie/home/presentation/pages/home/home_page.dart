@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/movie/home/presentation/pages/tv_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/tv/tv_page.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_category_and_favorite.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_movie_and_tv.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_bottom_bar.dart';
 
-import 'category_page.dart';
-import 'favorite_page.dart';
-import 'movie_page.dart';
+import '../category/category_page.dart';
+import '../favorite/favorite_page.dart';
+import '../movie/movie_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

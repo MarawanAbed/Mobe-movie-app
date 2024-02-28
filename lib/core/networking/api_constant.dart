@@ -12,6 +12,8 @@ class ApiConstant {
   static const String searchTv = "/search/tv";
   static const String movieDetail = "/movie/";
   static const String tvDetail = "/tv/";
+  static const String similarMovie = "/movie/{movie_id}/similar";
+  static const String similarTv = "/tv/{tv_id}/similar";
   static const String genreMovie = "/genre/movie/list";
   static const String genreTv = "/genre/tv/list";
 

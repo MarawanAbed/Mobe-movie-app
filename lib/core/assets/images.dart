@@ -10,4 +10,5 @@ class AppImages
   static const String onBoarding3= '$_basePath/on_boarding_3.png';
 
   static const String onBoarding4= '$_basePath/on_boarding_4.png';
+  static const String placeholder= '$_basePath/Loading_2.gif';
 }

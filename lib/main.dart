@@ -8,7 +8,7 @@ import 'core/routes/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await setUp();
+  await setupGetIt();
   bool? isOnBoarding = await getIt<CacheHelper>().getData(key:AppStrings.onBoardingKey) ?? false;
 
   runApp(

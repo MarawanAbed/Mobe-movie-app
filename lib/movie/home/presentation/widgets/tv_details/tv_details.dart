@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/core/routes/routes.dart';
-import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 
 class TvDetails extends StatelessWidget {
@@ -27,7 +25,7 @@ class TvDetails extends StatelessWidget {
               const InfoItems(),
               HelperMethod.horizontalSpace(20),
               const Text(
-                '1h 30m',
+                'episode: 10',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
@@ -68,9 +66,9 @@ class TvDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          const BuildItemImages(
-            screen: Routes.tvDetails,
-          ),
+          // const BuildItemImages(
+          //   screen: Routes.tvDetails,
+          // ),
         ],
       ),
     );
