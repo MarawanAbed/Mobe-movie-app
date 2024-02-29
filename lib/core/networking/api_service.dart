@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movie_app/core/networking/api_constant.dart';
 import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
+import 'package:movie_app/movie/home/data/models/movie_vidoes.dart';
 import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -42,14 +43,14 @@ abstract class ApiService {
 
   @GET(ApiConstant.searchMovie)
   Future<Map<String, dynamic>> searchMovie(
-    @Query('api_key') String apiKey,
-    @Query('query') String query,
+      @Query('query') String query,
+      @Query('api_key') String apiKey,
   );
 
   @GET(ApiConstant.searchTv)
   Future<Map<String, dynamic>> searchTv(
-    @Query('api_key') String apiKey,
-    @Query('query') String query,
+      @Query('query') String query,
+      @Query('api_key') String apiKey,
   );
 
   @GET(ApiConstant.movieDetail)
@@ -96,5 +97,17 @@ abstract class ApiService {
   Future<Map<String, dynamic>> getTvByGenre(
     @Query('api_key') String apiKey,
     @Query('with_genres') int genreId,
+  );
+
+  @GET(ApiConstant.movieVideos)
+  Future<VideosModel> getMovieVideos(
+    @Path('movie_id') int id,
+    @Query('api_key') String apiKey,
+  );
+
+  @GET(ApiConstant.tvVideos)
+  Future<VideosModel> getTvVideos(
+    @Path('tv_id') int id,
+    @Query('api_key') String apiKey,
   );
 }

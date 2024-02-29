@@ -1,10 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/assets/images.dart';
+import 'package:movie_app/core/networking/api_constant.dart';
+import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_movie_videos.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
+import '../../../../../core/di/dependancy_injection.dart';
 
 class MoviePoster extends StatelessWidget {
-  const MoviePoster({super.key});
+  const MoviePoster({super.key, required this.movies});
+
+  final MovieDetailsModel movies;
 
   @override
   Widget build(BuildContext context) {
+    const image = ApiConstant.imageBaseUrl;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -24,8 +35,9 @@ class MoviePoster extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w500/bIeEMMvfzgbMBtYaEWtxrFnt6Vo.jpg',
+              child: FadeInImage(
+                placeholder: const AssetImage(AppImages.placeholder),
+                image: CachedNetworkImageProvider(image + movies.posterPath),
                 fit: BoxFit.contain,
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.33,
@@ -38,9 +50,10 @@ class MoviePoster extends StatelessWidget {
               backgroundColor: Colors.red,
               radius: 30,
               child: IconButton(
-                icon: const Icon(Icons.play_arrow,
-                    size: 30, color: Colors.white),
-                onPressed: () {},
+                icon:const Icon(Icons.play_arrow, size: 30, color: Colors.white),
+                onPressed: () async {
+                  _launcherUrl(movies.id);
+                },
               ),
             ),
           ),
@@ -48,4 +61,21 @@ class MoviePoster extends StatelessWidget {
       ),
     );
   }
+
+
+}
+
+void _launcherUrl(int id)async
+{
+  final url = await getIt<GetMovieVideos>().call(id);
+  url.when(
+    success: (data) async {
+      if (await canLaunchUrlString(data)) {
+        await launchUrlString(data);
+      }
+    },
+    failure: (error) {
+      throw 'Could not launch $error';
+    },
+  );
 }

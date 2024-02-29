@@ -10,12 +10,13 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
   SearchMoviesCubit(this._searchMovie) : super(const SearchMoviesState.initial());
 
   final SearchMovie _searchMovie;
-
+  final List<MovieModel> movies = [];
   void searchMovies(String query) async {
-    emit(const SearchMoviesState.loading());
     final result = await _searchMovie(query);
     result.when(
       success: (movies) {
+        this.movies.clear();
+        this.movies.addAll(movies);
         emit(SearchMoviesState.loaded(movies));
       },
       failure: (error) {

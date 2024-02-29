@@ -4,7 +4,6 @@ part of 'search_tv_cubit.dart';
 class SearchTvState with _$SearchTvState {
   const factory SearchTvState.initial() = _Initial;
 
-  const factory SearchTvState.loading() = Loading;
 
   const factory SearchTvState.loaded(List<TvModel> tvs) = Loaded;
 

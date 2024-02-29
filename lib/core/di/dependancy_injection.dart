@@ -8,6 +8,7 @@ import 'package:movie_app/movie/home/domain/use_cases/get_airing_today_tv.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_by_genre.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_details.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_geners.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_movie_videos.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_popular_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_popular_tv.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_similar_movie.dart';
@@ -17,6 +18,7 @@ import 'package:movie_app/movie/home/domain/use_cases/get_top_rated_tv.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_tv_by_genre.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_tv_details.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_tv_geners.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_tv_videos.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_upcoming_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/search_movies.dart';
 import 'package:movie_app/movie/home/domain/use_cases/search_tv.dart';
@@ -45,7 +47,8 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   try {
-    getIt.registerLazySingleton<CacheHelper>(() => CacheHelper(getIt<SharedPreferences>()));
+    getIt.registerLazySingleton<CacheHelper>(
+        () => CacheHelper(getIt<SharedPreferences>()));
     final sharedPreferences = await SharedPreferences.getInstance();
     getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
     _setupDataSources();
@@ -87,9 +90,11 @@ _setupUseCases() {
       () => GetUpComingMovies(getIt()));
   getIt.registerLazySingleton<SearchMovie>(() => SearchMovie(getIt()));
   getIt.registerLazySingleton<SearchTv>(() => SearchTv(getIt()));
-
   getIt.registerLazySingleton<GetMovieByGenre>(() => GetMovieByGenre(getIt()));
   getIt.registerLazySingleton<GetTvByGenre>(() => GetTvByGenre(getIt()));
+
+  getIt.registerLazySingleton<GetMovieVideos>(() => GetMovieVideos(getIt()));
+  getIt.registerLazySingleton<GetTvVideos>(() => GetTvVideos(getIt()));
 }
 
 _setupCubits() {
@@ -118,12 +123,10 @@ _setupCubits() {
   getIt.registerFactory<GetTvTopRatedCubit>(() => GetTvTopRatedCubit(getIt()));
   getIt
       .registerFactory<GetAiringTodayCubit>(() => GetAiringTodayCubit(getIt()));
-  getIt.registerFactory<GetTvByGenreCubit>(
-      () => GetTvByGenreCubit(getIt()));
+  getIt.registerFactory<GetTvByGenreCubit>(() => GetTvByGenreCubit(getIt()));
 }
 
 _setUpServices() async {
   Dio dio = await DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
 }
-

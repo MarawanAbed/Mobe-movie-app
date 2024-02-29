@@ -38,4 +38,7 @@ abstract class Repo {
 
   Future<ApiResult<List<TvModel>>> getTvByGenre(int id);
 
+  Future<ApiResult<String>> getMovieVideos(int id);
+
+  Future<ApiResult<String>> getTvVideos(int id);
 }

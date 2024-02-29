@@ -28,7 +28,7 @@ class TopRatedMovies extends StatelessWidget {
         HelperMethod.verticalSpace(20),
         BuildItemImages(
           movies: movies,
-          screen: Routes.tvDetails,
+          screen: Routes.movieDetails,
         ),
       ],
     );

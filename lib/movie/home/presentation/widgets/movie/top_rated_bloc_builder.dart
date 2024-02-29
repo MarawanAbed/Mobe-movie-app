@@ -15,7 +15,7 @@ class TopRatedBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => Container(),
-          loading: () => const Center(child: CircularProgressIndicator()),
+          loading: () => Center(child: CircularProgressIndicator()),
           loaded: (movies) {
             return TopRatedMovies(
               movies: movies,

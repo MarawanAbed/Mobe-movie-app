@@ -4,14 +4,18 @@ import 'package:movie_app/movie/home/presentation/widgets/tv_details/tv_details_
 import '../../../../../core/themes/app_colors.dart';
 
 class TvPageDetails extends StatelessWidget {
-  const TvPageDetails({super.key});
+  const TvPageDetails({super.key, required this.id});
+
+  final int id;
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.kBackGroundNavBar,
-        body: TvDetailsBody(),
+        body: TvDetailsBody(
+          id: id,
+        ),
       ),
     );
   }

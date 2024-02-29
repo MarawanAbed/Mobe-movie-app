@@ -222,4 +222,30 @@ class RepoImpl implements Repo
     }
   }
 
+  @override
+  Future<ApiResult<String>> getMovieVideos(int id)async {
+    try
+    {
+      final result = await _remoteDataSource.getMovieVideos(id);
+      return ApiResult.success(result);
+    }catch(error)
+    {
+      HelperMethod.showErrorToast(error.toString());
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
+
+  @override
+  Future<ApiResult<String>> getTvVideos(int id)async {
+    try
+    {
+      final result = await _remoteDataSource.getTvVideos(id);
+      return ApiResult.success(result);
+    }catch(error)
+    {
+      HelperMethod.showErrorToast(error.toString());
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
+
 }

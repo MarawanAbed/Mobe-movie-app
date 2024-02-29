@@ -8,16 +8,18 @@ class ImageItems extends StatelessWidget {
     super.key,
     required this.screen,
     required this.image,
+    this.arguments,
   });
 
   final String screen;
   final String image;
+  final dynamic arguments;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigators.pushNamed(screen);
+        Navigators.pushNamed(screen,arguments:arguments );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),

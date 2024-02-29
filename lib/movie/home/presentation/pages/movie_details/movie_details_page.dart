@@ -4,14 +4,16 @@ import 'package:movie_app/movie/home/presentation/widgets/movie_details/movie_de
 import '../../../../../core/themes/app_colors.dart';
 
 class MoviePageDetails extends StatelessWidget {
-  const MoviePageDetails({super.key});
-
+  const MoviePageDetails({super.key, required this.id, });
+  final int id;
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.kBackGroundNavBar,
-        body: MovieDetailsBody(),
+        body: MovieDetailsBody(
+          id: id,
+        ),
       ),
     );
   }

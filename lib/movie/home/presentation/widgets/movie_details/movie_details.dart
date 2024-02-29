@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/movie_details/similar_movies_bloc_builder.dart';
 
 class MovieDetails extends StatelessWidget {
-  const MovieDetails({super.key});
+  const MovieDetails({
+    super.key,
+    required this.movies,
+  });
+
+  final MovieDetailsModel movies;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +19,9 @@ class MovieDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Movie Title',
-            style: TextStyle(
+          Text(
+            movies.title,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
@@ -22,11 +29,14 @@ class MovieDetails extends StatelessWidget {
           HelperMethod.verticalSpace(10),
           Row(
             children: [
-              const InfoItems(),
+              InfoItems(
+                releaseDate: movies.releaseDate,
+                voteAverage: movies.voteAverage,
+              ),
               HelperMethod.horizontalSpace(20),
-              const Text(
-                '1h 30m',
-                style: TextStyle(
+              Text(
+                HelperMethod.showDuration(movies.runTime),
+                style: const TextStyle(
                   fontSize: 16,
                   color: Colors.grey,
                 ),
@@ -34,29 +44,19 @@ class MovieDetails extends StatelessWidget {
             ],
           ),
           HelperMethod.verticalSpace(10),
-          const Text(
-            'Movie Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
+          Text(
+            movies.overview,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
           ),
           HelperMethod.verticalSpace(10),
-          Row(
-            children: [
-              const Text(
-                'Genres: ',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-              HelperMethod.horizontalSpace(2),
-              const Text(
-                'Action, Adventure, Drama',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
-          ),
+          Text('Genres : ${HelperMethod.showGenres(movies.genres)}',
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.white70,
+              )),
           HelperMethod.verticalSpace(20),
           const Text(
             'More Like This',
@@ -66,9 +66,7 @@ class MovieDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          // const BuildItemImages(
-          //   screen: Routes.movieDetails,
-          // ),
+          SimilarMoviesBlocBuilder(id: movies.id),
         ],
       ),
     );

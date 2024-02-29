@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
+import 'package:movie_app/movie/home/presentation/widgets/tv_details/similar_tv_bloc_builder.dart';
 
 class TvDetails extends StatelessWidget {
-  const TvDetails({super.key});
+  const TvDetails({super.key, required this.tv});
+  final TvDetailsModel tv;
 
   @override
   Widget build(BuildContext context) {
@@ -12,50 +15,46 @@ class TvDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Tv Title',
-            style: TextStyle(
+           Text(
+            tv.name,
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
           HelperMethod.verticalSpace(10),
+          Text(
+            'Season:${tv.numberOfSeasons}  Episode:${tv.numberOfSeasons}',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          HelperMethod.verticalSpace(10),
           Row(
             children: [
-              const InfoItems(),
+              InfoItems(
+                releaseDate: tv.firstAirDate,
+                voteAverage: tv.voteAverage,
+              ),
               HelperMethod.horizontalSpace(20),
-              const Text(
-                'episode: 10',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
             ],
           ),
           HelperMethod.verticalSpace(10),
-          const Text(
-            'Tv Description DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription',
+          Text(
+            tv.overview,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
           ),
           HelperMethod.verticalSpace(10),
-          Row(
-            children: [
-              const Text(
-                'Genres: ',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-              HelperMethod.horizontalSpace(2),
-              const Text(
-                'Action, Adventure, Drama',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
-              ),
-            ],
+          Text(
+            'Genres : ${HelperMethod.showGenres(tv.genres)}',
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.white70,
+            ),
           ),
           HelperMethod.verticalSpace(20),
           const Text(
@@ -66,9 +65,7 @@ class TvDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          // const BuildItemImages(
-          //   screen: Routes.tvDetails,
-          // ),
+          SimilarTvBlocBuilder(id: tv.id),
         ],
       ),
     );

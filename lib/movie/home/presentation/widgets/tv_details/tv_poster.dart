@@ -1,10 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/assets/images.dart';
+import 'package:movie_app/core/di/dependancy_injection.dart';
+import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/core/networking/api_constant.dart';
+import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
+import 'package:movie_app/movie/home/domain/use_cases/get_tv_videos.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class TvPoster extends StatelessWidget {
-  const TvPoster({super.key});
+  const TvPoster({super.key, required this.tv});
+
+  final TvDetailsModel tv;
 
   @override
   Widget build(BuildContext context) {
+    const image = ApiConstant.imageBaseUrl;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -24,11 +35,12 @@ class TvPoster extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w500/aPw5rLRclUx14T8lUNkGlrGVfow.jpg',
-                fit: BoxFit.contain,
+              child: FadeInImage(
+                placeholder:  const AssetImage(AppImages.placeholder),
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.33,
+                image: CachedNetworkImageProvider(image + tv.posterPath),
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -43,7 +55,9 @@ class TvPoster extends StatelessWidget {
                   size: 30,
                   color: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  _launcherUrl(tv.id);
+                },
               ),
             ),
           ),
@@ -51,4 +65,20 @@ class TvPoster extends StatelessWidget {
       ),
     );
   }
+
+
+}
+void _launcherUrl(int id)async
+{
+  final url = await getIt<GetTvVideos>().call(id);
+  url.when(
+    success: (data) async {
+      if (await canLaunchUrlString(data)) {
+        await launchUrlString(data);
+      }
+    },
+    failure: (error) {
+      HelperMethod.showErrorToast('There is no video available for this TvSeries.');
+    },
+  );
 }

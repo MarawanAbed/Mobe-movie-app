@@ -20,11 +20,15 @@ class TvDetailsModel
   final String firstAirDate;
 
   @JsonKey(name: 'vote_average')
-  final String voteAverage;
+  final double voteAverage;
 
   final List<GenresModel>genres;
   @JsonKey(name: 'number_of_seasons')
   final int numberOfSeasons;
+
+  @JsonKey(name: 'number_of_episodes')
+
+  final int numberOfEpisodes;
 
 
   TvDetailsModel({
@@ -37,6 +41,7 @@ class TvDetailsModel
     required this.voteAverage,
     required this.genres,
     required this.numberOfSeasons,
+    required this.numberOfEpisodes,
   });
 
   factory TvDetailsModel.fromJson(Map<String, dynamic> json) => _$TvDetailsModelFromJson(json);

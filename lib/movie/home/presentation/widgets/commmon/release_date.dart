@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class ReleaseDate extends StatelessWidget {
   const ReleaseDate({
     super.key,
+    required this.releaseDate,
   });
+
+  final String releaseDate;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +16,8 @@ class ReleaseDate extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: Colors.red.withOpacity(0.9),
       ),
-      child: const Text(
-        '2022',
+      child: Text(
+        releaseDate.split('-')[0],
       ),
     );
   }

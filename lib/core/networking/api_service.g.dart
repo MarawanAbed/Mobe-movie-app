@@ -43,7 +43,8 @@ class _ApiService implements ApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -69,7 +70,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -95,7 +97,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -121,7 +124,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -147,7 +151,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -173,18 +178,19 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
   Future<Map<String, dynamic>> searchMovie(
-    String apiKey,
     String query,
+    String apiKey,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'api_key': apiKey,
       r'query': query,
+      r'api_key': apiKey,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -205,18 +211,19 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
   Future<Map<String, dynamic>> searchTv(
-    String apiKey,
     String query,
+    String apiKey,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'api_key': apiKey,
       r'query': query,
+      r'api_key': apiKey,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -237,7 +244,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -257,7 +265,7 @@ return _result.data!;
     )
             .compose(
               _dio.options,
-              '/movie/',
+              '/movie/$id',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -287,7 +295,7 @@ return _result.data!;
     )
             .compose(
               _dio.options,
-              '/tv/',
+              '/tv/$id',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -326,7 +334,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -355,7 +364,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -381,7 +391,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -407,7 +418,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -439,7 +451,8 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
   }
 
   @override
@@ -471,7 +484,70 @@ return _result.data!;
               _dio.options.baseUrl,
               baseUrl,
             ))));
-return _result.data!;
+    return _result.data!;
+
+  }
+
+  @override
+  Future<VideosModel> getMovieVideos(
+    int id,
+    String apiKey,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/movie/${id}/videos',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = VideosModel.fromJson(_result.data!);
+    return value;
+
+  }
+
+  @override
+  Future<VideosModel> getTvVideos(
+    int id,
+    String apiKey,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Map<String, dynamic>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/tv/${id}/videos',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = VideosModel.fromJson(_result.data!);
+    return value;
+
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

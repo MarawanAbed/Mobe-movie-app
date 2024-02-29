@@ -22,7 +22,6 @@ class CustomAppBar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pop(context);
             },
             child: const Icon(
               Icons.favorite,

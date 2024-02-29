@@ -18,7 +18,7 @@ class MovieDetailsModel{
   @JsonKey(name: 'runtime')
   final int runTime;
   @JsonKey(name: 'vote_average')
-  final String voteAverage;
+  final double voteAverage;
   final List<GenresModel>genres;
 
   MovieDetailsModel({

@@ -8,12 +8,14 @@ import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movi
 import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/search/search_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/movie/similar/similar_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/airing_today/get_airing_today_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/by_genre/get_tv_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/details/get_tv_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/genre/get_tv_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popular_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
 import 'package:movie_app/movie/home/presentation/pages/genre/genre_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home/home_page.dart';
@@ -53,7 +55,8 @@ class AppRouter {
         return _viewAllRoute(
             {'title': title, 'isMovie': isMovie, 'movies': movies, 'tv': tv});
       case Routes.movieDetails:
-        return _homeDetailsRoute();
+        final int id = settings.arguments as int;
+        return _movieDetailsRoute(id);
       case Routes.type:
         final Map<String, dynamic> arguments =
             settings.arguments as Map<String, dynamic>;
@@ -66,7 +69,8 @@ class AppRouter {
       case Routes.searchTv:
         return _searchTvRoute();
       case Routes.tvDetails:
-        return _tvDetailsRoute();
+        final int id = settings.arguments as int;
+        return _tvDetailsRoute(id);
       default:
         return _defaultRoute(settings);
     }
@@ -133,11 +137,20 @@ Route _typeRoute(Map<String, dynamic> arguments) {
   );
 }
 
-Route _tvDetailsRoute() {
+Route _tvDetailsRoute(int id) {
   return MaterialPageRoute(
-    builder: (_) => BlocProvider(
-      create: (context) => getIt<GetTvDetailsCubit>(),
-      child: const TvPageDetails(),
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetTvDetailsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SimilarTvCubit>(),
+        ),
+      ],
+      child: TvPageDetails(
+        id: id,
+      ),
     ),
   );
 }
@@ -196,11 +209,20 @@ Route _viewAllRoute(Map<String, dynamic> arguments) {
   );
 }
 
-Route _homeDetailsRoute() {
+Route _movieDetailsRoute(int id) {
   return MaterialPageRoute(
-    builder: (_) => BlocProvider(
-      create: (context) => getIt<GetMovieDetailsCubit>(),
-      child: const MoviePageDetails(),
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetMovieDetailsCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SimilarMoviesCubit>(),
+        ),
+      ],
+      child: MoviePageDetails(
+        id: id,
+      ),
     ),
   );
 }

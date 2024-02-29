@@ -34,8 +34,14 @@ abstract class RemoteDataSource {
   Future<List<GenresModel>> getMovieGenres();
 
   Future<List<GenresModel>> getTvGenres();
-  Future<List<MovieModel>>getMoviesByGenre(int id);
-  Future<List<TvModel>>getTvByGenre(int id);
+
+  Future<List<MovieModel>> getMoviesByGenre(int id);
+
+  Future<List<TvModel>> getTvByGenre(int id);
+
+  Future<String> getMovieVideos(int id);
+
+  Future<String> getTvVideos(int id);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -44,107 +50,126 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   RemoteDataSourceImpl({required this.apiService});
 
   @override
-  Future<List<TvModel>> getAiringTodayTv()async {
-    final result=await apiService.getAiringTodayTv(ApiConstant.apiKey);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));
+  Future<List<TvModel>> getAiringTodayTv() async {
+    final result = await apiService.getAiringTodayTv(ApiConstant.apiKey);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
   }
 
   @override
-  Future<MovieDetailsModel> getMovieDetail(int id)async {
-   return await apiService.getMovieDetail(id, ApiConstant.apiKey);
+  Future<MovieDetailsModel> getMovieDetail(int id) async {
+    return await apiService.getMovieDetail(id, ApiConstant.apiKey);
   }
 
   @override
-  Future<List<GenresModel>> getMovieGenres()async {
-    final result=await apiService.getMovieGenres(ApiConstant.apiKey);
-    return List<GenresModel>.from((result["genres"] as List)
-        .map((e) => GenresModel.fromJson(e)));
+  Future<List<GenresModel>> getMovieGenres() async {
+    final result = await apiService.getMovieGenres(ApiConstant.apiKey);
+    return List<GenresModel>.from(
+        (result["genres"] as List).map((e) => GenresModel.fromJson(e)));
   }
 
   @override
-  Future<List<MovieModel>> getPopularMovies()async {
-    final result=await apiService.getPopularMovies(ApiConstant.apiKey);
-    return List<MovieModel>.from((result["results"] as List)
-        .map((e) => MovieModel.fromJson(e)));
+  Future<List<MovieModel>> getPopularMovies() async {
+    final result = await apiService.getPopularMovies(ApiConstant.apiKey);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
   }
 
   @override
-  Future<List<TvModel>> getPopularTv() async{
-    final result=await apiService.getPopularTv(ApiConstant.apiKey);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));
+  Future<List<TvModel>> getPopularTv() async {
+    final result = await apiService.getPopularTv(ApiConstant.apiKey);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
   }
 
   @override
-  Future<List<MovieModel>> getSimilarMovie(int id)async {
-    final result=await apiService.getSimilarMovie(id,ApiConstant.apiKey);
-    return List<MovieModel>.from((result["results"] as List)
-        .map((e) => MovieModel.fromJson(e)));
+  Future<List<MovieModel>> getSimilarMovie(int id) async {
+    final result = await apiService.getSimilarMovie(id, ApiConstant.apiKey);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
   }
 
   @override
-  Future<List<TvModel>> getSimilarTv(int id)async {
-    final result=await apiService.getSimilarTv(id,ApiConstant.apiKey);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));  }
-
-  @override
-  Future<List<MovieModel>> getTopRatedMovies()async {
-    final result=await apiService.getTopRatedMovies(ApiConstant.apiKey);
-    return List<MovieModel>.from((result["results"] as List)
-        .map((e) => MovieModel.fromJson(e)));  }
-
-  @override
-  Future<List<TvModel>> getTopRatedTv()async {
-    final result=await apiService.getTopRatedTv(ApiConstant.apiKey);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));
+  Future<List<TvModel>> getSimilarTv(int id) async {
+    final result = await apiService.getSimilarTv(id, ApiConstant.apiKey);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
   }
 
   @override
-  Future<TvDetailsModel> getTvDetail(int id) async{
+  Future<List<MovieModel>> getTopRatedMovies() async {
+    final result = await apiService.getTopRatedMovies(ApiConstant.apiKey);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
+  }
+
+  @override
+  Future<List<TvModel>> getTopRatedTv() async {
+    final result = await apiService.getTopRatedTv(ApiConstant.apiKey);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
+  }
+
+  @override
+  Future<TvDetailsModel> getTvDetail(int id) async {
     return await apiService.getTvDetail(id, ApiConstant.apiKey);
   }
 
   @override
-  Future<List<GenresModel>> getTvGenres()async {
-    final result=await apiService.getTvGenres(ApiConstant.apiKey);
-    return List<GenresModel>.from((result["genres"] as List)
-        .map((e) => GenresModel.fromJson(e)));
+  Future<List<GenresModel>> getTvGenres() async {
+    final result = await apiService.getTvGenres(ApiConstant.apiKey);
+    return List<GenresModel>.from(
+        (result["genres"] as List).map((e) => GenresModel.fromJson(e)));
   }
 
   @override
-  Future<List<MovieModel>> getUpcomingMovies()async {
-     final result=await apiService.getUpcomingMovies(ApiConstant.apiKey);
-     return List<MovieModel>.from((result["results"] as List)
-         .map((e) => MovieModel.fromJson(e)));
+  Future<List<MovieModel>> getUpcomingMovies() async {
+    final result = await apiService.getUpcomingMovies(ApiConstant.apiKey);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
   }
 
   @override
-  Future<List<MovieModel>> searchMovie(String query)async {
-    final result=await apiService.searchMovie(query,ApiConstant.apiKey);
-    return List<MovieModel>.from((result["results"] as List)
-        .map((e) => MovieModel.fromJson(e)));  }
-
-  @override
-  Future<List<TvModel>> searchTv(String query)async {
-    final result=await apiService.searchTv(ApiConstant.apiKey,query);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));
+  Future<List<MovieModel>> searchMovie(String query) async {
+    final result = await apiService.searchMovie(query, ApiConstant.apiKey);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
   }
 
   @override
-  Future<List<MovieModel>> getMoviesByGenre(int id) async{
-    final result=await apiService.getMovieByGenre(ApiConstant.apiKey,id);
-    return List<MovieModel>.from((result["results"] as List)
-        .map((e) => MovieModel.fromJson(e)));
+  Future<List<TvModel>> searchTv(String query) async {
+    final result = await apiService.searchTv(query, ApiConstant.apiKey);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
   }
 
   @override
-  Future<List<TvModel>> getTvByGenre(int id) async{
-    final result=await apiService.getTvByGenre(ApiConstant.apiKey,id);
-    return List<TvModel>.from((result["results"] as List)
-        .map((e) => TvModel.fromJson(e)));
+  Future<List<MovieModel>> getMoviesByGenre(int id) async {
+    final result = await apiService.getMovieByGenre(ApiConstant.apiKey, id);
+    return List<MovieModel>.from(
+        (result["results"] as List).map((e) => MovieModel.fromJson(e)));
+  }
+
+  @override
+  Future<List<TvModel>> getTvByGenre(int id) async {
+    final result = await apiService.getTvByGenre(ApiConstant.apiKey, id);
+    return List<TvModel>.from(
+        (result["results"] as List).map((e) => TvModel.fromJson(e)));
+  }
+
+  @override
+  Future<String> getMovieVideos(int id) async {
+    final videosModel = await apiService.getMovieVideos(id, ApiConstant.apiKey);
+    final trailer = videosModel.results.firstWhere(
+        (video) => video.site == 'YouTube' && video.type == 'Trailer');
+    return 'https://www.youtube.com/watch?v=${trailer.key}';
+  }
+
+  @override
+  Future<String> getTvVideos(int id) async{
+    final videosModel = await apiService.getTvVideos(id, ApiConstant.apiKey);
+    final trailer = videosModel.results.firstWhere(
+        (video) => video.site == 'YouTube' && video.type == 'Trailer');
+    return 'https://www.youtube.com/watch?v=${trailer.key}';
   }
 }

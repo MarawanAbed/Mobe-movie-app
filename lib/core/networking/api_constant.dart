@@ -21,6 +21,9 @@ class ApiConstant {
 
   static const String tvByGenre= "/discover/tv";
 
+  static const String movieVideos= "/movie/{movie_id}/videos";
+  static const String tvVideos= "/tv/{tv_id}/videos";
+
 }
 class ApiErrors {
   static const String badRequestError = "badRequestError";

@@ -4,9 +4,12 @@ import 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_mov
 import 'package:movie_app/movie/home/presentation/widgets/type/build_type.dart';
 
 class TypeMovieBlocBuilder extends StatefulWidget {
-  const TypeMovieBlocBuilder({super.key, required this.isMovie, required this.id});
+  const TypeMovieBlocBuilder(
+      {super.key, required this.isMovie, required this.id});
+
   final bool isMovie;
   final int id;
+
   @override
   State<TypeMovieBlocBuilder> createState() => _TypeMovieBlocBuilderState();
 }
@@ -17,16 +20,22 @@ class _TypeMovieBlocBuilderState extends State<TypeMovieBlocBuilder> {
     context.read<GetMoviesByGenreCubit>().getMoviesByGenre(widget.id);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetMoviesByGenreCubit, GetMoviesByGenreState>(
       buildWhen: (previous, current) =>
-      current is Loading || current is Loaded || current is Error,
+          current is Loading || current is Loaded || current is Error,
       builder: (context, state) {
         return state.when(
-          initial: () => const Center(child: CircularProgressIndicator()),
-          loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (movies)=>BuildType(isMovie: widget.isMovie,movies: movies,),
+          initial: () =>
+              const Center(child: CircularProgressIndicator()),
+          loading: () =>
+              const Center(child: CircularProgressIndicator()),
+          loaded: (movies) => BuildType(
+            isMovie: widget.isMovie,
+            movies: movies,
+          ),
           error: (message) => Text(message),
         );
       },

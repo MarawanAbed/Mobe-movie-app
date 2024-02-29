@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:movie_app/movie/home/data/models/genres_model.dart';
 
 class HelperMethod {
   static Future<File> getImageFromGallery() async {
@@ -19,7 +20,20 @@ class HelperMethod {
     return File(pickedFile!.path);
   }
 
+  static String showDuration(int runtime) {
+    final int hours = runtime ~/ 60;
+    final int minutes = runtime % 60;
 
+    if (hours > 0) {
+      return '${hours}h ${minutes}m';
+    } else {
+      return '${minutes}m';
+    }
+  }
+
+  static String showGenres(List<GenresModel> genres) {
+    return genres.map((genre) => genre.name).join(', ');
+  }
   static SizedBox verticalSpace(double height) => SizedBox(
     height: height.h,
   );
