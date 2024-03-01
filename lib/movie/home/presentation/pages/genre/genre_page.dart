@@ -13,11 +13,9 @@ class GenrePage extends StatelessWidget {
           centerTitle: true,
           title: Text("$title Genre"),
         ),
-        body: SingleChildScrollView(
-          child: GenreBody(
-            title: title,
-            isMovie: isMovie,
-          ),
+        body: GenreBody(
+          title: title,
+          isMovie: isMovie,
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/movie/home/presentation/widgets/favorite/favorite_body.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
@@ -6,9 +7,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Favorite Page'),
-      ),
+      body: FavoriteBody(),
     );
   }
 }

@@ -12,9 +12,9 @@ class VideosModel {
     required this.results,
   });
 
-  factory VideosModel.fromJson(Map<String, dynamic> json) => _$VideosFromJson(json);
+  factory VideosModel.fromJson(Map<String, dynamic> json) => _$VideosModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$VideosToJson(this);
+  Map<String, dynamic> toJson() => _$VideosModelToJson(this);
 }
 
 @JsonSerializable()

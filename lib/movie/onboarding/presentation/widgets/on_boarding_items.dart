@@ -125,7 +125,7 @@ class OnBoardingItems extends StatelessWidget {
               curve: Curves.easeIn,
             );
           } else {
-            await getIt<CacheHelper>()
+            await getIt<SharedPreCacheHelper>()
                 .saveData(key: AppStrings.onBoardingKey, value: true);
             await Navigators.pushNamedAndRemoveUntil(Routes.home);
           }
@@ -147,7 +147,7 @@ class OnBoardingItems extends StatelessWidget {
       alignment: Alignment.topRight,
       child: TextButton(
         onPressed: () async {
-          await getIt<CacheHelper>()
+          await getIt<SharedPreCacheHelper>()
               .saveData(key: AppStrings.onBoardingKey, value: true);
           await Navigators.pushNamedAndRemoveUntil(Routes.home);
         },

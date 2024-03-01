@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 
 class CategoryItems extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color color;
-  final bool isMovie;
+  final String screen;
+  final dynamic arguments;
+
   const CategoryItems({
     Key? key,
     required this.title,
     required this.icon,
-    required this.color, required this.isMovie,
+    required this.color,
+    required this.screen,
+    this.arguments,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigators.pushNamed(Routes.genre, arguments: {
-          'title': title,
-          'isMovie': isMovie,
-        });
+        Navigators.pushNamed(screen, arguments: arguments);
       },
       child: ListTile(
         leading: Icon(

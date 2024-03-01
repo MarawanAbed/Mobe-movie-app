@@ -9,4 +9,8 @@ class Routes {
   static const String searchMovie = '/searchMovie';
 
   static const String searchTv = '/searchTv';
+
+  static const String moviesFavorite = '/moviesFavorite';
+
+  static const String tvFavorite = '/tvFavorite';
 }

@@ -10,16 +10,20 @@ class GenreBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        isMovie
-            ? GenreMoviesBlocBuilder(
-                isMovie: isMovie,
-              )
-            : GenreTvBlocBuilder(
-                isMovie: isMovie,
-              ),
-      ],
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            isMovie
+                ? GenreMoviesBlocBuilder(
+                    isMovie: isMovie,
+                  )
+                : GenreTvBlocBuilder(
+                    isMovie: isMovie,
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -9,9 +9,7 @@ class MoviePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: MovieBody(),
-        ),
+        body: MovieBody(),
       ),
     );
   }

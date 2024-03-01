@@ -1,4 +1,6 @@
 class AppStrings {
+  static const String favoriteBoxName = 'favoriteBox';
+  static const String pressedFavorite = 'Pressed Favorite';
   static const String titleApp = 'Freedom Chat App';
   static const String onBoardingKey='onBoardingKey';
   static const String onBoardingTitle =

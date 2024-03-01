@@ -1,9 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CacheHelper {
+class SharedPreCacheHelper {
   final SharedPreferences preferences;
 
-  CacheHelper(this.preferences);
+  SharedPreCacheHelper(this.preferences);
 
   getData({
     required String key,

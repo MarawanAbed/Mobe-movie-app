@@ -47,8 +47,8 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   try {
-    getIt.registerLazySingleton<CacheHelper>(
-        () => CacheHelper(getIt<SharedPreferences>()));
+    getIt.registerLazySingleton<SharedPreCacheHelper>(
+        () => SharedPreCacheHelper(getIt<SharedPreferences>()));
     final sharedPreferences = await SharedPreferences.getInstance();
     getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
     _setupDataSources();

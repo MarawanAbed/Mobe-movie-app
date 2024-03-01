@@ -16,6 +16,7 @@ class BuildGenreItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return GenreItem(
           title: genres[index].name,

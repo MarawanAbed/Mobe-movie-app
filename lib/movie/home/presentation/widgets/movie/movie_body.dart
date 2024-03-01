@@ -11,14 +11,18 @@ class MovieBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Column(
-        children: [
-          const UpComingBlocBuilder(),
-          HelperMethod.verticalSpace(20),
-          const PopularBlocBuilder(),
-          HelperMethod.verticalSpace(20),
-          const TopRatedBlocBuilder(),
-        ],
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const UpComingBlocBuilder(),
+              HelperMethod.verticalSpace(20),
+              const PopularBlocBuilder(),
+              HelperMethod.verticalSpace(20),
+              const TopRatedBlocBuilder(),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -6,14 +6,15 @@ part of 'movie_vidoes.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-VideosModel _$VideosFromJson(Map<String, dynamic> json) => VideosModel(
+VideosModel _$VideosModelFromJson(Map<String, dynamic> json) => VideosModel(
       id: json['id'] as int,
       results: (json['results'] as List<dynamic>)
           .map((e) => Results.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$VideosToJson(VideosModel instance) => <String, dynamic>{
+Map<String, dynamic> _$VideosModelToJson(VideosModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'results': instance.results,
     };

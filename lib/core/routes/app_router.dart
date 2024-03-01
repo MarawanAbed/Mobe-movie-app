@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/data/models/movie_model.dart';
 import 'package:movie_app/movie/home/data/models/tv_model.dart';
+import 'package:movie_app/movie/home/presentation/manager/favorite_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_movies_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
@@ -17,6 +18,8 @@ import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popu
 import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
+import 'package:movie_app/movie/home/presentation/pages/favorite/movies_favorite_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/favorite/tv_favorite_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/genre/genre_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/home/home_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/movie_details/movie_details_page.dart';
@@ -71,6 +74,10 @@ class AppRouter {
       case Routes.tvDetails:
         final int id = settings.arguments as int;
         return _tvDetailsRoute(id);
+      case Routes.moviesFavorite:
+        return _moviesFavoriteRoute();
+      case Routes.tvFavorite:
+        return _tvFavoriteRoute();
       default:
         return _defaultRoute(settings);
     }
@@ -80,6 +87,24 @@ class AppRouter {
 Route _onboardingRoute() {
   return MaterialPageRoute(
     builder: (_) => const OnBoardingPage(),
+  );
+}
+
+Route _moviesFavoriteRoute() {
+  return MaterialPageRoute(
+    builder: (_) => BlocProvider(
+      create: (context) => FavoriteCubit(),
+      child: const MoviesFavoritePage(),
+    ),
+  );
+}
+
+Route _tvFavoriteRoute() {
+  return MaterialPageRoute(
+    builder: (_) => BlocProvider(
+      create: (context) => FavoriteCubit(),
+      child: const TvFavoritePage(),
+    ),
   );
 }
 
@@ -146,6 +171,9 @@ Route _tvDetailsRoute(int id) {
         ),
         BlocProvider(
           create: (context) => getIt<SimilarTvCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => FavoriteCubit(),
         ),
       ],
       child: TvPageDetails(
@@ -218,6 +246,9 @@ Route _movieDetailsRoute(int id) {
         ),
         BlocProvider(
           create: (context) => getIt<SimilarMoviesCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => FavoriteCubit(),
         ),
       ],
       child: MoviePageDetails(

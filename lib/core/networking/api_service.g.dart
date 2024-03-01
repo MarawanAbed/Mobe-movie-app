@@ -10,9 +10,9 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(
-    this._dio, {
-    this.baseUrl,
-  }) {
+      this._dio, {
+        this.baseUrl,
+      }) {
     baseUrl ??= 'https://api.themoviedb.org/3';
   }
 
@@ -28,18 +28,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/movie/upcoming',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/movie/upcoming',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -55,18 +55,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/movie/popular',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/movie/popular',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -82,18 +82,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/movie/top_rated',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/movie/top_rated',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -109,18 +109,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/tv/airing_today',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/tv/airing_today',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -136,18 +136,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/tv/popular',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/tv/popular',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -163,18 +163,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/tv/top_rated',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/tv/top_rated',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -184,9 +184,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<Map<String, dynamic>> searchMovie(
-    String query,
-    String apiKey,
-  ) async {
+      String query,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'query': query,
@@ -196,18 +196,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/search/movie',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/search/movie',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -217,9 +217,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<Map<String, dynamic>> searchTv(
-    String query,
-    String apiKey,
-  ) async {
+      String query,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'query': query,
@@ -229,18 +229,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/search/tv',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/search/tv',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -250,9 +250,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<MovieDetailsModel> getMovieDetail(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
@@ -263,26 +263,26 @@ class _ApiService implements ApiService {
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/movie/$id',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+      _dio.options,
+      '/movie/$id',
+      queryParameters: queryParameters,
+      data: _data,
+    )
+        .copyWith(
+        baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = MovieDetailsModel.fromJson(_result.data!);
     return value;
   }
 
   @override
   Future<TvDetailsModel> getTvDetail(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
@@ -293,44 +293,44 @@ class _ApiService implements ApiService {
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/tv/$id',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+      _dio.options,
+      '/tv/$id',
+      queryParameters: queryParameters,
+      data: _data,
+    )
+        .copyWith(
+        baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = TvDetailsModel.fromJson(_result.data!);
     return value;
   }
 
   @override
   Future<Map<String, dynamic>> getSimilarMovie(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/movie/${id}/similar',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/movie/${id}/similar',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -340,27 +340,27 @@ class _ApiService implements ApiService {
 
   @override
   Future<Map<String, dynamic>> getSimilarTv(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/tv/${id}/similar',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/tv/${id}/similar',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -376,18 +376,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/genre/movie/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/genre/movie/list',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -403,18 +403,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/genre/tv/list',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/genre/tv/list',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -424,9 +424,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<Map<String, dynamic>> getMovieByGenre(
-    String apiKey,
-    int genreId,
-  ) async {
+      String apiKey,
+      int genreId,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -436,18 +436,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/discover/movie',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/discover/movie',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -457,9 +457,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<Map<String, dynamic>> getTvByGenre(
-    String apiKey,
-    int genreId,
-  ) async {
+      String apiKey,
+      int genreId,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
@@ -469,18 +469,18 @@ class _ApiService implements ApiService {
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/discover/tv',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/discover/tv',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -490,27 +490,27 @@ class _ApiService implements ApiService {
 
   @override
   Future<VideosModel> getMovieVideos(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/movie/${id}/videos',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/movie/${id}/videos',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -521,27 +521,27 @@ class _ApiService implements ApiService {
 
   @override
   Future<VideosModel> getTvVideos(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Map<String, dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
+          method: 'GET',
+          headers: _headers,
+          extra: _extra,
+        )
             .compose(
-              _dio.options,
-              '/tv/${id}/videos',
-              queryParameters: queryParameters,
-              data: _data,
-            )
+          _dio.options,
+          '/tv/${id}/videos',
+          queryParameters: queryParameters,
+          data: _data,
+        )
             .copyWith(
-                baseUrl: _combineBaseUrls(
+            baseUrl: _combineBaseUrls(
               _dio.options.baseUrl,
               baseUrl,
             ))));
@@ -564,9 +564,9 @@ class _ApiService implements ApiService {
   }
 
   String _combineBaseUrls(
-    String dioBaseUrl,
-    String? baseUrl,
-  ) {
+      String dioBaseUrl,
+      String? baseUrl,
+      ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

@@ -37,7 +37,7 @@ class CustomStylishBottomBar extends StatelessWidget {
         buildBottomBarItem(Icons.tv, 'Tv', Colors.green),
         buildBottomBarItem(Icons.category, 'Category', Colors.blue),
         buildBottomBarItem(Icons.favorite, 'Favorite', Colors.purple),
-      ],
+       ],
       option: AnimatedBarOptions(
         iconSize: 32,
         barAnimation: BarAnimation.fade,
