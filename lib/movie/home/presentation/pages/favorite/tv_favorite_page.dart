@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:movie_app/lib_imports.dart';
 import 'package:movie_app/movie/home/presentation/widgets/favorite/tv_favorite_body.dart';
 
 class TvFavoritePage extends StatelessWidget {
@@ -9,9 +9,9 @@ class TvFavoritePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('TvSeries Favorite'),
+        title: const Text(AppStrings.tvFavorites),
       ),
-      body: const TvFavoriteBody(),
+      body: const SingleChildScrollView(child: TvFavoriteBody()),
     );
   }
 }

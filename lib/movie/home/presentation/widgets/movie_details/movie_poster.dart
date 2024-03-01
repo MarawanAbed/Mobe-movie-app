@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movie_app/core/assets/images.dart';
+import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/networking/api_constant.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
 import 'package:movie_app/movie/home/domain/use_cases/get_movie_videos.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -75,7 +78,7 @@ void _launcherUrl(int id)async
       }
     },
     failure: (error) {
-      throw 'Could not launch $error';
+     HelperMethod.showSuccessToast(AppStrings.videoMovieError,gravity: ToastGravity.BOTTOM);
     },
   );
 }

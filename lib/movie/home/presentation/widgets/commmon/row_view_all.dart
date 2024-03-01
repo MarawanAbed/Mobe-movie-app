@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/strings.dart';
 
 class RowViewAll extends StatelessWidget {
   const RowViewAll({super.key, required this.title, this.onTap});
@@ -14,7 +15,7 @@ class RowViewAll extends StatelessWidget {
           Text(title, style: const TextStyle(color: Colors.white, fontSize: 20),),
           const Spacer(),
           const Text(
-            'View All',
+            AppStrings.viewAll,
             style: TextStyle(
               color: Colors.grey,
               fontSize: 12,

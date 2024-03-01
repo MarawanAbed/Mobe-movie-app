@@ -1,12 +1,4 @@
-import 'package:movie_app/core/networking/api_error_handler.dart';
-import 'package:movie_app/core/networking/api_result.dart';
-import 'package:movie_app/movie/home/data/data_sources/remote_data_source/remote_data_source.dart';
-import 'package:movie_app/movie/home/data/models/genres_model.dart';
-import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
-import 'package:movie_app/movie/home/data/models/movie_model.dart';
-import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
-import 'package:movie_app/movie/home/data/models/tv_model.dart';
-import 'package:movie_app/movie/home/domain/repositories/repo.dart';
+import 'package:movie_app/lib_imports.dart';
 
 class RepoImpl implements Repo {
   final RemoteDataSource _remoteDataSource;

@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:movie_app/core/assets/images.dart';
-import 'package:movie_app/core/di/dependancy_injection.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/networking/api_constant.dart';
-import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
-import 'package:movie_app/movie/home/domain/use_cases/get_tv_videos.dart';
+import 'package:movie_app/lib_imports.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class TvPoster extends StatelessWidget {
@@ -36,9 +35,23 @@ class TvPoster extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(
-                placeholder:  const AssetImage(AppImages.placeholder),
+                placeholder: const AssetImage(AppImages.placeholder),
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * 0.33,
+                imageErrorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      AppImages.errorSvg,
+                      fit: BoxFit.contain,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.33,
+                    ),
+                  );
+                },
                 image: CachedNetworkImageProvider(image + tv.posterPath),
                 fit: BoxFit.contain,
               ),
@@ -65,11 +78,9 @@ class TvPoster extends StatelessWidget {
       ),
     );
   }
-
-
 }
-void _launcherUrl(int id)async
-{
+
+void _launcherUrl(int id) async {
   final url = await getIt<GetTvVideos>().call(id);
   url.when(
     success: (data) async {
@@ -78,7 +89,8 @@ void _launcherUrl(int id)async
       }
     },
     failure: (error) {
-      HelperMethod.showErrorToast('There is no video available for this TvSeries.');
+      HelperMethod.showSuccessToast(AppStrings.videoTvError,
+          gravity: ToastGravity.BOTTOM);
     },
   );
 }

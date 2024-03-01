@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/routes/routes.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/category_items.dart';
 
 class CategoryBody extends StatelessWidget {
@@ -10,20 +11,20 @@ class CategoryBody extends StatelessWidget {
     return const Column(
       children: [
         CategoryItems(
-          title: 'Movie',
+          title: AppStrings.movie,
           icon: Icons.movie,
           color: Colors.red,
           screen: Routes.genre,
           arguments:  {
-            'title': 'Movie',
+            'title': AppStrings.movie,
             'isMovie': true,
           }),
         CategoryItems(
-          title: 'Tv',
+          title: AppStrings.tv,
           icon: Icons.tv,
           screen: Routes.genre,
           arguments:  {
-            'title': 'Tv',
+            'title': AppStrings.tv,
             'isMovie': false,
           },
           color: Colors.green,

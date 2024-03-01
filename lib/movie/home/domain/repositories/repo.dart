@@ -1,9 +1,4 @@
-import 'package:movie_app/core/networking/api_result.dart';
-import 'package:movie_app/movie/home/data/models/genres_model.dart';
-import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
-import 'package:movie_app/movie/home/data/models/movie_model.dart';
-import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
-import 'package:movie_app/movie/home/data/models/tv_model.dart';
+import 'package:movie_app/lib_imports.dart';
 
 abstract class Repo {
   Future<ApiResult<List<MovieModel>>> getUpcomingMovies();

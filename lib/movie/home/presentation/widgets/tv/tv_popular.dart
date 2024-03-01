@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/tv_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/row_view_all.dart';
@@ -17,10 +18,10 @@ class PopularTv extends StatelessWidget {
     return Column(
       children: [
         RowViewAll(
-          title: 'Popular',
+          title: AppStrings.popular,
           onTap: () {
             Navigators.pushNamed(Routes.viewAll, arguments: {
-              'title': 'Popular',
+              'title':AppStrings.popular,
               'tv': tv,
               'isMovie': false,
             });

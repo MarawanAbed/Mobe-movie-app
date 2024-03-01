@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/lib_imports.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/search/search_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/search_movie/build_search_movies.dart';
 
@@ -13,14 +12,14 @@ class SearchBlocBuilder extends StatelessWidget {
         return state.when(
           initial: () => const Expanded(
             child: Center(
-              child: Text('Search for Movies'),
+              child: Text(AppStrings.searchMovies),
             ),
           ),
           loaded: (movies) {
             return movies.isEmpty
                 ? const Expanded(
                     child: Center(
-                      child: Text('No Movies Found'),
+                      child: Text(AppStrings.noMovieFound),
                     ),
                   )
                 : Expanded(
@@ -31,7 +30,7 @@ class SearchBlocBuilder extends StatelessWidget {
           },
           error: (message) => const Expanded(
             child: Center(
-              child: Text('No Movies Found'),
+              child: Text(AppStrings.noMovieFound),
             ),
           ),
         );

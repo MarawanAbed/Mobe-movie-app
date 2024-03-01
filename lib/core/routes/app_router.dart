@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/routes/routes.dart';
-import 'package:movie_app/movie/home/data/models/movie_model.dart';
-import 'package:movie_app/movie/home/data/models/tv_model.dart';
-import 'package:movie_app/movie/home/presentation/manager/favorite_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_movies_by_genre_cubit.dart';
+import 'package:movie_app/lib_imports.dart';
+import 'package:movie_app/movie/home/presentation/manager/favorites/favorites_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
@@ -18,22 +13,9 @@ import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popu
 import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
-import 'package:movie_app/movie/home/presentation/pages/favorite/movies_favorite_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/favorite/tv_favorite_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/genre/genre_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/home/home_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/movie_details/movie_details_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/search_movie/search_movie_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/search_tv/search_tv_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/tv_details/tv_details_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/type/type_page.dart';
-import 'package:movie_app/movie/home/presentation/pages/view_all/view_all_page.dart';
-import 'package:movie_app/movie/onboarding/presentation/pages/onboarding_page.dart';
-
 import '../../movie/home/presentation/manager/movie/top_rated/get_top_rated_movies_cubit.dart';
 import '../../movie/home/presentation/manager/movie/upcoming/get_up_coming_movies_cubit.dart';
 import '../di/dependancy_injection.dart';
-
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -93,7 +75,7 @@ Route _onboardingRoute() {
 Route _moviesFavoriteRoute() {
   return MaterialPageRoute(
     builder: (_) => BlocProvider(
-      create: (context) => FavoriteCubit(),
+      create: (context) => FavoritesCubit(),
       child: const MoviesFavoritePage(),
     ),
   );
@@ -102,7 +84,7 @@ Route _moviesFavoriteRoute() {
 Route _tvFavoriteRoute() {
   return MaterialPageRoute(
     builder: (_) => BlocProvider(
-      create: (context) => FavoriteCubit(),
+      create: (context) => FavoritesCubit(),
       child: const TvFavoritePage(),
     ),
   );
@@ -173,7 +155,7 @@ Route _tvDetailsRoute(int id) {
           create: (context) => getIt<SimilarTvCubit>(),
         ),
         BlocProvider(
-          create: (context) => FavoriteCubit(),
+          create: (context) => FavoritesCubit(),
         ),
       ],
       child: TvPageDetails(
@@ -248,7 +230,7 @@ Route _movieDetailsRoute(int id) {
           create: (context) => getIt<SimilarMoviesCubit>(),
         ),
         BlocProvider(
-          create: (context) => FavoriteCubit(),
+          create: (context) => FavoritesCubit(),
         ),
       ],
       child: MoviePageDetails(

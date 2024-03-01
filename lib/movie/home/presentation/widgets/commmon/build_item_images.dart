@@ -25,13 +25,13 @@ class BuildItemImages extends StatelessWidget {
           if (movies != null) {
             return ImageItems(
               screen: screen,
-              image: ApiConstant.imageBaseUrl + (movies![index].posterPath ?? 'default_image_path'),
+              image: ApiConstant.imageBaseUrl + (movies![index].posterPath!),
               arguments: movies![index].id,
             );
           } else if (tv != null) {
             return ImageItems(
               screen: screen,
-              image: ApiConstant.imageBaseUrl + (tv?[index].posterPath ?? 'default_image_path'),
+              image: ApiConstant.imageBaseUrl + (tv![index].posterPath ),
               arguments: tv![index].id,
             );
           } else {

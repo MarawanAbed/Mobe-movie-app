@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:movie_app/lib_imports.dart';
 import 'package:movie_app/movie/home/presentation/widgets/category/category_body.dart';
 
 class CategoryPage extends StatelessWidget {

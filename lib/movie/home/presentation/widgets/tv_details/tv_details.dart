@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 import 'package:movie_app/movie/home/presentation/widgets/tv_details/similar_tv_bloc_builder.dart';
@@ -24,7 +25,7 @@ class TvDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           Text(
-            'Season:${tv.numberOfSeasons}  Episode:${tv.numberOfSeasons}',
+            '${AppStrings.season}:${tv.numberOfSeasons}  ${AppStrings.episodes}:${tv.numberOfSeasons}',
             style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,
@@ -50,7 +51,7 @@ class TvDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           Text(
-            'Genres : ${HelperMethod.showGenres(tv.genres)}',
+            '${AppStrings.genre} : ${HelperMethod.showGenres(tv.genres)}',
             style: const TextStyle(
               fontSize: 16,
               color: Colors.white70,
@@ -58,7 +59,7 @@ class TvDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(20),
           const Text(
-            'More Like This',
+            AppStrings.moreLikeThis,
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

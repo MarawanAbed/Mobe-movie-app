@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:movie_app/lib_imports.dart';
+import 'package:movie_app/movie/home/presentation/pages/category/category_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/favorite/favorite_page.dart';
+import 'package:movie_app/movie/home/presentation/pages/movie/movie_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/tv/tv_page.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_category_and_favorite.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_app_bar_movie_and_tv.dart';
 import 'package:movie_app/movie/home/presentation/widgets/home/custom_bottom_bar.dart';
-
-import '../category/category_page.dart';
-import '../movie/movie_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,10 +24,10 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<String> titles = [
-    'Movie',
-    'Tv',
-    'Category',
-    'Favorite',
+    AppStrings.movie,
+    AppStrings.tv,
+    AppStrings.category,
+    AppStrings.favorite,
   ];
 
   void onTabTapped(int index) {
@@ -41,7 +40,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: titles[_currentIndex] == 'Category'|| titles[_currentIndex] == 'Favorite'
+        appBar: titles[_currentIndex] == AppStrings.category ||
+                titles[_currentIndex] == AppStrings.favorite
             ? CustomAppBarCategoryAndFavorite(
                 title: titles[_currentIndex],
               ) as PreferredSizeWidget?

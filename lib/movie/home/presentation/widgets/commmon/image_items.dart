@@ -47,8 +47,3 @@ class ImageItems extends StatelessWidget {
     );
   }
 }
-//Image.network(
-//           'https://image.tmdb.org/t/p/w500/24CL0ySodCF8bcm38xtBeHzHp7W.jpg',
-//           fit: BoxFit.contain,
-//           width: MediaQuery.of(context).size.width * 0.4,
-//         )

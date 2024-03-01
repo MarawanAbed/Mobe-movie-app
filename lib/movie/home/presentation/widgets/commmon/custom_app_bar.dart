@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/favorite.dart';
-import 'package:movie_app/movie/home/presentation/manager/favorite_cubit.dart';
+import 'package:movie_app/movie/home/presentation/manager/favorites/favorites_cubit.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key, required this.favorite});
+
   final FavoriteModel favorite;
+
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-
   bool isFavorite = false;
 
   @override
@@ -23,6 +25,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     var favorite = box.get(widget.favorite.id);
     isFavorite = favorite != null;
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,25 +45,30 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ),
           GestureDetector(
             onTap: () async {
+              var cubit = FavoritesCubit.get(context);
               var box = Hive.box<FavoriteModel>(AppStrings.favoriteBoxName);
               var favorite = box.get(widget.favorite.id);
               if (favorite != null) {
                 box.delete(widget.favorite.id);
-                context.read<FavoriteCubit>().removeFavorite(widget.favorite.id);
+                cubit.removeFavorite(widget.favorite.id);
+                HelperMethod.showErrorToast(AppStrings.removedFromFavorites,
+                    gravity: ToastGravity.BOTTOM);
                 setState(() {
                   isFavorite = false;
                 });
               } else {
                 box.put(widget.favorite.id, widget.favorite);
-                context.read<FavoriteCubit>().addFavorite(widget.favorite);
+                cubit.addFavorite(widget.favorite);
+                HelperMethod.showSuccessToast(AppStrings.addedToFavorites,
+                    gravity: ToastGravity.BOTTOM);
                 setState(() {
                   isFavorite = true;
                 });
               }
             },
-            child:  Icon(
+            child: Icon(
               Icons.favorite,
-              color: isFavorite? Colors.red:Colors.white,
+              color: isFavorite ? Colors.red : Colors.white,
               size: 30,
             ),
           ),

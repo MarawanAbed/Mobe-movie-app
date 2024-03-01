@@ -4,6 +4,7 @@ import 'package:movie_app/core/routes/app_router.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
 import 'package:movie_app/core/themes/themes.dart';
+import 'package:movie_app/core/utils/strings.dart';
 
 class MovieApp extends StatelessWidget {
   const MovieApp({super.key, required this.appRouter, required this.isOnBoarding, });
@@ -16,6 +17,7 @@ class MovieApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       child: MaterialApp(
+        title: AppStrings.title,
         navigatorKey: Navigators.navigationKey,
         debugShowCheckedModeBanner: false,
         darkTheme: Themes.darkThemeData(context),

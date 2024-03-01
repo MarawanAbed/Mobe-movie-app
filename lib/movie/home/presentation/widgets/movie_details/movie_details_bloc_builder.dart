@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/movie_details/movies_details_items.dart';
 
@@ -34,7 +35,7 @@ class _MovieDetailsBlocBuilderState extends State<MovieDetailsBlocBuilder> {
                 movies: movie,
               );
             },
-            error: (error) => const Center(child: Text('No Data Found')));
+            error: (error) => const Center(child: Text(AppStrings.noDataFound)));
       },
     );
   }

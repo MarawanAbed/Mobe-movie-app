@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/presentation/widgets/type/type_body.dart';
 
 class TypePage extends StatelessWidget {
@@ -12,7 +13,7 @@ class TypePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('$title Page'),
+          title: Text('$title ${isMovie?AppStrings.movie:AppStrings.tv}'),
         ),
         body:  Padding(
           padding: const EdgeInsets.all(10.0),

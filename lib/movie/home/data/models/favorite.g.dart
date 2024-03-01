@@ -24,7 +24,7 @@ class FavoriteModelAdapter extends TypeAdapter<FavoriteModel> {
       overview: fields[4] as String,
       isMovie: fields[5] as bool,
       voteAverage: fields[6] as num?,
-    ); // Or any default value you prefer
+    );
   }
 
   @override
@@ -45,7 +45,6 @@ class FavoriteModelAdapter extends TypeAdapter<FavoriteModel> {
       ..write(obj.isMovie)
       ..writeByte(6)
       ..write(obj.voteAverage);
-
   }
 
   @override

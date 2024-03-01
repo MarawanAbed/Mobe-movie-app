@@ -1,11 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/material.dart';
-import 'package:movie_app/core/di/dependancy_injection.dart';
-import 'package:movie_app/core/helpers/cache.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/core/utils/strings.dart';
+import 'package:movie_app/lib_imports.dart';
 
 class OnBoardingItems extends StatelessWidget {
   const OnBoardingItems({
@@ -131,7 +127,7 @@ class OnBoardingItems extends StatelessWidget {
           }
         },
         child: Text(
-          currentPage < (length - 1) ? 'Next' : 'Go Home',
+          currentPage < (length - 1) ? AppStrings.next : AppStrings.goHome,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -152,7 +148,7 @@ class OnBoardingItems extends StatelessWidget {
           await Navigators.pushNamedAndRemoveUntil(Routes.home);
         },
         child: const Text(
-          'Skip',
+          AppStrings.skip,
           style: TextStyle(
             color: Colors.white,
             fontSize: 18,

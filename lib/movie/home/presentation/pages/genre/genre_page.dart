@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:movie_app/lib_imports.dart';
 import 'package:movie_app/movie/home/presentation/widgets/genre/genre_body.dart';
 
 class GenrePage extends StatelessWidget {
@@ -11,7 +11,7 @@ class GenrePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text("$title Genre"),
+          title: Text("$title ${AppStrings.genre}"),
         ),
         body: GenreBody(
           title: title,

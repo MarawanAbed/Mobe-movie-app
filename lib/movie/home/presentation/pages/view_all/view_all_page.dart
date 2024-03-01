@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/movie_model.dart';
 import 'package:movie_app/movie/home/data/models/tv_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/view_all/view_all_body.dart';
@@ -18,7 +19,7 @@ class ViewAllPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.kBackGroundNavBar,
         appBar: AppBar(
-          title: isMovie ? Text('$title Movie') : Text('$title Tv'),
+          title: Text('$title ${isMovie ? AppStrings.movie : AppStrings.tv}'),
         ),
         body: ViewAllBody(
           isMovie: isMovie,

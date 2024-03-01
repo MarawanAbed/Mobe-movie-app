@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/info_items.dart';
 import 'package:movie_app/movie/home/presentation/widgets/movie_details/similar_movies_bloc_builder.dart';
@@ -52,14 +53,14 @@ class MovieDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          Text('Genres : ${HelperMethod.showGenres(movies.genres)}',
+          Text('${AppStrings.genre} : ${HelperMethod.showGenres(movies.genres)}',
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white70,
               )),
           HelperMethod.verticalSpace(20),
           const Text(
-            'More Like This',
+            AppStrings.moreLikeThis,
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,

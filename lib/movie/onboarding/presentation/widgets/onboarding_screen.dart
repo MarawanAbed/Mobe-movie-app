@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/assets/images.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/onboarding/domain/entities/on_boarding_entity.dart';
 import 'package:movie_app/movie/onboarding/presentation/widgets/on_boarding_items.dart';
 
@@ -17,27 +18,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   final List<OnBoardingEntity> onBoarding = [
     OnBoardingEntity(
-      title: 'Welcome to Mobe Movie',
+      title: AppStrings.onboarding1title,
       image: AppImages.onBoarding1,
-      subTitle: 'The best place to discover new movies and tv series',
+      subTitle: AppStrings.onboarding1subTitle,
       colors: AppColors.kOnBoarding1Color,
     ),
     OnBoardingEntity(
-      title: 'Discover Movies',
+      title: AppStrings.onboarding2title,
       image: AppImages.onBoarding2,
-      subTitle: 'Find the best movies and tv series',
+      subTitle: AppStrings.onboarding2subTitle,
       colors: AppColors.kOnBoarding2Color,
     ),
     OnBoardingEntity(
-      title: 'Watch Movies and Tv Series',
+      title: AppStrings.onboarding3title,
       image: AppImages.onBoarding3,
-      subTitle: 'Watch movies and tv series anytime, anywhere',
+      subTitle: AppStrings.onboarding3subTitle,
       colors: AppColors.kOnBoarding3Color,
     ),
     OnBoardingEntity(
-      title: 'Watch later',
+      title: AppStrings.onboarding4title,
       image: AppImages.onBoarding4,
-      subTitle: 'Save movies and tv series to watch later',
+      subTitle: AppStrings.onboarding4subTitle,
       colors: AppColors.kOnBoarding4Color,
     ),
   ];

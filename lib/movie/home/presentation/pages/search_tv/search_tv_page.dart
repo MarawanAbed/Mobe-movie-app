@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/presentation/widgets/search_tv/search_tv_body.dart';
 
 class SearchTvPage extends StatelessWidget {
@@ -10,7 +11,7 @@ class SearchTvPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Search Tv'),
+          title: const Text(AppStrings.searchTv),
         ),
         body: const SearchTvBody(),
       ),
