@@ -11,7 +11,7 @@ class TvFavoritePage extends StatelessWidget {
         centerTitle: true,
         title: const Text(AppStrings.tvFavorites),
       ),
-      body: const SingleChildScrollView(child: TvFavoriteBody()),
+      body: const TvFavoriteBody(),
     );
   }
 }

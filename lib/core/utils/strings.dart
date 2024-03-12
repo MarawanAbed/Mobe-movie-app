@@ -1,5 +1,6 @@
 class AppStrings {
-  static const String favoriteBoxName = 'favoriteBox';
+  static const String favoriteMovie = 'Favorite Movie';
+  static const String favoriteTv = 'Favorite TV Series';
   static const String onBoardingKey = 'onBoardingKey';
   static const String moviesFavorites = 'Movie Favorites';
   static const String tvFavorites = 'TV Series Favorites';

@@ -13,7 +13,7 @@ class ImageItems extends StatelessWidget {
   });
 
   final String screen;
-  final String image;
+  final String? image;
   final dynamic arguments;
 
   @override
@@ -26,7 +26,7 @@ class ImageItems extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: FadeInImage(
           placeholder: const AssetImage(AppImages.placeholder),
-          image: CachedNetworkImageProvider(image),
+          image: CachedNetworkImageProvider(image??AppImages.placeholder),
           imageErrorBuilder: (context, error, stackTrace) {
             return Container(
               decoration: BoxDecoration(

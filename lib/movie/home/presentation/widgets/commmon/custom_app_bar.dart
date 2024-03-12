@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app/core/helpers/helper_methods.dart';
 import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/movie/home/data/models/favorite.dart';
-import 'package:movie_app/movie/home/presentation/manager/favorites/favorites_cubit.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key, required this.favorite});
@@ -21,9 +20,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   void initState() {
     super.initState();
-    var box = Hive.box<FavoriteModel>(AppStrings.favoriteBoxName);
-    var favorite = box.get(widget.favorite.id);
-    isFavorite = favorite != null;
+    var movieBox = Hive.box<FavoriteModel>(AppStrings.favoriteMovie);
+    var tvBox = Hive.box<FavoriteModel>(AppStrings.favoriteTv);
+    var favoriteMovie = movieBox.get(widget.favorite.id);
+    var favoriteTv = tvBox.get(widget.favorite.id);
+    isFavorite = favoriteMovie != null || favoriteTv != null;
   }
 
   @override
@@ -45,28 +46,32 @@ class _CustomAppBarState extends State<CustomAppBar> {
           ),
           GestureDetector(
             onTap: () async {
-              var cubit = FavoritesCubit.get(context);
-              var box = Hive.box<FavoriteModel>(AppStrings.favoriteBoxName);
-              var favorite = box.get(widget.favorite.id);
-              if (favorite != null) {
-                box.delete(widget.favorite.id);
-                cubit.removeFavorite(widget.favorite.id);
+              var movieBox = Hive.box<FavoriteModel>(AppStrings.favoriteMovie);
+              var tvBox = Hive.box<FavoriteModel>(AppStrings.favoriteTv);
+              var favoriteMovie = movieBox.get(widget.favorite.id);
+              var favoriteTv = tvBox.get(widget.favorite.id);
+
+              if (favoriteMovie != null || favoriteTv != null) {
+                movieBox.delete(widget.favorite.id);
+                tvBox.delete(widget.favorite.id);
                 HelperMethod.showErrorToast(AppStrings.removedFromFavorites,
                     gravity: ToastGravity.BOTTOM);
                 setState(() {
                   isFavorite = false;
                 });
               } else {
-                box.put(widget.favorite.id, widget.favorite);
-                cubit.addFavorite(widget.favorite);
+                if (widget.favorite.isMovie) {
+                  movieBox.put(widget.favorite.id, widget.favorite);
+                } else {
+                  tvBox.put(widget.favorite.id, widget.favorite);
+                }
                 HelperMethod.showSuccessToast(AppStrings.addedToFavorites,
                     gravity: ToastGravity.BOTTOM);
                 setState(() {
                   isFavorite = true;
                 });
               }
-            },
-            child: Icon(
+            },            child: Icon(
               Icons.favorite,
               color: isFavorite ? Colors.red : Colors.white,
               size: 30,

@@ -28,9 +28,11 @@ class _TvDetailsBlocBuilderState extends State<TvDetailsBlocBuilder> {
           initial: () => Container(),
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (tv) {
-            return TvDetailsItems(
-              tv: tv,
-            );
+            if (tv != null) {
+              return TvDetailsItems(tv: tv);
+            } else {
+              return const Center(child: Text(AppStrings.noDataFound));
+            }
           },
           error: (error) => const Center(child: Text(AppStrings.noDataFound)),
         );

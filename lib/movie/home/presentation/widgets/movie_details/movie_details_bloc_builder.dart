@@ -31,9 +31,11 @@ class _MovieDetailsBlocBuilderState extends State<MovieDetailsBlocBuilder> {
             initial: () => Container(),
             loading: () => const Center(child: CircularProgressIndicator()),
             loaded: (movie) {
-              return MoviesDetailsItems(
-                movies: movie,
-              );
+              if(movie != null){
+                return MoviesDetailsItems(movies: movie);
+              }else{
+                return const Center(child: Text(AppStrings.noDataFound));
+              }
             },
             error: (error) => const Center(child: Text(AppStrings.noDataFound)));
       },

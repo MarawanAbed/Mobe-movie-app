@@ -7,7 +7,8 @@ void main() async {
   bool? isOnBoarding = await getIt<SharedPreCacheHelper>().getData(key:AppStrings.onBoardingKey) ?? false;
   await Hive.initFlutter();
   Hive.registerAdapter(FavoriteModelAdapter());
-  await Hive.openBox<FavoriteModel>(AppStrings.favoriteBoxName);
+  await Hive.openBox<FavoriteModel>(AppStrings.favoriteMovie);
+  await Hive.openBox<FavoriteModel>(AppStrings.favoriteTv);
 
   runApp(
     MovieApp(

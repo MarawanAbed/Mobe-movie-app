@@ -6,6 +6,6 @@ class MoviesFavoriteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MoviesFavoriteBlocBuilder();
+    return const MoviesFavorite();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/assets/images.dart';
 import 'package:movie_app/core/networking/api_constant.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/movie/home/data/models/movie_model.dart';
@@ -20,7 +21,7 @@ class BuildSearchMovies extends StatelessWidget {
         mainAxisSpacing: 10,
       ),
       itemBuilder: (context, index) => ImageItems(
-        image: image + movies[index].posterPath!,
+        image: image + (movies[index].posterPath??AppImages.placeholder),
         screen: Routes.movieDetails,
         arguments: movies[index].id,
       ),

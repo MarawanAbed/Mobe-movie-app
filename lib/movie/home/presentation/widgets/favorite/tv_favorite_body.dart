@@ -6,6 +6,6 @@ class TvFavoriteBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TvFavoriteBlocBuilder();
+    return const TvFavorite();
   }
 }

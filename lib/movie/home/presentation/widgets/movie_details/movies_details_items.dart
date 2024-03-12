@@ -29,7 +29,7 @@ class MoviesDetailsItems extends StatelessWidget {
             placeholder: const AssetImage(AppImages.placeholder),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.33,
-            image: CachedNetworkImageProvider(image + movies.backdropPath),
+            image: CachedNetworkImageProvider(image + (movies.backdropPath??AppImages.placeholder)),
             fit: BoxFit.contain,
           ),
         ),

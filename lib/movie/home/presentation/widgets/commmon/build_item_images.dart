@@ -5,6 +5,8 @@ import 'package:movie_app/movie/home/data/models/movie_model.dart';
 import 'package:movie_app/movie/home/data/models/tv_model.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/image_items.dart';
 
+import '../../../../../core/assets/images.dart';
+
 class BuildItemImages extends StatelessWidget {
   const BuildItemImages(
       {super.key, required this.screen, this.movies, this.tv});
@@ -25,13 +27,13 @@ class BuildItemImages extends StatelessWidget {
           if (movies != null) {
             return ImageItems(
               screen: screen,
-              image: ApiConstant.imageBaseUrl + (movies![index].posterPath!),
+              image: ApiConstant.imageBaseUrl + (movies![index].posterPath??AppImages.placeholder),
               arguments: movies![index].id,
             );
           } else if (tv != null) {
             return ImageItems(
               screen: screen,
-              image: ApiConstant.imageBaseUrl + (tv![index].posterPath ),
+              image: ApiConstant.imageBaseUrl + (tv![index].posterPath??AppImages.placeholder),
               arguments: tv![index].id,
             );
           } else {
@@ -44,12 +46,4 @@ class BuildItemImages extends StatelessWidget {
   }
 }
 
-//          return ImageItems(
-//             imageUrl: movies != null ? ApiConstant.imageUrl + movies![index].posterPath : ApiConstant.imageUrl + tv![index].posterPath,
-//             onTap: () {
-//               Navigators.pushNamed(
-//                 screen,
-//                 arguments: movies != null ? movies![index] : tv![index],
-//               );
-//             },
-//           );
+

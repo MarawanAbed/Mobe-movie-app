@@ -1,5 +1,4 @@
 import 'package:movie_app/lib_imports.dart';
-import 'package:movie_app/movie/home/presentation/manager/favorites/favorites_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
@@ -13,9 +12,10 @@ import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popu
 import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
+
 import '../../movie/home/presentation/manager/movie/top_rated/get_top_rated_movies_cubit.dart';
 import '../../movie/home/presentation/manager/movie/upcoming/get_up_coming_movies_cubit.dart';
-import '../di/dependancy_injection.dart';
+
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -74,19 +74,13 @@ Route _onboardingRoute() {
 
 Route _moviesFavoriteRoute() {
   return MaterialPageRoute(
-    builder: (_) => BlocProvider(
-      create: (context) => FavoritesCubit(),
-      child: const MoviesFavoritePage(),
-    ),
+    builder: (_) => const MoviesFavoritePage(),
   );
 }
 
 Route _tvFavoriteRoute() {
   return MaterialPageRoute(
-    builder: (_) => BlocProvider(
-      create: (context) => FavoritesCubit(),
-      child: const TvFavoritePage(),
-    ),
+    builder: (_) => const TvFavoritePage(),
   );
 }
 
@@ -153,9 +147,6 @@ Route _tvDetailsRoute(int id) {
         ),
         BlocProvider(
           create: (context) => getIt<SimilarTvCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => FavoritesCubit(),
         ),
       ],
       child: TvPageDetails(
@@ -228,9 +219,6 @@ Route _movieDetailsRoute(int id) {
         ),
         BlocProvider(
           create: (context) => getIt<SimilarMoviesCubit>(),
-        ),
-        BlocProvider(
-          create: (context) => FavoritesCubit(),
         ),
       ],
       child: MoviePageDetails(

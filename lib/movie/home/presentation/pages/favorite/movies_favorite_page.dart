@@ -11,7 +11,7 @@ class MoviesFavoritePage extends StatelessWidget {
         centerTitle: true,
         title: const Text(AppStrings.moviesFavorites),
       ),
-      body: const SingleChildScrollView(child: MoviesFavoriteBody()),
+      body: const MoviesFavoriteBody(),
     );
   }
 }
