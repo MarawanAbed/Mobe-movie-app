@@ -1,3 +1,4 @@
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:movie_app/lib_imports.dart';
 import 'package:movie_app/movie/home/presentation/pages/category/category_page.dart';
 import 'package:movie_app/movie/home/presentation/pages/favorite/favorite_page.dart';
@@ -49,7 +50,23 @@ class _HomePageState extends State<HomePage> {
                 title: titles[_currentIndex],
                 isMovie: _currentIndex == 0, // Pass isMovie here
               ),
-        body: _children[_currentIndex],
+        body: OfflineBuilder(
+            connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+            ) {
+              final bool connected = connectivity != ConnectivityResult.none;
+              if (connected) {
+                return child;
+              } else {
+                return const Center(
+                  child: Text('No Internet Connection'),
+                );
+              }
+            },
+            child: _children[_currentIndex]
+        ),
         bottomNavigationBar: CustomStylishBottomBar(
           currentIndex: _currentIndex,
           onTap: onTabTapped,

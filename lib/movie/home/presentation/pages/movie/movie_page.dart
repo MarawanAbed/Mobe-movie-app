@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 import '../../widgets/movie/movie_body.dart';
 
@@ -7,12 +8,23 @@ class MoviePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body: MovieBody(),
+        body: OfflineBuilder(
+          connectivityBuilder: (BuildContext context,
+              ConnectivityResult connectivity, Widget child) {
+            final bool connected = connectivity != ConnectivityResult.none;
+            if (connected) {
+              return child;
+            } else {
+              return const Center(
+                child: Text('No Internet Connection'),
+              );
+            }
+          },
+          child: const MovieBody(),
+        ),
       ),
     );
   }
 }
-
-
