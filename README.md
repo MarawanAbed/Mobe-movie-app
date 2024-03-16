@@ -12,6 +12,9 @@ Mobe Movie App is a Flutter application that allows users to discover and explor
 - Add movies and TV series to favorites for later viewing.
 - View movies and TV series by genre.
 
+## Link to download the app 
+https://drive.google.com/file/d/1XzStxkLEj8zyQq5kbg3KAUjxoWtmAipN/view?usp=sharing
+
 ## Screen Of App
 ![1](https://github.com/MarawanAbed/Mobe-movie-app/assets/73714493/1c81e692-d990-4a27-b785-225759b8a8d0)
 ![2](https://github.com/MarawanAbed/Mobe-movie-app/assets/73714493/cd002044-9177-439f-8498-cc6002140e3a)
