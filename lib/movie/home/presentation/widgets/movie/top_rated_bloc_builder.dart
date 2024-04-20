@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/movie/home/presentation/widgets/movie/top_rated_movies.dart';
 
-import '../../manager/movie/top_rated/get_top_rated_movies_cubit.dart';
+import '../../bloc/movie/top_rated/get_top_rated_movies_cubit.dart';
 
 class TopRatedBlocBuilder extends StatelessWidget {
   const TopRatedBlocBuilder({super.key});

@@ -1,5 +1,5 @@
 import 'package:movie_app/lib_imports.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/search/search_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/search/search_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/search_movie/build_search_movies.dart';
 
 class SearchBlocBuilder extends StatelessWidget {

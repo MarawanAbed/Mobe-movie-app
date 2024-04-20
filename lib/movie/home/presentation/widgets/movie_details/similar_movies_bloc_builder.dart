@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/routes/routes.dart';
 import 'package:movie_app/core/utils/strings.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/similar/similar_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/similar/similar_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 
 class SimilarMoviesBlocBuilder extends StatefulWidget {

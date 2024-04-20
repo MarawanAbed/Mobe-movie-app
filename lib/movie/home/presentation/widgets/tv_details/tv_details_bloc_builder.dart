@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/strings.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/details/get_tv_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/details/get_tv_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/tv_details/tv_details_items.dart';
 
 class TvDetailsBlocBuilder extends StatefulWidget {

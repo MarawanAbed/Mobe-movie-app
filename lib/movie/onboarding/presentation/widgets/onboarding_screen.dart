@@ -9,10 +9,10 @@ class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
   @override
-  _OnBoardingScreenState createState() => _OnBoardingScreenState();
+  OnBoardingScreenState createState() => OnBoardingScreenState();
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class OnBoardingScreenState extends State<OnBoardingScreen> {
   final _controller = PageController();
   double _currentPage = 0;
 

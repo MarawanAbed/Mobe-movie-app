@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/airing_today/get_airing_today_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/airing_today/get_airing_today_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/tv/tv_airing_today.dart';
 
 class AiringTodayBlocBuilder extends StatelessWidget {

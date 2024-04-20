@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/strings.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/details/get_movie_details_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/movie_details/movies_details_items.dart';
 
 class MovieDetailsBlocBuilder extends StatefulWidget {

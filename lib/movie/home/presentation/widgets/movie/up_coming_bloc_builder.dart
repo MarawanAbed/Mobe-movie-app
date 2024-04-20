@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/upcoming/get_up_coming_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/movie/up_coming_movies.dart';
 
 class UpComingBlocBuilder extends StatelessWidget {

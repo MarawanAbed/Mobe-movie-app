@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/genre/get_movie_genres_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/genre/build_genre_items.dart';
 
 class GenreMoviesBlocBuilder extends StatelessWidget {

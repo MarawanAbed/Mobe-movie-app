@@ -1,5 +1,5 @@
 import 'package:movie_app/lib_imports.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/commmon/build_item_images.dart';
 
 class SimilarTvBlocBuilder extends StatefulWidget {

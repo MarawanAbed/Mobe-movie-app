@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/utils/strings.dart';
 import 'package:movie_app/core/widgets/app_text_form.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/search/search_tv_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/search_tv/search_bloc_builder.dart';
 
 class SearchTvBody extends StatelessWidget {

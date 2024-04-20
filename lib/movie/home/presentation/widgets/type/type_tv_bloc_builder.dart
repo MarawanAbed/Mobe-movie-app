@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/by_genre/get_tv_by_genre_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/by_genre/get_tv_by_genre_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/type/build_type.dart';
 
 class TypeTvBlocBuilder extends StatefulWidget {

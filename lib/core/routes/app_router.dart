@@ -1,20 +1,21 @@
 import 'package:movie_app/lib_imports.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/details/get_movie_details_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/genre/get_movie_genres_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/popular/get_popular_movies_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/search/search_movies_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/movie/similar/similar_movies_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/airing_today/get_airing_today_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/by_genre/get_tv_by_genre_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/details/get_tv_details_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/genre/get_tv_genres_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/popular/get_tv_popular_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/search/search_tv_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/similar/similar_tv_cubit.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/details/get_movie_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/genre/get_movie_genres_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/popular/get_popular_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/search/search_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/movie/similar/similar_movies_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/airing_today/get_airing_today_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/by_genre/get_tv_by_genre_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/details/get_tv_details_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/genre/get_tv_genres_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/popular/get_tv_popular_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/search/search_tv_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/similar/similar_tv_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/top_rated/get_tv_top_rated_cubit.dart';
 
-import '../../movie/home/presentation/manager/movie/top_rated/get_top_rated_movies_cubit.dart';
-import '../../movie/home/presentation/manager/movie/upcoming/get_up_coming_movies_cubit.dart';
+import '../../movie/home/presentation/Bloc/movie/by_genre/get_movies_by_genre_cubit.dart';
+import '../../movie/home/presentation/bloc/movie/top_rated/get_top_rated_movies_cubit.dart';
+import '../../movie/home/presentation/bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {

@@ -22,7 +22,6 @@ export 'package:movie_app/movie/home/domain/use_cases/get_tv_videos.dart';
 export 'package:movie_app/movie/home/domain/use_cases/get_upcoming_movies.dart';
 export 'package:movie_app/movie/home/domain/use_cases/search_movies.dart';
 export 'package:movie_app/movie/home/domain/use_cases/search_tv.dart';
-export 'package:movie_app/movie/home/presentation/manager/movie/by_genre/get_movies_by_genre_cubit.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 
 export '../../movie/home/data/data_sources/remote_data_source/remote_data_source.dart';

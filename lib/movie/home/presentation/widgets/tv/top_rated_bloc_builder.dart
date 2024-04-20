@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/movie/home/presentation/manager/tv/top_rated/get_tv_top_rated_cubit.dart';
+import 'package:movie_app/movie/home/presentation/bloc/tv/top_rated/get_tv_top_rated_cubit.dart';
 import 'package:movie_app/movie/home/presentation/widgets/tv/tv_top_rated.dart';
 
 

@@ -99,7 +99,7 @@ class OnBoardingItems extends StatelessWidget {
         children: [
           DotsIndicator(
             dotsCount: length,
-            position: currentPage,
+            position: currentPage.toInt(),
             decorator: const DotsDecorator(
               activeColor: Colors.white,
             ),
