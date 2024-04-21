@@ -1,9 +1,7 @@
-import 'package:dio/dio.dart';
-import 'package:movie_app/core/networking/api_constant.dart';
-import 'package:movie_app/movie/home/data/models/movie_details_model.dart';
-import 'package:movie_app/movie/home/data/models/movie_vidoes.dart';
-import 'package:movie_app/movie/home/data/models/tv_details_model.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../lib_imports.dart';
+import '../../mobe/data/models/movie/movie_vidoes.dart';
 
 part 'api_service.g.dart';
 
@@ -43,14 +41,14 @@ abstract class ApiService {
 
   @GET(ApiConstant.searchMovie)
   Future<Map<String, dynamic>> searchMovie(
-      @Query('query') String query,
-      @Query('api_key') String apiKey,
+    @Query('query') String query,
+    @Query('api_key') String apiKey,
   );
 
   @GET(ApiConstant.searchTv)
   Future<Map<String, dynamic>> searchTv(
-      @Query('query') String query,
-      @Query('api_key') String apiKey,
+    @Query('query') String query,
+    @Query('api_key') String apiKey,
   );
 
   @GET(ApiConstant.movieDetail)

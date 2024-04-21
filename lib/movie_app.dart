@@ -1,10 +1,9 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app/core/services/navigator.dart';
-import 'package:movie_app/core/themes/themes.dart';
-import 'package:movie_app/lib_imports.dart';
+import 'core/themes/themes.dart';
+import 'lib_imports.dart';
 
-class MovieApp extends StatelessWidget {
-  const MovieApp({super.key, required this.appRouter, required this.isOnBoarding, });
+class MobeApp extends StatelessWidget {
+  const MobeApp({super.key, required this.appRouter, required this.isOnBoarding, });
 
   final AppRouter appRouter;
   final bool isOnBoarding ;

@@ -1,0 +1,31 @@
+
+import 'package:movie_app/mobe/presentation/widgets/movie/up_coming_movies.dart';
+
+import '../../../../../lib_imports.dart';
+import '../../bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
+
+class UpComingBlocBuilder extends StatelessWidget {
+  const UpComingBlocBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<GetUpComingMoviesCubit, GetUpComingMoviesState>(
+      buildWhen: (previous, current) =>
+          current is Loading || current is Loaded || current is Error,
+      builder: (context, state) {
+        return state.when(
+          initial: () => Container(),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          loaded: (movies) {
+            return UpComingMovies(
+              movies: movies,
+            );
+          },
+          error: (error) => Center(
+            child: Text(error),
+          ),
+        );
+      },
+    );
+  }
+}

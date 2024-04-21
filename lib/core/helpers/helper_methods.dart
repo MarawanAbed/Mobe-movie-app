@@ -1,22 +1,22 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:movie_app/movie/home/data/models/genres_model.dart';
+
+import '../../lib_imports.dart';
 
 class HelperMethod {
   static Future<File> getImageFromGallery() async {
     final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     return File(pickedFile!.path);
   }
 
-
   static Future<File> getImageFromCamera() async {
     final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.camera);
+        await ImagePicker().pickImage(source: ImageSource.camera);
     return File(pickedFile!.path);
   }
 
@@ -34,13 +34,15 @@ class HelperMethod {
   static String showGenres(List<GenresModel> genres) {
     return genres.map((genre) => genre.name).join(', ');
   }
+
   static SizedBox verticalSpace(double height) => SizedBox(
-    height: height.h,
-  );
+        height: height.h,
+      );
 
   static SizedBox horizontalSpace(double width) => SizedBox(
-    width: width.w,
-  );
+        width: width.w,
+      );
+
   static showErrorToast(String msg,
       {Color? color, ToastGravity? gravity}) async {
     return Fluttertoast.showToast(

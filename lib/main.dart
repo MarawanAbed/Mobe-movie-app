@@ -11,7 +11,7 @@ void main() async {
   await Hive.openBox<FavoriteModel>(AppStrings.favoriteTv);
 
   runApp(
-    MovieApp(
+    MobeApp(
       isOnBoarding: isOnBoarding!,
       appRouter: AppRouter(),
     ),
