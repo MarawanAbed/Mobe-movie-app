@@ -1,7 +1,7 @@
 import 'package:movie_app/lib_imports.dart';
 abstract class MovieRemoteDataSource
 {
-  Future<List<MovieModel>> getUpcomingMovies();
+  Future<List<MovieModel>> getUpcomingMovies(int page );
   Future<List<MovieModel>> getPopularMovies();
   Future<List<MovieModel>> getTopRatedMovies();
   Future<List<MovieModel>> searchMovie(String query);
@@ -66,8 +66,8 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource
   }
 
   @override
-  Future<List<MovieModel>> getUpcomingMovies() async{
-    return _getMovieModels(await apiService.getUpcomingMovies(AppSecured.apiKey));
+  Future<List<MovieModel>> getUpcomingMovies(int page) async{
+    return _getMovieModels(await apiService.getUpcomingMovies(AppSecured.apiKey,page));
   }
 
   @override

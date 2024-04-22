@@ -6,6 +6,7 @@ class GetUpComingMoviesState with _$GetUpComingMoviesState {
 
   const factory GetUpComingMoviesState.loading() = Loading;
 
+  const factory GetUpComingMoviesState.paginationLoading() = PaginationLoading;
   const factory GetUpComingMoviesState.loaded(List<MovieModel> movies) = Loaded;
 
   const factory GetUpComingMoviesState.error(String message) = Error;

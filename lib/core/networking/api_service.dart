@@ -12,6 +12,7 @@ abstract class ApiService {
   @GET(ApiConstant.upcomingMovies)
   Future<Map<String, dynamic>> getUpcomingMovies(
     @Query('api_key') String apiKey,
+    @Query('page') int page,
   );
 
   @GET(ApiConstant.popularMovies)

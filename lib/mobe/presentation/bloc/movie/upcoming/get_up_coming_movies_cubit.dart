@@ -10,12 +10,21 @@ class GetUpComingMoviesCubit extends Cubit<GetUpComingMoviesState> {
   GetUpComingMoviesCubit(this._getUpComingMovies) : super(const GetUpComingMoviesState.initial());
 
   final GetUpComingMovies _getUpComingMovies;
+  int _nextPage = 1;
+
 
   void getUpComingMovies() async {
-    emit(const GetUpComingMoviesState.loading());
-    final result = await _getUpComingMovies();
+    if(_nextPage == 1)
+    {
+      emit(const GetUpComingMoviesState.loading());
+    }else
+    {
+      emit(const GetUpComingMoviesState.paginationLoading());
+    }
+    final result = await _getUpComingMovies(_nextPage);
     result.when(
       success: (movies) {
+        _nextPage++;
         emit(GetUpComingMoviesState.loaded(movies));
       },
       failure: (error) {

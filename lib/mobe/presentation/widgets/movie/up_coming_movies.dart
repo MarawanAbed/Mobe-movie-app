@@ -1,3 +1,4 @@
+import 'package:movie_app/mobe/presentation/widgets/movie/up_coming_list_view.dart';
 
 import '../../../../../lib_imports.dart';
 
@@ -11,7 +12,7 @@ class UpComingMovies extends StatelessWidget {
     return Column(
       children: [
         RowViewAll(
-          title:AppStrings.upcoming,
+          title: AppStrings.upcoming,
           onTap: () {
             Navigators.pushNamed(Routes.viewAll, arguments: {
               'title': AppStrings.upcoming,
@@ -21,9 +22,8 @@ class UpComingMovies extends StatelessWidget {
           },
         ),
         HelperMethod.verticalSpace(20),
-        BuildItemImages(
+        UpComingListView(
           movies: movies,
-          screen: Routes.movieDetails,
         ),
       ],
     );

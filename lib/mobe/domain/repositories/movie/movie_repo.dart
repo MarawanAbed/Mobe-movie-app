@@ -1,7 +1,7 @@
 import 'package:movie_app/lib_imports.dart';
 
 abstract class MovieRepo {
-  Future<ApiResult<List<MovieModel>>> getUpcomingMovies();
+  Future<ApiResult<List<MovieModel>>> getUpcomingMovies(int page );
 
   Future<ApiResult<List<MovieModel>>> getPopularMovies();
 

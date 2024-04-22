@@ -1,5 +1,4 @@
 import '../../lib_imports.dart';
-import 'image_items.dart';
 
 class BuildItemImages extends StatelessWidget {
   const BuildItemImages(

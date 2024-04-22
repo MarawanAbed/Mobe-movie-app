@@ -94,14 +94,13 @@ class MovieRepoImpl implements MovieRepo {
       );
       return ApiResult.failure(ErrorHandler.handle(error));
 
-      return ApiResult.failure(ErrorHandler.handle(error));
     }
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> getUpcomingMovies() async {
+  Future<ApiResult<List<MovieModel>>> getUpcomingMovies(int page) async {
     try {
-      final result = await _remoteDataSource.getUpcomingMovies();
+      final result = await _remoteDataSource.getUpcomingMovies(page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
