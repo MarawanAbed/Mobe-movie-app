@@ -1,11 +1,13 @@
 
 
+import 'package:movie_app/mobe/presentation/widgets/tv/airing_today_list_view.dart';
+
 import '../../../../../lib_imports.dart';
 
 class AiringTodayTv extends StatelessWidget {
-  const AiringTodayTv({super.key, required this.tv});
+  const AiringTodayTv({super.key, required this.tvs});
 
-  final List<TvModel> tv;
+  final List<TvModel> tvs;
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +16,13 @@ class AiringTodayTv extends StatelessWidget {
         RowViewAll(
           title:AppStrings.airingToday,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAll, arguments: {
+            Navigators.pushNamed(Routes.airingTodayViewAll, arguments: {
               'title': AppStrings.airingToday,
-              'tv': tv,
-              'isMovie': false,
             });
           },
         ),
         HelperMethod.verticalSpace(20),
-        BuildItemImages(
-          tv: tv,
-          screen: Routes.tvDetails,
-        ),
+        AiringTodayListView(tvs: tvs),
       ],
     );
   }

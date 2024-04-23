@@ -45,9 +45,9 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> getMoviesByGenre(int id) async {
+  Future<ApiResult<List<MovieModel>>> getMoviesByGenre(int id,int page) async {
     try {
-      final result = await _remoteDataSource.getMoviesByGenre(id);
+      final result = await _remoteDataSource.getMoviesByGenre(id,page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -58,9 +58,9 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> getPopularMovies() async {
+  Future<ApiResult<List<MovieModel>>> getPopularMovies(int page) async {
     try {
-      final result = await _remoteDataSource.getPopularMovies();
+      final result = await _remoteDataSource.getPopularMovies(page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -71,9 +71,9 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> getSimilarMovie(int id) async {
+  Future<ApiResult<List<MovieModel>>> getSimilarMovie(int id,int page) async {
     try {
-      final result = await _remoteDataSource.getSimilarMovie(id);
+      final result = await _remoteDataSource.getSimilarMovie(id,page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -84,9 +84,9 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> getTopRatedMovies() async {
+  Future<ApiResult<List<MovieModel>>> getTopRatedMovies(int page) async {
     try {
-      final result = await _remoteDataSource.getTopRatedMovies();
+      final result = await _remoteDataSource.getTopRatedMovies(page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(

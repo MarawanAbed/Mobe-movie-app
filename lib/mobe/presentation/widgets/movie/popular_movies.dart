@@ -1,5 +1,7 @@
 
 
+import 'package:movie_app/mobe/presentation/widgets/movie/popular_list_view.dart';
+
 import '../../../../../lib_imports.dart';
 
 class PopularMovies extends StatelessWidget {
@@ -14,18 +16,13 @@ class PopularMovies extends StatelessWidget {
         RowViewAll(
           title: AppStrings.popular,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAll, arguments: {
+            Navigators.pushNamed(Routes.popularViewAll, arguments: {
               'title': AppStrings.popular,
-              'movies': movies,
-              'isMovie': true,
             });
           },
         ),
         HelperMethod.verticalSpace(20),
-        BuildItemImages(
-          movies: movies,
-          screen: Routes.movieDetails,
-        ),
+        PopularListView(movies: movies,),
       ],
     );
   }

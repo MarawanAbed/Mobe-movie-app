@@ -8,6 +8,8 @@ class GetTvByGenreState with _$GetTvByGenreState {
   const factory GetTvByGenreState.loading() = Loading;
 
 
+  const factory GetTvByGenreState.paginationLoading() = PaginationLoading;
+
   const factory GetTvByGenreState.loaded(List<TvModel> tv) = Loaded;
 
 

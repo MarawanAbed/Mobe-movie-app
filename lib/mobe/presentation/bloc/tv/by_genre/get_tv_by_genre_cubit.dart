@@ -11,11 +11,19 @@ class GetTvByGenreCubit extends Cubit<GetTvByGenreState> {
 
   final GetTvByGenre _getTvByGenre;
 
+  int _nextPage=1;
   void getTvByGenre(int genreId) async {
-    emit(const GetTvByGenreState.loading());
-    final result = await _getTvByGenre(genreId);
+    if(_nextPage==1)
+    {
+      emit(const GetTvByGenreState.loading());
+    }else
+    {
+      emit(const GetTvByGenreState.paginationLoading());
+    }
+    final result = await _getTvByGenre(genreId, _nextPage);
     result.when(
       success: (tv) {
+        _nextPage++;
         emit(GetTvByGenreState.loaded(tv));
       },
       failure: (message) {

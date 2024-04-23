@@ -12,7 +12,7 @@ class GetUpComingMoviesCubit extends Cubit<GetUpComingMoviesState> {
   final GetUpComingMovies _getUpComingMovies;
   int _nextPage = 1;
 
-
+  List<MovieModel>allMovies = [];
   void getUpComingMovies() async {
     if(_nextPage == 1)
     {

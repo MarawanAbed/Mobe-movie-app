@@ -1,10 +1,10 @@
 
 
-import 'package:movie_app/mobe/presentation/widgets/tv/popular_bloc_builder.dart';
-import 'package:movie_app/mobe/presentation/widgets/tv/top_rated_bloc_builder.dart';
+import 'package:movie_app/mobe/presentation/widgets/tv/popular_bloc_consumer.dart';
+import 'package:movie_app/mobe/presentation/widgets/tv/top_rated_bloc_consumer.dart';
 
 import '../../../../../lib_imports.dart';
-import 'airing_today_bloc_builder.dart';
+import 'airing_today_bloc_consumer.dart';
 
 class TvBody extends StatelessWidget {
   const TvBody({super.key});
@@ -17,11 +17,11 @@ class TvBody extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const AiringTodayBlocBuilder(),
+              const AiringTodayBlocConsumer(),
               HelperMethod.verticalSpace(20),
-              const PopularBlocBuilder(),
+              const PopularBlocConsumer(),
               HelperMethod.verticalSpace(20),
-              const TopRatedBlocBuilder(),
+              const TopRatedBlocConsumer(),
             ],
           ),
         ),

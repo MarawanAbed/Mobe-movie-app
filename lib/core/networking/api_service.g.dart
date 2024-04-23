@@ -54,9 +54,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> getPopularMovies(String apiKey) async {
+  Future<Map<String, dynamic>> getPopularMovies(
+    String apiKey,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -81,9 +87,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> getTopRatedMovies(String apiKey) async {
+  Future<Map<String, dynamic>> getTopRatedMovies(
+    String apiKey,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -108,9 +120,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> getAiringTodayTv(String apiKey) async {
+  Future<Map<String, dynamic>> getAiringTodayTv(
+    String apiKey,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -135,9 +153,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> getPopularTv(String apiKey) async {
+  Future<Map<String, dynamic>> getPopularTv(
+    String apiKey,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -162,9 +186,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<Map<String, dynamic>> getTopRatedTv(String apiKey) async {
+  Future<Map<String, dynamic>> getTopRatedTv(
+    String apiKey,
+    int page,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -256,9 +286,9 @@ class _ApiService implements ApiService {
 
   @override
   Future<MovieDetailsModel> getMovieDetail(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
@@ -269,26 +299,26 @@ class _ApiService implements ApiService {
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/movie/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+      _dio.options,
+      '/movie/$id',
+      queryParameters: queryParameters,
+      data: _data,
+    )
+        .copyWith(
+        baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = MovieDetailsModel.fromJson(_result.data!);
     return value;
   }
 
   @override
   Future<TvDetailsModel> getTvDetail(
-    int id,
-    String apiKey,
-  ) async {
+      int id,
+      String apiKey,
+      ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': apiKey};
     final _headers = <String, dynamic>{};
@@ -299,17 +329,17 @@ class _ApiService implements ApiService {
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              '/tv/',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
+        .compose(
+      _dio.options,
+      '/tv/$id',
+      queryParameters: queryParameters,
+      data: _data,
+    )
+        .copyWith(
+        baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
     final value = TvDetailsModel.fromJson(_result.data!);
     return value;
   }
@@ -318,9 +348,13 @@ class _ApiService implements ApiService {
   Future<Map<String, dynamic>> getSimilarMovie(
     int id,
     String apiKey,
+    int page,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -348,9 +382,13 @@ class _ApiService implements ApiService {
   Future<Map<String, dynamic>> getSimilarTv(
     int id,
     String apiKey,
+    int page,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'api_key': apiKey};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -432,11 +470,13 @@ class _ApiService implements ApiService {
   Future<Map<String, dynamic>> getMovieByGenre(
     String apiKey,
     int genreId,
+    int page,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'with_genres': genreId,
+      r'page': page,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -465,11 +505,13 @@ class _ApiService implements ApiService {
   Future<Map<String, dynamic>> getTvByGenre(
     String apiKey,
     int genreId,
+    int page,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'with_genres': genreId,
+      r'page': page,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

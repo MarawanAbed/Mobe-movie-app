@@ -11,11 +11,22 @@ class GetAiringTodayCubit extends Cubit<GetAiringTodayState> {
 
   final GetAiringTodayTv _getAiringTodayTv;
 
+  int _nextPage = 1;
+
+  List<TvModel>tvs=[];
+
   void getAiringToday() async {
-    emit(const GetAiringTodayState.loading());
-    final result = await _getAiringTodayTv.call();
+    if(_nextPage==1)
+    {
+      emit(const GetAiringTodayState.loading());
+    }else
+    {
+      emit(const GetAiringTodayState.paginationLoading());
+    }
+    final result = await _getAiringTodayTv.call(_nextPage);
     result.when(
       success: (tv) {
+        _nextPage++;
         emit(GetAiringTodayState.loaded(tv));
       },
       failure: (error) {

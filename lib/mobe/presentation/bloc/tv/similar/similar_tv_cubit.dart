@@ -11,12 +11,20 @@ class SimilarTvCubit extends Cubit<SimilarTvState> {
 
   final GetSimilarTv _getSimilarTv;
 
+  int _nextPage=1;
 
   void getSimilarTv(int id) async {
-    emit(const SimilarTvState.loading());
-    final result = await _getSimilarTv(id);
+    if(_nextPage==1)
+      {
+        emit(const SimilarTvState.loading());
+      }else
+      {
+        emit(const SimilarTvState.paginationLoading());
+      }
+    final result = await _getSimilarTv(id, _nextPage);
     result.when(
       success: (tv) {
+        _nextPage++;
         emit(SimilarTvState.loaded(tv));
       },
       failure: (error) {

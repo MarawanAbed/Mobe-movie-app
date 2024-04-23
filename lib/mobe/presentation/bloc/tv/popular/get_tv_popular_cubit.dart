@@ -11,12 +11,21 @@ class GetTvPopularCubit extends Cubit<GetTvPopularState> {
 
   final GetPopularTv _getPopularTv;
 
+  List<TvModel>tvs=[];
 
+  int _nextPage = 1;
   void getPopularTv() async {
-    emit(const GetTvPopularState.loading());
-    final result = await _getPopularTv();
+    if(_nextPage==1)
+      {
+        emit(const GetTvPopularState.loading());
+      }else
+      {
+        emit(const GetTvPopularState.paginationLoading());
+      }
+    final result = await _getPopularTv(_nextPage);
     result.when(
       success: (tv) {
+        _nextPage++;
         emit(GetTvPopularState.loaded(tv));
       },
       failure: (error) {

@@ -3,3 +3,7 @@ abstract class UseCase<Type, Parameter> {
 }
 
 class NoParameter {}
+
+abstract class UseCaseTwo<Type, ParameterOne, ParameterTwo> {
+  Type call([ParameterOne parameterOne, ParameterTwo parameterTwo]);
+}

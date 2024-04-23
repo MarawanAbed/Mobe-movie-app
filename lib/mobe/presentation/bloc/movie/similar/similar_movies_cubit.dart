@@ -12,11 +12,19 @@ class SimilarMoviesCubit extends Cubit<SimilarMoviesState> {
   final GetSimilarMovies _getSimilarMovies;
 
 
+  int _nextPage = 1;
+
   void getSimilarMovies(int id) async {
-    emit(const SimilarMoviesState.loading());
-    final result = await _getSimilarMovies(id);
+    if(_nextPage==1){
+      emit(const SimilarMoviesState.loading());
+    }else
+    {
+      emit(const SimilarMoviesState.paginationLoading());
+    }
+    final result = await _getSimilarMovies(id, _nextPage);
     result.when(
       success: (movies) {
+        _nextPage++;
         emit(SimilarMoviesState.loaded(movies));
       },
       failure: (error) {

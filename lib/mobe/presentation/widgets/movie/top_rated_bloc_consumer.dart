@@ -1,5 +1,3 @@
-
-
 import 'package:movie_app/mobe/presentation/widgets/movie/top_rated_movies.dart';
 
 import '../../../../../lib_imports.dart';
@@ -10,21 +8,34 @@ class TopRatedBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetTopRatedMoviesCubit, GetTopRatedMoviesState>(
+    var cubit = context.read<GetTopRatedMoviesCubit>().allMovies;
+
+    return BlocConsumer<GetTopRatedMoviesCubit, GetTopRatedMoviesState>(
       buildWhen: (previous, current) =>
-          current is Loading || current is Loaded || current is Error,
+      current is Loading || current is Loaded || current is Error || current is PaginationLoading,
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (movies) {
+            cubit.addAll(movies);
+          },
+        );
+      },
       builder: (context, state) {
         return state.when(
           initial: () => Container(),
+          paginationLoading: ()=> TopRatedMovies(
+            movies: cubit,
+          ),
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (movies) {
             return TopRatedMovies(
-              movies: movies,
+              movies: cubit,
             );
           },
-          error: (error) => Center(
-            child: Text(error),
-          ),
+          error: (error) =>
+              Center(
+                child: Text(error),
+              ),
         );
       },
     );

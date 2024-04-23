@@ -1,6 +1,5 @@
 
 
-import '../../../../../core/widgets/image_items.dart';
 import '../../../../../lib_imports.dart';
 
 class BuildSearchMovies extends StatelessWidget {
@@ -18,11 +17,24 @@ class BuildSearchMovies extends StatelessWidget {
         childAspectRatio: 0.7,
         mainAxisSpacing: 10,
       ),
-      itemBuilder: (context, index) => ImageItems(
-        image: image + (movies[index].posterPath??AppImages.placeholder),
-        screen: Routes.movieDetails,
-        arguments: movies[index].id,
-      ),
+      itemBuilder: (context, index) {
+        if (index < movies.length) {
+          return Expanded(
+            child: ImageItems(
+              image: image + (movies[index].posterPath??AppImages.placeholder),
+              screen: Routes.movieDetails,
+              arguments: movies[index].id,
+            ),
+          );
+        } else {
+          return Expanded(
+            child: Image.asset(
+              AppImages.placeholder,
+              fit: BoxFit.cover,
+            ),
+          );
+        }
+      },
       itemCount: movies.length,
     );
   }

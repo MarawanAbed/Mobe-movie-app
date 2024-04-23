@@ -6,7 +6,7 @@ class GetPopularMoviesState with _$GetPopularMoviesState {
 
   const factory GetPopularMoviesState.loading() = Loading;
 
-
+  const factory GetPopularMoviesState.paginationLoading() = PaginationLoading;
   const factory GetPopularMoviesState.loaded(List<MovieModel> movies) = Loaded;
 
 

@@ -3,21 +3,15 @@ import 'package:movie_app/mobe/presentation/widgets/movie/up_coming_movies.dart'
 import '../../../../../lib_imports.dart';
 import '../../bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
 
-class UpComingBlocConsumer extends StatefulWidget {
+class UpComingBlocConsumer extends StatelessWidget {
   const UpComingBlocConsumer({super.key});
 
   @override
-  State<UpComingBlocConsumer> createState() => _UpComingBlocConsumerState();
-}
-
-class _UpComingBlocConsumerState extends State<UpComingBlocConsumer> {
-  List<MovieModel>allMovies = [];
-
-  @override
   Widget build(BuildContext context) {
+    var allMovies = context.read<GetUpComingMoviesCubit>().allMovies;
     return BlocConsumer<GetUpComingMoviesCubit, GetUpComingMoviesState>(
       buildWhen: (previous, current) =>
-      current is Loading || current is Loaded || current is Error,
+      current is Loading || current is Loaded || current is Error|| current is PaginationLoading,
       listener: (context, state) {
         state.whenOrNull(
           loaded: (movies) {
@@ -46,3 +40,5 @@ class _UpComingBlocConsumerState extends State<UpComingBlocConsumer> {
     );
   }
 }
+
+

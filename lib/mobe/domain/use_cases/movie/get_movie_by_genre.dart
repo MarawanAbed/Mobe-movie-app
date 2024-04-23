@@ -1,12 +1,12 @@
 import 'package:movie_app/core/usecases/use_cases.dart';
 import 'package:movie_app/lib_imports.dart';
-class GetMovieByGenre extends UseCase<Future<ApiResult<List<MovieModel>>>, int> {
+class GetMovieByGenre extends UseCaseTwo<Future<ApiResult<List<MovieModel>>>, int,int> {
   final MovieRepo _repo;
 
   GetMovieByGenre(this._repo);
 
   @override
-  Future<ApiResult<List<MovieModel>>> call([int? parameter]) async {
-    return await _repo.getMoviesByGenre(parameter!);
+  Future<ApiResult<List<MovieModel>>> call([int? parameterOne,int?parameterTwo ]) async {
+    return await _repo.getMoviesByGenre(parameterOne!,parameterTwo!);
   }
 }

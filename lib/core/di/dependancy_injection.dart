@@ -5,6 +5,8 @@ import 'package:movie_app/mobe/presentation/bloc/movie/search/search_movies_cubi
 import 'package:movie_app/mobe/presentation/bloc/movie/similar/similar_movies_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/movie/top_rated/get_top_rated_movies_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
+import 'package:movie_app/mobe/presentation/bloc/movie/view_all/get_popular_view_all_movies_cubit.dart';
+import 'package:movie_app/mobe/presentation/bloc/movie/view_all/get_up_coming_view_all_movies_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/airing_today/get_airing_today_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/by_genre/get_tv_by_genre_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/details/get_tv_details_cubit.dart';
@@ -14,7 +16,11 @@ import 'package:movie_app/mobe/presentation/bloc/tv/search/search_tv_cubit.dart'
 import 'package:movie_app/mobe/presentation/bloc/tv/similar/similar_tv_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/top_rated/get_tv_top_rated_cubit.dart';
 import 'package:movie_app/lib_imports.dart';
+import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_airing_today_view_all_cubit.dart';
+import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_popular_view_all_cubit.dart';
+import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_top_rated_view_all_cubit.dart';
 import '../../mobe/presentation/Bloc/movie/by_genre/get_movies_by_genre_cubit.dart';
+import '../../mobe/presentation/bloc/movie/view_all/get_top_rated_view_all_movies_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -86,6 +92,12 @@ _setupCubits() {
       .registerFactory<GetMovieGenresCubit>(() => GetMovieGenresCubit(getIt()));
   getIt.registerFactory<GetPopularMoviesCubit>(
       () => GetPopularMoviesCubit(getIt()));
+  getIt.registerFactory<GetPopularViewAllMoviesCubit>(
+          () => GetPopularViewAllMoviesCubit(getIt()));
+  getIt.registerFactory<GetUpComingViewAllMoviesCubit>(
+          () => GetUpComingViewAllMoviesCubit(getIt()));
+  getIt.registerFactory<GetTopRatedViewAllMoviesCubit>(
+          () => GetTopRatedViewAllMoviesCubit(getIt()));
   getIt.registerFactory<SearchMoviesCubit>(() => SearchMoviesCubit(getIt()));
   getIt.registerFactory<SimilarMoviesCubit>(() => SimilarMoviesCubit(getIt()));
   getIt.registerFactory<GetTopRatedMoviesCubit>(
@@ -102,8 +114,11 @@ _setupCubits() {
   getIt.registerFactory<SearchTvCubit>(() => SearchTvCubit(getIt()));
   getIt.registerFactory<SimilarTvCubit>(() => SimilarTvCubit(getIt()));
   getIt.registerFactory<GetTvTopRatedCubit>(() => GetTvTopRatedCubit(getIt()));
-  getIt
-      .registerFactory<GetAiringTodayCubit>(() => GetAiringTodayCubit(getIt()));
+  getIt.registerFactory<GetTvTopRatedViewAllCubit>(() => GetTvTopRatedViewAllCubit(getIt()));
+  getIt.registerFactory<GetTvPopularViewAllCubit>(() => GetTvPopularViewAllCubit(getIt()));
+  getIt.registerFactory<GetAiringTodayCubit>(() => GetAiringTodayCubit(getIt()));
+  getIt.registerFactory<GetTvAiringTodayViewAllCubit>(() => GetTvAiringTodayViewAllCubit(getIt()));
+
   getIt.registerFactory<GetTvByGenreCubit>(() => GetTvByGenreCubit(getIt()));
 }
 

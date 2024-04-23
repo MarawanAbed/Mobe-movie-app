@@ -14,15 +14,19 @@ class BuildFavoritesItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10 , top: 10, bottom: 10),
       child: ListView.separated(
+        padding: EdgeInsets.zero,
         shrinkWrap: true,
         itemBuilder: (context, index) => FavoritesItems(
           favorite: isMovie ? movies![index] : tv![index],
           screen: isMovie ? Routes.movieDetails : Routes.tvDetails,
           arguments: isMovie ? movies![index].id : tv![index].id,
         ),
-        separatorBuilder: (context, index) => HelperMethod.verticalSpace(20),
+        separatorBuilder: (context, index) => Divider(
+          color: Colors.grey[800],
+          height: 0,
+        ),
         itemCount: isMovie ? movies!.length : tv!.length,
       ),
     );

@@ -6,6 +6,7 @@ class GetTvPopularState with _$GetTvPopularState {
 
   const factory GetTvPopularState.loading() = Loading;
 
+  const factory GetTvPopularState.paginationLoading() = PaginationLoading;
   const factory GetTvPopularState.loaded(List<TvModel> tvs) = Loaded;
 
   const factory GetTvPopularState.error(String message) = Error;

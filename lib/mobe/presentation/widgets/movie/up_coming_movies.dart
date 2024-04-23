@@ -14,10 +14,8 @@ class UpComingMovies extends StatelessWidget {
         RowViewAll(
           title: AppStrings.upcoming,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAll, arguments: {
+            Navigators.pushNamed(Routes.upComingViewAll, arguments: {
               'title': AppStrings.upcoming,
-              'movies': movies,
-              'isMovie': true,
             });
           },
         ),

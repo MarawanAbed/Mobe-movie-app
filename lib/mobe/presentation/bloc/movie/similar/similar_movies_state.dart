@@ -6,6 +6,7 @@ class SimilarMoviesState with _$SimilarMoviesState {
 
   const factory SimilarMoviesState.loading() = Loading;
 
+  const factory SimilarMoviesState.paginationLoading() = PaginationLoading;
 
   const factory SimilarMoviesState.loaded(List<MovieModel> movies) = Loaded;
 

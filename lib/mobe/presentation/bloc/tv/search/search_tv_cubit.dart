@@ -11,11 +11,15 @@ class SearchTvCubit extends Cubit<SearchTvState> {
 
   final SearchTv _searchTv;
 
+  final List<TvModel> tv = [];
+
 
   void searchTv(String query) async {
     final result = await _searchTv(query);
     result.when(
       success: (tv) {
+        this.tv.clear();
+        this.tv.addAll(tv);
         emit(SearchTvState.loaded(tv));
       },
       failure: (error) {

@@ -19,15 +19,15 @@ class SearchBlocBuilder extends StatelessWidget {
           loaded: (movies) {
             return movies.isEmpty
                 ? const Expanded(
-                    child: Center(
-                      child: Text(AppStrings.noMovieFound),
-                    ),
-                  )
+              child: Center(
+                child: Text(AppStrings.noMovieFound),
+              ),
+            )
                 : Expanded(
-                    child: BuildSearchMovies(
-                      movies: movies,
-                    ),
-                  );
+              child: BuildSearchMovies(
+                movies: movies,
+              ),
+            );
           },
           error: (message) => const Expanded(
             child: Center(

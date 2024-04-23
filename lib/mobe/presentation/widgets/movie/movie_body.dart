@@ -1,11 +1,8 @@
-
-
-import 'package:movie_app/mobe/presentation/widgets/movie/popular_bloc_builder.dart';
-import 'package:movie_app/mobe/presentation/widgets/movie/top_rated_bloc_builder.dart';
+import 'package:movie_app/mobe/presentation/widgets/movie/popular_bloc_consumer.dart';
+import 'package:movie_app/mobe/presentation/widgets/movie/top_rated_bloc_consumer.dart';
 import 'package:movie_app/mobe/presentation/widgets/movie/up_coming_bloc_consumer.dart';
 
 import '../../../../../lib_imports.dart';
-
 
 class MovieBody extends StatelessWidget {
   const MovieBody({super.key});
@@ -20,7 +17,7 @@ class MovieBody extends StatelessWidget {
             children: [
               const UpComingBlocConsumer(),
               HelperMethod.verticalSpace(20),
-              const PopularBlocBuilder(),
+              const PopularBlocConsumer(),
               HelperMethod.verticalSpace(20),
               const TopRatedBlocBuilder(),
             ],

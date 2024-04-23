@@ -35,22 +35,19 @@ class TvPoster extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(
                 placeholder: const AssetImage(AppImages.placeholder),
-                // width: MediaQuery.of(context).size.width * 0.5,
-                // height: MediaQuery.of(context).size.height * 0.33,
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.33,
                 imageErrorBuilder: (context, error, stackTrace) {
-                  return AspectRatio(
-                    aspectRatio: 1,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SvgPicture.asset(
-                        AppImages.errorSvg,
-                        fit: BoxFit.contain,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        height: MediaQuery.of(context).size.height * 0.33,
-                      ),
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SvgPicture.asset(
+                      AppImages.errorSvg,
+                      fit: BoxFit.contain,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.33,
                     ),
                   );
                 },

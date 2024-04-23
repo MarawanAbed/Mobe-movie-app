@@ -65,7 +65,7 @@ class MovieDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          SimilarMoviesBlocBuilder(id: movies.id??0),
+          SimilarMoviesBlocConsumer(id: movies.id??0),
         ],
       ),
     );

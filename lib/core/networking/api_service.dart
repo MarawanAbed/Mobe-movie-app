@@ -18,39 +18,49 @@ abstract class ApiService {
   @GET(ApiConstant.popularMovies)
   Future<Map<String, dynamic>> getPopularMovies(
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+      );
 
   @GET(ApiConstant.topRatedMovies)
   Future<Map<String, dynamic>> getTopRatedMovies(
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.airingTodayTv)
   Future<Map<String, dynamic>> getAiringTodayTv(
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.popularTv)
   Future<Map<String, dynamic>> getPopularTv(
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.topRatedTv)
   Future<Map<String, dynamic>> getTopRatedTv(
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.searchMovie)
   Future<Map<String, dynamic>> searchMovie(
     @Query('query') String query,
     @Query('api_key') String apiKey,
-  );
+
+      );
 
   @GET(ApiConstant.searchTv)
   Future<Map<String, dynamic>> searchTv(
     @Query('query') String query,
     @Query('api_key') String apiKey,
-  );
+      );
 
   @GET(ApiConstant.movieDetail)
   Future<MovieDetailsModel> getMovieDetail(
@@ -68,13 +78,17 @@ abstract class ApiService {
   Future<Map<String, dynamic>> getSimilarMovie(
     @Path('movie_id') int id,
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.similarTv)
   Future<Map<String, dynamic>> getSimilarTv(
     @Path('tv_id') int id,
     @Query('api_key') String apiKey,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.genreMovie)
   Future<Map<String, dynamic>> getMovieGenres(
@@ -90,13 +104,17 @@ abstract class ApiService {
   Future<Map<String, dynamic>> getMovieByGenre(
     @Query('api_key') String apiKey,
     @Query('with_genres') int genreId,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.tvByGenre)
   Future<Map<String, dynamic>> getTvByGenre(
     @Query('api_key') String apiKey,
     @Query('with_genres') int genreId,
-  );
+      @Query('page') int page,
+
+      );
 
   @GET(ApiConstant.movieVideos)
   Future<VideosModel> getMovieVideos(

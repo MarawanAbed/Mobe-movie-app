@@ -1,14 +1,14 @@
 import 'package:movie_app/lib_imports.dart';
 abstract class MovieRemoteDataSource
 {
-  Future<List<MovieModel>> getUpcomingMovies(int page );
-  Future<List<MovieModel>> getPopularMovies();
-  Future<List<MovieModel>> getTopRatedMovies();
+  Future<List<MovieModel>> getUpcomingMovies(int page);
+  Future<List<MovieModel>> getPopularMovies(int page);
+  Future<List<MovieModel>> getTopRatedMovies(int page);
   Future<List<MovieModel>> searchMovie(String query);
   Future<MovieDetailsModel> getMovieDetail(int id);
-  Future<List<MovieModel>> getSimilarMovie(int id);
+  Future<List<MovieModel>> getSimilarMovie(int id,int page);
   Future<List<GenresModel>> getMovieGenres();
-  Future<List<MovieModel>> getMoviesByGenre(int id);
+  Future<List<MovieModel>> getMoviesByGenre(int id,int page);
   Future<String> getMovieVideos(int id);
 }
 
@@ -46,23 +46,23 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource
   }
 
   @override
-  Future<List<MovieModel>> getMoviesByGenre(int id) async{
-    return _getMovieModels(await apiService.getMovieByGenre(AppSecured.apiKey, id));
+  Future<List<MovieModel>> getMoviesByGenre(int id,int page) async{
+    return _getMovieModels(await apiService.getMovieByGenre(AppSecured.apiKey, id,page));
   }
 
   @override
-  Future<List<MovieModel>> getPopularMovies() async{
-    return _getMovieModels(await apiService.getPopularMovies(AppSecured.apiKey));
+  Future<List<MovieModel>> getPopularMovies(int page) async{
+    return _getMovieModels(await apiService.getPopularMovies(AppSecured.apiKey,page));
   }
 
   @override
-  Future<List<MovieModel>> getSimilarMovie(int id) async{
-    return _getMovieModels(await apiService.getSimilarMovie(id, AppSecured.apiKey));
+  Future<List<MovieModel>> getSimilarMovie(int id,int page) async{
+    return _getMovieModels(await apiService.getSimilarMovie(id, AppSecured.apiKey,page));
   }
 
   @override
-  Future<List<MovieModel>> getTopRatedMovies() async{
-    return _getMovieModels(await apiService.getTopRatedMovies(AppSecured.apiKey));
+  Future<List<MovieModel>> getTopRatedMovies(int page) async{
+    return _getMovieModels(await apiService.getTopRatedMovies(AppSecured.apiKey,page));
   }
 
   @override

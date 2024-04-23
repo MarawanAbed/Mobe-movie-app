@@ -5,6 +5,5 @@ class SearchMoviesState with _$SearchMoviesState {
   const factory SearchMoviesState.initial() = _Initial;
   const factory SearchMoviesState.loaded(List<MovieModel> movies) = Loaded;
 
-const factory SearchMoviesState.error(String message) = Error;
+  const factory SearchMoviesState.error(String message) = Error;
 }
-

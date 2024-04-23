@@ -6,6 +6,8 @@ class GetTvTopRatedState with _$GetTvTopRatedState {
 
   const factory GetTvTopRatedState.loading() = Loading;
 
+  const factory GetTvTopRatedState.paginationLoading() = PaginationLoading;
+
   const factory GetTvTopRatedState.loaded(List<TvModel> tvs) = Loaded;
 
   const factory GetTvTopRatedState.error(String message) = Error;

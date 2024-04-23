@@ -1,13 +1,12 @@
+import 'package:movie_app/mobe/presentation/widgets/type/movie_grid_view.dart';
 
 import '../../../../../lib_imports.dart';
 import '../../Bloc/movie/by_genre/get_movies_by_genre_cubit.dart';
-import 'build_type.dart';
 
 class TypeMovieBlocBuilder extends StatefulWidget {
   const TypeMovieBlocBuilder(
-      {super.key, required this.isMovie, required this.id});
+      {super.key, required this.id});
 
-  final bool isMovie;
   final int id;
 
   @override
@@ -17,26 +16,43 @@ class TypeMovieBlocBuilder extends StatefulWidget {
 class _TypeMovieBlocBuilderState extends State<TypeMovieBlocBuilder> {
   @override
   void initState() {
-    context.read<GetMoviesByGenreCubit>().getMoviesByGenre(widget.id);
+    context.read<GetMoviesByGenreCubit>().getMoviesByGenre(
+          widget.id,
+        );
     super.initState();
   }
 
+  List<MovieModel> allMovies = [];
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetMoviesByGenreCubit, GetMoviesByGenreState>(
+    return BlocConsumer<GetMoviesByGenreCubit, GetMoviesByGenreState>(
       buildWhen: (previous, current) =>
           current is Loading || current is Loaded || current is Error,
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (movies) {
+            allMovies.addAll(movies);
+          },
+        );
+      },
       builder: (context, state) {
-        return state.when(
-          initial: () =>
-              const Center(child: CircularProgressIndicator()),
-          loading: () =>
-              const Center(child: CircularProgressIndicator()),
-          loaded: (movies) => BuildType(
-            isMovie: widget.isMovie,
-            movies: movies,
-          ),
-          error: (message) => Text(message),
+        return BlocBuilder<GetMoviesByGenreCubit, GetMoviesByGenreState>(
+          builder: (context, state) {
+            return state.when(
+              paginationLoading: () => TypeMovieGridView(
+                id: widget.id,
+                movies: allMovies,
+              ),
+              initial: () => const Center(child: CircularProgressIndicator()),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              loaded: (movies) => TypeMovieGridView(
+                id: widget.id,
+                movies: allMovies,
+              ),
+              error: (message) => Text(message),
+            );
+          },
         );
       },
     );

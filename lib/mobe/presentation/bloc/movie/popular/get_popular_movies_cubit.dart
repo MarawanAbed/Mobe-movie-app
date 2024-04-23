@@ -11,11 +11,21 @@ class GetPopularMoviesCubit extends Cubit<GetPopularMoviesState> {
 
   final GetPopularMovies _getPopularMovies;
 
+  int _nextPage = 1;
+  List<MovieModel>allMovies = [];
+
   void getPopularMovies() async {
-    emit(const GetPopularMoviesState.loading());
-    final result = await _getPopularMovies();
+    if(_nextPage == 1)
+    {
+      emit(const GetPopularMoviesState.loading());
+    }else
+    {
+      emit(const GetPopularMoviesState.paginationLoading());
+    }
+    final result = await _getPopularMovies(_nextPage);
     result.when(
       success: (movies) {
+        _nextPage++;
         emit(GetPopularMoviesState.loaded(movies));
       },
       failure: (error) {

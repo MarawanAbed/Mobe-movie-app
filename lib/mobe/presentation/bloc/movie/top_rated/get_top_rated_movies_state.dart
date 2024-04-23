@@ -6,6 +6,7 @@ class GetTopRatedMoviesState with _$GetTopRatedMoviesState {
 
   const factory GetTopRatedMoviesState.loading() = Loading;
 
+  const factory GetTopRatedMoviesState.paginationLoading() = PaginationLoading;
 
   const factory GetTopRatedMoviesState.loaded(List<MovieModel> movies) = Loaded;
 

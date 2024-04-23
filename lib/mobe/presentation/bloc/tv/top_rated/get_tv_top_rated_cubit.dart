@@ -12,11 +12,20 @@ class GetTvTopRatedCubit extends Cubit<GetTvTopRatedState> {
   final GetTopRatedTv _getTopRatedTv;
 
 
+  List<TvModel>tvs=[];
+  int _nextPage = 1;
   void getTopRatedTv() async {
-    emit(const GetTvTopRatedState.loading());
-    final result = await _getTopRatedTv();
+    if(_nextPage==1)
+    {
+      emit(const GetTvTopRatedState.loading());
+    }else
+    {
+      emit(const GetTvTopRatedState.paginationLoading());
+    }
+    final result = await _getTopRatedTv(_nextPage);
     result.when(
       success: (tv) {
+        _nextPage++;
         emit(GetTvTopRatedState.loaded(tv));
       },
       failure: (error) {

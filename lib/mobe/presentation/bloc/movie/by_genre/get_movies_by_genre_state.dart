@@ -6,6 +6,7 @@ class GetMoviesByGenreState with _$GetMoviesByGenreState {
 
   const factory GetMoviesByGenreState.loading() = Loading;
 
+  const factory GetMoviesByGenreState.paginationLoading() = PaginationLoading;
   const factory GetMoviesByGenreState.loaded(List<MovieModel> movies) = Loaded;
 
   const factory GetMoviesByGenreState.error(String message) = Error;

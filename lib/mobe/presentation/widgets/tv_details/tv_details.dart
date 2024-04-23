@@ -1,5 +1,5 @@
 
-import 'package:movie_app/mobe/presentation/widgets/tv_details/similar_tv_bloc_builder.dart';
+import 'package:movie_app/mobe/presentation/widgets/tv_details/similar_tv_bloc_consumer.dart';
 
 import '../../../../../lib_imports.dart';
 
@@ -23,7 +23,7 @@ class TvDetails extends StatelessWidget {
           ),
           HelperMethod.verticalSpace(10),
           Text(
-            '${AppStrings.season}:${tv.numberOfSeasons}  ${AppStrings.episodes}:${tv.numberOfSeasons}',
+            '${AppStrings.season}:${tv.numberOfSeasons}  ${AppStrings.episodes}:${tv.numberOfEpisodes}',
             style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,
@@ -64,7 +64,7 @@ class TvDetails extends StatelessWidget {
             ),
           ),
           HelperMethod.verticalSpace(10),
-          SimilarTvBlocBuilder(id: tv.id!),
+          SimilarTvBlocConsumer(id: tv.id!),
         ],
       ),
     );

@@ -6,9 +6,9 @@ class TvRepoImpl implements TvRepo {
   TvRepoImpl(this._remoteDataSource);
 
   @override
-  Future<ApiResult<List<TvModel>>> getAiringTodayTv() async {
+  Future<ApiResult<List<TvModel>>> getAiringTodayTv(int page) async {
       try {
-        final result = await _remoteDataSource.getAiringTodayTv();
+        final result = await _remoteDataSource.getAiringTodayTv(page);
         return ApiResult.success(result);
       } catch (error) {
         HelperMethod.showErrorToast(
@@ -19,9 +19,9 @@ class TvRepoImpl implements TvRepo {
   }
 
   @override
-  Future<ApiResult<List<TvModel>>> getPopularTv() async {
+  Future<ApiResult<List<TvModel>>> getPopularTv(int page) async {
     try {
-      final result = await _remoteDataSource.getPopularTv();
+      final result = await _remoteDataSource.getPopularTv(page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -32,9 +32,9 @@ class TvRepoImpl implements TvRepo {
   }
 
   @override
-  Future<ApiResult<List<TvModel>>> getSimilarTv(int id) async {
+  Future<ApiResult<List<TvModel>>> getSimilarTv(int id,int page) async {
     try {
-      final result = await _remoteDataSource.getSimilarTv(id);
+      final result = await _remoteDataSource.getSimilarTv(id,page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -45,9 +45,9 @@ class TvRepoImpl implements TvRepo {
   }
 
   @override
-  Future<ApiResult<List<TvModel>>> getTopRatedTv() async {
+  Future<ApiResult<List<TvModel>>> getTopRatedTv(int page) async {
     try {
-      final result = await _remoteDataSource.getTopRatedTv();
+      final result = await _remoteDataSource.getTopRatedTv(page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(
@@ -110,9 +110,9 @@ class TvRepoImpl implements TvRepo {
   }
 
   @override
-  Future<ApiResult<List<TvModel>>> getTvByGenre(int id) async {
+  Future<ApiResult<List<TvModel>>> getTvByGenre(int id,int page) async {
     try {
-      final result = await _remoteDataSource.getTvByGenre(id);
+      final result = await _remoteDataSource.getTvByGenre(id, page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(

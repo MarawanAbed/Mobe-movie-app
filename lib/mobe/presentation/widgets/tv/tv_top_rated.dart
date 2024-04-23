@@ -1,5 +1,7 @@
 
 
+import 'package:movie_app/mobe/presentation/widgets/tv/top_rated_list_view.dart';
+
 import '../../../../../lib_imports.dart';
 
 class TopRatedTv extends StatelessWidget {
@@ -14,17 +16,14 @@ class TopRatedTv extends StatelessWidget {
         RowViewAll(
           title: AppStrings.topRated,
           onTap: () {
-            Navigators.pushNamed(Routes.viewAll, arguments: {
+            Navigators.pushNamed(Routes.topRatedTvViewAll, arguments: {
               'title': AppStrings.topRated,
-              'tv': tv,
-              'isMovie': false,
             });
           },
         ),
         HelperMethod.verticalSpace(20),
-        BuildItemImages(
-          tv: tv,
-          screen: Routes.tvDetails,
+        TopRatedListView(
+          tvs: tv,
         ),
       ],
     );

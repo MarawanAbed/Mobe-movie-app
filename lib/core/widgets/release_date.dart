@@ -21,6 +21,6 @@ class ReleaseDate extends StatelessWidget {
       child: Text(
         releaseDate.split('-')[0],
       ),
-    );
+    )??Container();
   }
 }

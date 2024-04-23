@@ -10,11 +10,21 @@ class GetTopRatedMoviesCubit extends Cubit<GetTopRatedMoviesState> {
   GetTopRatedMoviesCubit(this._getTopRatedMovies) : super(const GetTopRatedMoviesState.initial());
   final GetTopRatedMovies _getTopRatedMovies;
 
+  int _nextPage = 1;
+  List<MovieModel>allMovies = [];
+
   void getTopRatedMovies() async {
-    emit(const GetTopRatedMoviesState.loading());
-    final result = await _getTopRatedMovies();
+    if(_nextPage == 1)
+    {
+      emit(const GetTopRatedMoviesState.loading());
+    }else
+    {
+      emit(const GetTopRatedMoviesState.paginationLoading());
+    }
+    final result = await _getTopRatedMovies(_nextPage);
     result.when(
       success: (movies) {
+        _nextPage++;
         emit(GetTopRatedMoviesState.loaded(movies));
       },
       failure: (error) {
