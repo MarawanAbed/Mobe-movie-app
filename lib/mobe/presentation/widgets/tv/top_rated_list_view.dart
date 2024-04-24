@@ -1,6 +1,7 @@
 import 'package:movie_app/mobe/presentation/bloc/tv/top_rated/get_tv_top_rated_cubit.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class TopRatedListView extends StatefulWidget {
   const TopRatedListView({super.key, required this.tvs});
@@ -51,7 +52,7 @@ class _TopRatedListViewState extends State<TopRatedListView> {
             arguments: widget.tvs[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

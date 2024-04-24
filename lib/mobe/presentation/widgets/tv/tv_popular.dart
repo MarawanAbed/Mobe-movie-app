@@ -3,6 +3,7 @@
 import 'package:movie_app/mobe/presentation/widgets/tv/popular_list_view.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class PopularTv extends StatelessWidget {
   const PopularTv({super.key, required this.tv});
@@ -21,7 +22,9 @@ class PopularTv extends StatelessWidget {
             });
           },
         ),
-        HelperMethod.verticalSpace(20),
+        const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         PopularListView(
           tvs: tv,
         ),

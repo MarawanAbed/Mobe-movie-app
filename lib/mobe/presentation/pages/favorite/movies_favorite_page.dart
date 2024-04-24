@@ -7,6 +7,7 @@ class MoviesFavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.kBackGroundNavBar,
       appBar: AppBar(
         centerTitle: true,
         title: const Text(AppStrings.moviesFavorites),

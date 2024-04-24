@@ -1,6 +1,7 @@
 import 'package:movie_app/mobe/presentation/bloc/tv/popular/get_tv_popular_cubit.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class PopularListView extends StatefulWidget {
   const PopularListView({super.key, required this.tvs});
@@ -51,7 +52,7 @@ class _PopularListViewState extends State<PopularListView> {
             arguments: widget.tvs[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

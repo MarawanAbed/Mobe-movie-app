@@ -1,72 +1,73 @@
-
+import 'package:movie_app/core/themes/styles.dart';
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/widgets/tv_details/similar_tv_bloc_consumer.dart';
 
 import '../../../../../lib_imports.dart';
 
 class TvDetails extends StatelessWidget {
   const TvDetails({super.key, required this.tv});
+
   final TvDetailsModel tv;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSizes.kDefaultPadding10,
+        horizontal: AppSizes.kDefaultPadding20,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          Text(
             tv.name!,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyles.kTextFont24Bold,
           ),
-          HelperMethod.verticalSpace(10),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
           Text(
             '${AppStrings.season}:${tv.numberOfSeasons}  ${AppStrings.episodes}:${tv.numberOfEpisodes}',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
+            style: TextStyles.font16NormalGrey,
           ),
-          HelperMethod.verticalSpace(10),
-          Row(
-            children: [
-              InfoItems(
-                releaseDate: tv.firstAirDate!,
-                voteAverage: tv.voteAverage!,
-              ),
-              HelperMethod.horizontalSpace(20),
-            ],
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
           ),
-          HelperMethod.verticalSpace(10),
+          InfoItems(
+            releaseDate: tv.firstAirDate!,
+            voteAverage: tv.voteAverage!,
+          ),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
           Text(
             tv.overview!,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
+            style: TextStyles.font16NormalGrey,
           ),
-          HelperMethod.verticalSpace(10),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
           Text(
             '${AppStrings.genre} : ${HelperMethod.showGenres(tv.genres!)}',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.white70,
+            style: TextStyles.font16NormalGrey.copyWith(
+              color: Colors.white54,
             ),
           ),
-          HelperMethod.verticalSpace(20),
-          const Text(
+          const SizedBox(
+            height: AppSizes.kDefaultHeight20,
+          ),
+          Text(
             AppStrings.moreLikeThis,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyles.font20Bold,
           ),
-          HelperMethod.verticalSpace(10),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight20,
+          ),
           SimilarTvBlocConsumer(id: tv.id!),
         ],
       ),
     );
   }
 }
+
+

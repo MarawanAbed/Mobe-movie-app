@@ -1,5 +1,6 @@
 import 'package:movie_app/mobe/presentation/bloc/movie/top_rated/get_top_rated_movies_cubit.dart';
 
+import '../../../../core/utils/sizes.dart';
 import '../../../../lib_imports.dart';
 
 class TopRatedListView extends StatefulWidget {
@@ -51,7 +52,9 @@ class _TopRatedListViewState extends State<TopRatedListView> {
             arguments: widget.movies[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(
+          width: AppSizes.kDefaultWidth15,
+        ),
       ),
     );
   }

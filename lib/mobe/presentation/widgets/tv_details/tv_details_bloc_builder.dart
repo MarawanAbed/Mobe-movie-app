@@ -1,5 +1,4 @@
-
-
+import 'package:movie_app/core/widgets/no_data.dart';
 
 import '../../../../../lib_imports.dart';
 import '../../bloc/tv/details/get_tv_details_cubit.dart';
@@ -31,10 +30,10 @@ class _TvDetailsBlocBuilderState extends State<TvDetailsBlocBuilder> {
             if (tv != null) {
               return TvDetailsItems(tv: tv);
             } else {
-              return const Center(child: Text(AppStrings.noDataFound));
+              return const NoDataWidget();
             }
           },
-          error: (error) => const Center(child: Text(AppStrings.noDataFound)),
+          error: (error) => const NoDataWidget(),
         );
       },
     );

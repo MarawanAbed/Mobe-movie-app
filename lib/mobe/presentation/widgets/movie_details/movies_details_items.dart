@@ -1,6 +1,8 @@
+import 'package:movie_app/core/utils/sizes.dart';
 
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../lib_imports.dart';
+import '../../../../core/widgets/back_drop_image.dart';
 import 'movie_details.dart';
 import 'movie_poster.dart';
 
@@ -17,15 +19,10 @@ class MoviesDetailsItems extends StatelessWidget {
     const image = ApiConstant.imageBaseUrl;
     return Stack(
       children: [
-        Opacity(
-          opacity: 0.4,
-          child: FadeInImage(
-            placeholder: const AssetImage(AppImages.placeholder),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.33,
-            image: CachedNetworkImageProvider(image + (movies.backdropPath??AppImages.placeholder)),
-            fit: BoxFit.contain,
-          ),
+        BackDropImage(
+          image: image,
+          movie: movies,
+          isMovie: true,
         ),
         SingleChildScrollView(
           child: SafeArea(
@@ -42,9 +39,13 @@ class MoviesDetailsItems extends StatelessWidget {
                     isMovie: true,
                   ),
                 ),
-                HelperMethod.verticalSpace(60),
+                const SizedBox(
+                  height:AppSizes.kDefaultHeight60,
+                ),
                 MoviePoster(movies: movies),
-                HelperMethod.verticalSpace(30),
+                const SizedBox(
+                  height: AppSizes.kDefaultHeight30,
+                ),
                 MovieDetails(movies: movies),
               ],
             ),

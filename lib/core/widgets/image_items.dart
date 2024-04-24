@@ -32,12 +32,12 @@ class ImageItems extends StatelessWidget {
               ),
               child: SvgPicture.asset(
                 AppImages.errorSvg,
-                fit: BoxFit.contain,
+                fit: BoxFit.fill,
                 width: MediaQuery.of(context).size.width * 0.4,
               ),
             );
           },
-          fit: BoxFit.contain,
+          fit: BoxFit.fill,
           width: MediaQuery.of(context).size.width * 0.4,
         ),
       ),

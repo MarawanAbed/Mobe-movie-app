@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeSliders extends StatefulWidget {
-  const HomeSliders({Key? key, required this.images}) : super(key: key);
+  const HomeSliders({super.key, required this.images});
 
   final List<String>images;
   @override
-  _HomeSlidersState createState() => _HomeSlidersState();
+  HomeSlidersState createState() => HomeSlidersState();
 }
 
-class _HomeSlidersState extends State<HomeSliders> {
+class HomeSlidersState extends State<HomeSliders> {
   int _currentIndex = 0;
   final CarouselController _carouselController = CarouselController();
 

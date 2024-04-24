@@ -2,6 +2,7 @@
 import 'package:movie_app/mobe/presentation/widgets/search_movie/search_bloc_builder.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 import '../../bloc/movie/search/search_movies_cubit.dart';
 
 class SearchMovieBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class SearchMovieBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<SearchMoviesCubit>();
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(AppSizes.kDefaultPadding20),
       child: Column(
         children: [
           AppTextFormField(
@@ -24,7 +25,7 @@ class SearchMovieBody extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20.0,
+            height: AppSizes.kDefaultHeight20,
           ),
           const SearchBlocBuilder(),
         ],

@@ -1,7 +1,8 @@
-
 import 'package:movie_app/mobe/presentation/widgets/movie_details/similar_movies_bloc_builder.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/themes/styles.dart';
+import '../../../../core/utils/sizes.dart';
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails({
@@ -14,58 +15,62 @@ class MovieDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        vertical: AppSizes.kDefaultPadding10,
+        horizontal: AppSizes.kDefaultPadding20,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            movies.title??'No Title',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            movies.title ?? 'No Title',
+            style: TextStyles.kTextFont24Bold,
           ),
-          HelperMethod.verticalSpace(10),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
           Row(
             children: [
               InfoItems(
-                releaseDate: movies.releaseDate??'No Date',
-                voteAverage: movies.voteAverage??0.0,
+                releaseDate: movies.releaseDate ?? 'No Date',
+                voteAverage: movies.voteAverage ?? 0.0,
               ),
-              HelperMethod.horizontalSpace(20),
+              const SizedBox(
+                width: AppSizes.kDefaultWidth20,
+              ),
               Text(
-                HelperMethod.showDuration(movies.runTime??0),
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                HelperMethod.showDuration(movies.runTime ?? 0),
+                style: TextStyles.font16NormalGrey,
               ),
             ],
           ),
-          HelperMethod.verticalSpace(10),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
           Text(
-            movies.overview??'No Overview',
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
+            movies.overview ?? 'No Overview',
+            style: TextStyles.font16NormalGrey,
+          ),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight10,
+          ),
+          Text(
+            '${AppStrings.genre} : ${HelperMethod.showGenres(movies.genres ?? [])}',
+            style: TextStyles.font16NormalGrey.copyWith(
+              color: Colors.white54,
             ),
           ),
-          HelperMethod.verticalSpace(10),
-          Text('${AppStrings.genre} : ${HelperMethod.showGenres(movies.genres??[])}',
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.white70,
-              )),
-          HelperMethod.verticalSpace(20),
-          const Text(
+          const SizedBox(
+            height: AppSizes.kDefaultHeight20,
+          ),
+           Text(
             AppStrings.moreLikeThis,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyles.font20Bold,
           ),
-          HelperMethod.verticalSpace(10),
-          SimilarMoviesBlocConsumer(id: movies.id??0),
+          const SizedBox(
+            height: AppSizes.kDefaultHeight20,
+          ),
+          SimilarMoviesBlocConsumer(id: movies.id ?? 0),
         ],
       ),
     );

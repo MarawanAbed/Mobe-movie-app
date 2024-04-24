@@ -1,5 +1,7 @@
 
 
+import 'package:movie_app/core/utils/sizes.dart';
+
 import '../../../../../lib_imports.dart';
 
 class TypePage extends StatelessWidget {
@@ -16,7 +18,7 @@ class TypePage extends StatelessWidget {
           title: Text('$title ${isMovie?AppStrings.movie:AppStrings.tv}'),
         ),
         body:  Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(AppSizes.kDefaultPadding10),
           child: TypeBody(
             id:id,
             isMovie: isMovie,

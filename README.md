@@ -25,6 +25,7 @@ Mobe Movie App offers a wide range of features:
 ## Download the App
 
 The Mobe Movie App is available for download [here](https://drive.google.com/file/d/1XzStxkLEj8zyQq5kbg3KAUjxoWtmAipN/view?usp=sharing).
+
 ## Screenshots
 
 Here are some screenshots of the Mobe Movie App:

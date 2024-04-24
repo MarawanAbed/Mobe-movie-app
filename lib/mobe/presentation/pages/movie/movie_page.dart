@@ -1,4 +1,5 @@
 import 'package:flutter_offline/flutter_offline.dart';
+import 'package:movie_app/core/widgets/no_internet_connection.dart';
 
 import '../../../../../lib_imports.dart';
 
@@ -18,9 +19,7 @@ class MoviePage extends StatelessWidget {
             if (connected) {
               return child;
             } else {
-              return const Center(
-                child: Text('No Internet Connection'),
-              );
+              return const NoInternetConnection();
             }
           },
           child: const MovieBody(),

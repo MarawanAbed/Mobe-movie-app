@@ -1,12 +1,14 @@
+import 'package:movie_app/core/themes/styles.dart';
+import 'package:movie_app/core/utils/sizes.dart';
 
 import '../../../../../lib_imports.dart';
 
 class FavoritesItems extends StatelessWidget {
   const FavoritesItems(
       {super.key,
-        required this.favorite,
-        required this.screen,
-        this.arguments});
+      required this.favorite,
+      required this.screen,
+      this.arguments});
 
   final FavoriteModel favorite;
   final String screen;
@@ -20,7 +22,7 @@ class FavoritesItems extends StatelessWidget {
         Navigators.pushNamed(screen, arguments: arguments);
       },
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(AppSizes.kDefaultPadding10),
         height: MediaQuery.of(context).size.height * 0.25,
         decoration: BoxDecoration(
           color: AppColors.kBackGround,
@@ -31,16 +33,17 @@ class FavoritesItems extends StatelessWidget {
           children: [
             Expanded(
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: FadeInImage(
-                  image:CachedNetworkImageProvider( images + favorite.posterPath),
-                  fit: BoxFit.fitHeight,
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  placeholder: const AssetImage(AppImages.placeholder),
+                borderRadius: BorderRadius.circular(AppSizes.kDefaultRadius10),
+                child: CachedNetworkImage(
+                  imageUrl: '$images${favorite.posterPath}',
+                  fit: BoxFit.fill,
+                  height: MediaQuery.of(context).size.height * 0.24,
                 ),
               ),
             ),
-            HelperMethod.horizontalSpace(20),
+            const SizedBox(
+              width: AppSizes.kDefaultWidth15
+            ),
             Expanded(
               flex: 2,
               child: Column(
@@ -50,20 +53,25 @@ class FavoritesItems extends StatelessWidget {
                     favorite.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyles.font20Bold.copyWith(
+                      color: Colors.white,
+                    ),
                   ),
-                  HelperMethod.verticalSpace(10),
+                  const SizedBox(
+                    height: AppSizes.kDefaultHeight15,
+                  ),
                   ReleaseDate(
                     releaseDate: favorite.releaseDate,
                   ),
-                  HelperMethod.verticalSpace(10),
+                  const SizedBox(
+                    height: AppSizes.kDefaultHeight15,
+                  ),
                   Expanded(
                     child: Text(
                       favorite.overview,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 16),
+                      style: TextStyles.font16NormalGrey,
                     ),
                   ),
                 ],

@@ -1,6 +1,7 @@
 import 'package:movie_app/mobe/presentation/bloc/tv/airing_today/get_airing_today_cubit.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class AiringTodayListView extends StatefulWidget {
   const AiringTodayListView({super.key, required this.tvs});
@@ -51,7 +52,7 @@ class _AiringTodayListViewState extends State<AiringTodayListView> {
             arguments: widget.tvs[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

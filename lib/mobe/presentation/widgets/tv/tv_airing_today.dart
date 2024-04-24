@@ -3,6 +3,7 @@
 import 'package:movie_app/mobe/presentation/widgets/tv/airing_today_list_view.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class AiringTodayTv extends StatelessWidget {
   const AiringTodayTv({super.key, required this.tvs});
@@ -21,7 +22,9 @@ class AiringTodayTv extends StatelessWidget {
             });
           },
         ),
-        HelperMethod.verticalSpace(20),
+        const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         AiringTodayListView(tvs: tvs),
       ],
     );

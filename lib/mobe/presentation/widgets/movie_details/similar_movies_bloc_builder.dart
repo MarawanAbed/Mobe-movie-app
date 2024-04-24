@@ -1,6 +1,7 @@
 import 'package:movie_app/mobe/presentation/widgets/movie_details/similar_list_view.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/widgets/no_data.dart';
 import '../../bloc/movie/similar/similar_movies_cubit.dart';
 
 class SimilarMoviesBlocConsumer extends StatefulWidget {
@@ -44,7 +45,7 @@ class _SimilarMoviesBlocConsumerState extends State<SimilarMoviesBlocConsumer> {
           loaded: (movies) {
             return SimilarListView(movies: allMovies, id: widget.id);
           },
-          error: (error) => const Text(AppStrings.noDataFound),
+          error: (error) => const NoDataWidget(),
         );
       },
     );

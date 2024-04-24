@@ -1,4 +1,3 @@
-
 import '../../../../../lib_imports.dart';
 import 'movie_details_bloc_builder.dart';
 

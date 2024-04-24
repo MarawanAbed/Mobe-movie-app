@@ -1,6 +1,7 @@
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:movie_app/lib_imports.dart';
 
+import '../../../../core/widgets/no_internet_connection.dart';
 import '../../widgets/home/custom_app_bar_category_and_favorite.dart';
 import '../../widgets/home/custom_app_bar_movie_and_tv.dart';
 import '../../widgets/home/custom_bottom_bar.dart';
@@ -58,9 +59,7 @@ class _HomePageState extends State<HomePage> {
               if (connected) {
                 return child;
               } else {
-                return const Center(
-                  child: Text('No Internet Connection'),
-                );
+                return const NoInternetConnection();
               }
             },
             child: _children[_currentIndex]

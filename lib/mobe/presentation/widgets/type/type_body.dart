@@ -1,5 +1,5 @@
-import 'package:movie_app/mobe/presentation/widgets/type/type_movie_bloc_builder.dart';
-import 'package:movie_app/mobe/presentation/widgets/type/type_tv_bloc_builder.dart';
+import 'package:movie_app/mobe/presentation/widgets/type/movies/type_movie_bloc_builder.dart';
+import 'package:movie_app/mobe/presentation/widgets/type/tv/type_tv_bloc_builder.dart';
 
 import '../../../../../lib_imports.dart';
 

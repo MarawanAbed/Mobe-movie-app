@@ -1,3 +1,4 @@
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/similar/similar_tv_cubit.dart';
 
 import '../../../../lib_imports.dart';
@@ -52,7 +53,7 @@ class _SimilarTvListViewState extends State<SimilarTvListView> {
             arguments: widget.tvs[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

@@ -1,5 +1,7 @@
 
 
+import 'package:movie_app/core/utils/sizes.dart';
+
 import '../../../../../lib_imports.dart';
 import 'favorites_items.dart';
 
@@ -14,7 +16,7 @@ class BuildFavoritesItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10 , top: 10, bottom: 10),
+      padding: const EdgeInsets.all(AppSizes.kDefaultPadding20),
       child: ListView.separated(
         padding: EdgeInsets.zero,
         shrinkWrap: true,

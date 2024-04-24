@@ -1,4 +1,5 @@
 
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/widgets/view_all/view_all_items.dart';
 
 import '../../../../../lib_imports.dart';
@@ -13,7 +14,7 @@ class ViewAllBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+      padding: const EdgeInsets.all(AppSizes.kDefaultPadding20),
       child: ListView.separated(
         shrinkWrap: true,
         itemBuilder: (context, index) => ViewAllItems(
@@ -23,7 +24,9 @@ class ViewAllBody extends StatelessWidget {
           movie: isMovie ? movies![index] : null,
           tv: isMovie ? null : tv![index],
         ),
-        separatorBuilder: (context, index) => HelperMethod.verticalSpace(20),
+        separatorBuilder: (context, index) => const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         itemCount: isMovie ? movies!.length : tv!.length,
       ),
     );

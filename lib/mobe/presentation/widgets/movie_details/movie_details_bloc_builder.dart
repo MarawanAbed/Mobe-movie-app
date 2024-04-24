@@ -1,4 +1,4 @@
-
+import 'package:movie_app/core/widgets/no_data.dart';
 
 import '../../../../../lib_imports.dart';
 import '../../bloc/movie/details/get_movie_details_cubit.dart';
@@ -31,13 +31,13 @@ class _MovieDetailsBlocBuilderState extends State<MovieDetailsBlocBuilder> {
             initial: () => Container(),
             loading: () => const Center(child: CircularProgressIndicator()),
             loaded: (movie) {
-              if(movie != null){
+              if (movie != null) {
                 return MoviesDetailsItems(movies: movie);
-              }else{
-                return const Center(child: Text(AppStrings.noDataFound));
+              } else {
+                return const NoDataWidget();
               }
             },
-            error: (error) => const Center(child: Text(AppStrings.noDataFound)));
+            error: (error) => const NoDataWidget());
       },
     );
   }

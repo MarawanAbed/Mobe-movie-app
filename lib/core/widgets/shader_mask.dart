@@ -13,7 +13,6 @@ class ImageAndShadow extends StatelessWidget {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            // fromLTRB
             Colors.transparent,
             Colors.black,
             Colors.black,

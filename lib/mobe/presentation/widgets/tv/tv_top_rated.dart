@@ -1,5 +1,6 @@
 
 
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/widgets/tv/top_rated_list_view.dart';
 
 import '../../../../../lib_imports.dart';
@@ -21,7 +22,9 @@ class TopRatedTv extends StatelessWidget {
             });
           },
         ),
-        HelperMethod.verticalSpace(20),
+        const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         TopRatedListView(
           tvs: tv,
         ),

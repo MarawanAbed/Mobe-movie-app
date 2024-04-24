@@ -1,3 +1,4 @@
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/widgets/movie/up_coming_list_view.dart';
 
 import '../../../../../lib_imports.dart';
@@ -19,7 +20,9 @@ class UpComingMovies extends StatelessWidget {
             });
           },
         ),
-        HelperMethod.verticalSpace(20),
+        const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         UpComingListView(
           movies: movies,
         ),

@@ -18,17 +18,17 @@ import 'package:movie_app/mobe/presentation/bloc/tv/top_rated/get_tv_top_rated_c
 import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_airing_today_view_all_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_popular_view_all_cubit.dart';
 import 'package:movie_app/mobe/presentation/bloc/tv/view_all/get_tv_top_rated_view_all_cubit.dart';
-import 'package:movie_app/mobe/presentation/pages/view_all/airing_today_view_all_page.dart';
-import 'package:movie_app/mobe/presentation/pages/view_all/popular_movies_view_all_page.dart';
-import 'package:movie_app/mobe/presentation/pages/view_all/popular_tv_view_all_page.dart';
-import 'package:movie_app/mobe/presentation/pages/view_all/top_rated_view_all_page.dart';
-import 'package:movie_app/mobe/presentation/pages/view_all/upcoming_movies_view_all_page.dart';
+import 'package:movie_app/mobe/presentation/pages/view_all/tv/airing_today_view_all_page.dart';
+import 'package:movie_app/mobe/presentation/pages/view_all/movies/popular_movies_view_all_page.dart';
+import 'package:movie_app/mobe/presentation/pages/view_all/tv/popular_tv_view_all_page.dart';
+import 'package:movie_app/mobe/presentation/pages/view_all/movies/top_rated_view_all_page.dart';
+import 'package:movie_app/mobe/presentation/pages/view_all/movies/upcoming_movies_view_all_page.dart';
 
 import '../../mobe/presentation/Bloc/movie/by_genre/get_movies_by_genre_cubit.dart';
 import '../../mobe/presentation/bloc/movie/top_rated/get_top_rated_movies_cubit.dart';
 import '../../mobe/presentation/bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
 import '../../mobe/presentation/pages/home/home_page.dart';
-import '../../mobe/presentation/pages/view_all/top_rated_tv_view_all_page.dart';
+import '../../mobe/presentation/pages/view_all/tv/top_rated_tv_view_all_page.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {

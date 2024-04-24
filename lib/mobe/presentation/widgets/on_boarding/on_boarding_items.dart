@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:movie_app/core/helpers/helper_methods.dart';
-import 'package:movie_app/core/services/navigator.dart';
+import 'package:movie_app/core/themes/styles.dart';
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/lib_imports.dart';
 
 class OnBoardingItems extends StatelessWidget {
@@ -61,7 +61,7 @@ class OnBoardingItems extends StatelessWidget {
   Center buildCenteredText() {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top: 200, left: 20, right: 20),
+        padding:  const EdgeInsets.only(top: AppSizes.kDefaultPadding200, left: AppSizes.kDefaultPadding20, right: AppSizes.kDefaultPadding20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -69,20 +69,17 @@ class OnBoardingItems extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyles.kTextFont30Bold.copyWith(
                 color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
+              )
             ),
-            HelperMethod.verticalSpace(20),
+            const SizedBox(
+              height: AppSizes.kDefaultHeight20,
+            ),
             Text(
               subTitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 18,
-              ),
+              style: TextStyles.font18NormalGrey
             ),
           ],
         ),
@@ -92,8 +89,8 @@ class OnBoardingItems extends StatelessWidget {
 
   Positioned buildDotsIndicator() {
     return Positioned(
-      bottom: 20,
-      left: 20,
+      bottom: AppSizes.kDefaultPadding20,
+      left: AppSizes.kDefaultPadding20,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -111,13 +108,13 @@ class OnBoardingItems extends StatelessWidget {
 
   Positioned buildNextButton(BuildContext context) {
     return Positioned(
-      bottom: 10,
-      right: 20,
+      bottom: AppSizes.kDefaultPadding10,
+      right: AppSizes.kDefaultPadding20,
       child: TextButton(
         onPressed: () async {
           if (currentPage < (length - 1)) {
             controller.nextPage(
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: AppSizes.duration300),
               curve: Curves.easeIn,
             );
           } else {
@@ -128,10 +125,9 @@ class OnBoardingItems extends StatelessWidget {
         },
         child: Text(
           currentPage < (length - 1) ? AppStrings.next : AppStrings.goHome,
-          style: const TextStyle(
+          style: TextStyles.font18Normal.copyWith(
             color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.bold
           ),
         ),
       ),
@@ -147,12 +143,11 @@ class OnBoardingItems extends StatelessWidget {
               .saveData(key: AppStrings.onBoardingKey, value: true);
           await Navigators.pushNamedAndRemoveUntil(Routes.home);
         },
-        child: const Text(
+        child: Text(
           AppStrings.skip,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+          style: TextStyles.font18Normal.copyWith(
+              color: Colors.white,
+              fontWeight: FontWeight.bold
           ),
         ),
       ),

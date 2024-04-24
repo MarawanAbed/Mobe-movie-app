@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/sizes.dart';
 
 class CustomAppBarCategoryAndFavorite extends StatelessWidget
     implements PreferredSizeWidget {
@@ -19,5 +20,5 @@ class CustomAppBarCategoryAndFavorite extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(AppSizes.kDefaultHeight50);
 }

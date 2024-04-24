@@ -2,6 +2,7 @@ import 'package:movie_app/mobe/presentation/bloc/tv/similar/similar_tv_cubit.dar
 import 'package:movie_app/mobe/presentation/widgets/tv_details/similar_list_view.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/widgets/no_data.dart';
 
 class SimilarTvBlocConsumer extends StatefulWidget {
   const SimilarTvBlocConsumer({super.key, required this.id});
@@ -43,7 +44,7 @@ class _SimilarTvBlocConsumerState extends State<SimilarTvBlocConsumer> {
           loaded: (tv) {
             return SimilarTvListView(tvs: tvs, id: widget.id);
           },
-          error: (error) => const Text(AppStrings.noDataFound),
+          error: (error) => const NoDataWidget(),
         );
       },
     );

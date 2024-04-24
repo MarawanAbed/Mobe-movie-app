@@ -4,6 +4,7 @@ import 'package:movie_app/mobe/presentation/widgets/tv/popular_bloc_consumer.dar
 import 'package:movie_app/mobe/presentation/widgets/tv/top_rated_bloc_consumer.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 import 'airing_today_bloc_consumer.dart';
 
 class TvBody extends StatelessWidget {
@@ -11,17 +12,21 @@ class TvBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
+    return const Padding(
+      padding: EdgeInsets.all(10.0),
       child: Center(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const AiringTodayBlocConsumer(),
-              HelperMethod.verticalSpace(20),
-              const PopularBlocConsumer(),
-              HelperMethod.verticalSpace(20),
-              const TopRatedBlocConsumer(),
+              AiringTodayBlocConsumer(),
+              SizedBox(
+                height: AppSizes.kDefaultHeight20,
+              ),
+              PopularBlocConsumer(),
+              SizedBox(
+                height: AppSizes.kDefaultHeight20,
+              ),
+              TopRatedBlocConsumer(),
             ],
           ),
         ),

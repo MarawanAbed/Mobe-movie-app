@@ -1,3 +1,4 @@
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/bloc/movie/similar/similar_movies_cubit.dart';
 
 import '../../../../lib_imports.dart';
@@ -52,7 +53,7 @@ class _SimilarListViewState extends State<SimilarListView> {
             arguments: widget.movies[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

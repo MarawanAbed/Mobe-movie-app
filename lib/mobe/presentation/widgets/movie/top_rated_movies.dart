@@ -1,6 +1,7 @@
 import 'package:movie_app/mobe/presentation/widgets/movie/top_rated_list_view.dart';
 
 import '../../../../../lib_imports.dart';
+import '../../../../core/utils/sizes.dart';
 
 class TopRatedMovies extends StatelessWidget {
   const TopRatedMovies({super.key, required this.movies});
@@ -19,7 +20,9 @@ class TopRatedMovies extends StatelessWidget {
             });
           },
         ),
-        HelperMethod.verticalSpace(20),
+        const SizedBox(
+          height: AppSizes.kDefaultHeight20,
+        ),
         TopRatedListView(
           movies: movies,
         ),

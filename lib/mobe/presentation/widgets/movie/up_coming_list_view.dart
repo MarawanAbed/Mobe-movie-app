@@ -1,3 +1,4 @@
+import '../../../../core/utils/sizes.dart';
 import '../../../../lib_imports.dart';
 import '../../bloc/movie/upcoming/get_up_coming_movies_cubit.dart';
 
@@ -50,7 +51,9 @@ class _UpComingListViewState extends State<UpComingListView> {
             arguments: widget.movies[index].id,
           );
         },
-        separatorBuilder: (context, index) => HelperMethod.horizontalSpace(10),
+        separatorBuilder: (context, index) => const SizedBox(
+          width: AppSizes.kDefaultWidth15,
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/themes/app_colors.dart';
+import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/core/utils/strings.dart';
-import 'package:stylish_bottom_bar/model/bar_items.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
 
 class CustomStylishBottomBar extends StatelessWidget {
@@ -27,8 +27,8 @@ class CustomStylishBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return StylishBottomBar(
       borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(20),
-        topRight: Radius.circular(20),
+        topLeft: Radius.circular(AppSizes.kDefaultRadius20),
+        topRight: Radius.circular(AppSizes.kDefaultRadius20),
       ),
       currentIndex: currentIndex,
       backgroundColor: AppColors.kBackGroundNavBar,
@@ -38,7 +38,7 @@ class CustomStylishBottomBar extends StatelessWidget {
         buildBottomBarItem(Icons.tv, AppStrings.tv, Colors.green),
         buildBottomBarItem(Icons.category, AppStrings.category, Colors.blue),
         buildBottomBarItem(Icons.favorite, AppStrings.favorite, Colors.purple),
-       ],
+      ],
       option: AnimatedBarOptions(
         iconSize: 32,
         barAnimation: BarAnimation.fade,
