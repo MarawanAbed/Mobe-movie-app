@@ -65,10 +65,24 @@ class ImageContainer extends StatelessWidget {
     return Expanded(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppSizes.kDefaultPadding10),
-        child: CachedNetworkImage(
-          imageUrl: isMovie
+        child: FadeInImage(
+          placeholder: const AssetImage(AppImages.placeholder),
+          image: CachedNetworkImageProvider(isMovie
               ? '$images${movie!.posterPath}'
-              : '$images${tv!.posterPath}',
+              : '$images${tv!.posterPath}'),
+          imageErrorBuilder: (context, error, stackTrace) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: SvgPicture.asset(
+                AppImages.errorSvg,
+                fit: BoxFit.fill,
+                width: MediaQuery.of(context).size.width * 0.4,
+              ),
+            );
+          },
           fit: BoxFit.fill,
           height: MediaQuery.of(context).size.height * 0.24,
         ),
@@ -115,7 +129,7 @@ class DetailsContainer extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              isMovie ? movie!.overview! : tv!.overview ?? 'no overview',
+              isMovie ? movie!.overview!.isEmpty?'No Overview':movie!.overview!: tv!.overview!.isEmpty?'No Overview':tv!.overview!,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: TextStyles.font16NormalGrey,

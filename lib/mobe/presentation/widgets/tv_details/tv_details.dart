@@ -47,7 +47,7 @@ class _TvDetailsState extends State<TvDetails> {
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            widget.tv.overview!,
+            widget.tv.overview!.isEmpty?'No Overview':widget.tv.overview!,
             style: TextStyles.font16NormalGrey,
           ),
           const SizedBox(

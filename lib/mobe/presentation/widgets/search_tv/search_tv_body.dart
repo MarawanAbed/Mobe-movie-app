@@ -4,8 +4,14 @@ import 'package:movie_app/mobe/presentation/widgets/search_tv/search_bloc_builde
 import '../../../../../lib_imports.dart';
 import '../../bloc/tv/search/search_tv_cubit.dart';
 
-class SearchTvBody extends StatelessWidget {
+class SearchTvBody extends StatefulWidget {
   const SearchTvBody({super.key});
+
+  @override
+  State<SearchTvBody> createState() => _SearchTvBodyState();
+}
+
+class _SearchTvBodyState extends State<SearchTvBody> {
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +24,13 @@ class SearchTvBody extends StatelessWidget {
             hintText: AppStrings.search,
             onChanged: (value) {
               if (value.isNotEmpty) {
-                cubit.searchTv(value);
+                if (cubit.query != value) {
+                  cubit.query = value;
+                  cubit.clear();
+                  cubit.searchTv(value);
+                }
               } else {
+                cubit.query = '';
                 cubit.clear();
               }
             },
@@ -30,7 +41,9 @@ class SearchTvBody extends StatelessWidget {
           const SizedBox(
             height: AppSizes.kDefaultHeight20,
           ),
-          const SearchTvBlocBuilder(),
+          SearchTvBlocBuilder(
+            query: cubit.query,
+          ),
         ],
       ),
     );

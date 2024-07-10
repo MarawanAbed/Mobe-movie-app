@@ -54,7 +54,7 @@ class _MovieDetailsState extends State<MovieDetails> {
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            widget.movies.overview ?? 'No Overview',
+            widget.movies.overview!.isEmpty ? 'No Overview' : widget.movies.overview!,
             style: TextStyles.font16NormalGrey,
           ),
           const SizedBox(
