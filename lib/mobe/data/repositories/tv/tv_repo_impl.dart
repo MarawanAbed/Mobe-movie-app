@@ -97,9 +97,9 @@ class TvRepoImpl implements TvRepo {
   }
 
   @override
-  Future<ApiResult<List<TvModel>>> searchTv(String query) async {
+  Future<ApiResult<List<TvModel>>> searchTv(String query,int page) async {
     try {
-      final result = await _remoteDataSource.searchTv(query);
+      final result = await _remoteDataSource.searchTv(query,page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(

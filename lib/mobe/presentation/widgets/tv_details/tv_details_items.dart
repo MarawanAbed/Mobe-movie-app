@@ -29,7 +29,7 @@ class TvDetailsItems extends StatelessWidget {
                     id: tv.id!,
                     title: tv.name!,
                     voteAverage: tv.voteAverage,
-                    posterPath: tv.posterPath!,
+                    posterPath: tv.posterPath?? AppImages.placeholder,
                     releaseDate: tv.firstAirDate!,
                     overview: tv.overview!,
                     isMovie: false,

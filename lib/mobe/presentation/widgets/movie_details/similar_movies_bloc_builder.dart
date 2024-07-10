@@ -43,7 +43,9 @@ class _SimilarMoviesBlocConsumerState extends State<SimilarMoviesBlocConsumer> {
           loading: () => const Center(child: CircularProgressIndicator()),
           paginationLoading: ()=> SimilarListView(movies: allMovies, id: widget.id),
           loaded: (movies) {
-            return SimilarListView(movies: allMovies, id: widget.id);
+            return movies.isEmpty
+                ? const NoDataWidget()
+                :SimilarListView(movies: allMovies, id: widget.id);
           },
           error: (error) => const NoDataWidget(),
         );

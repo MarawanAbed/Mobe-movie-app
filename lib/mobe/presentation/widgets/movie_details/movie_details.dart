@@ -4,7 +4,7 @@ import '../../../../../lib_imports.dart';
 import '../../../../core/themes/styles.dart';
 import '../../../../core/utils/sizes.dart';
 
-class MovieDetails extends StatelessWidget {
+class MovieDetails extends StatefulWidget {
   const MovieDetails({
     super.key,
     required this.movies,
@@ -12,6 +12,12 @@ class MovieDetails extends StatelessWidget {
 
   final MovieDetailsModel movies;
 
+  @override
+  State<MovieDetails> createState() => _MovieDetailsState();
+}
+
+class _MovieDetailsState extends State<MovieDetails> {
+  List<GenresModel>noGenre = [GenresModel(id: 0, name: 'No Genre')];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +29,7 @@ class MovieDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            movies.title ?? 'No Title',
+            widget.movies.title ?? 'No Title',
             style: TextStyles.kTextFont24Bold,
           ),
           const SizedBox(
@@ -32,14 +38,14 @@ class MovieDetails extends StatelessWidget {
           Row(
             children: [
               InfoItems(
-                releaseDate: movies.releaseDate ?? 'No Date',
-                voteAverage: movies.voteAverage ?? 0.0,
+                releaseDate: widget.movies.releaseDate ?? 'No Date',
+                voteAverage: widget.movies.voteAverage ?? 0.0,
               ),
               const SizedBox(
                 width: AppSizes.kDefaultWidth20,
               ),
               Text(
-                HelperMethod.showDuration(movies.runTime ?? 0),
+                HelperMethod.showDuration(widget.movies.runTime ?? 0),
                 style: TextStyles.font16NormalGrey,
               ),
             ],
@@ -48,14 +54,14 @@ class MovieDetails extends StatelessWidget {
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            movies.overview ?? 'No Overview',
+            widget.movies.overview ?? 'No Overview',
             style: TextStyles.font16NormalGrey,
           ),
           const SizedBox(
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            '${AppStrings.genre} : ${HelperMethod.showGenres(movies.genres ?? [])}',
+            '${AppStrings.genre} : ${HelperMethod.showGenres(widget.movies.genres??noGenre)}',
             style: TextStyles.font16NormalGrey.copyWith(
               color: Colors.white54,
             ),
@@ -70,7 +76,7 @@ class MovieDetails extends StatelessWidget {
           const SizedBox(
             height: AppSizes.kDefaultHeight20,
           ),
-          SimilarMoviesBlocConsumer(id: movies.id ?? 0),
+          SimilarMoviesBlocConsumer(id: widget.movies.id ?? 0),
         ],
       ),
     );

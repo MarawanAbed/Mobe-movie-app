@@ -20,6 +20,7 @@ mixin _$SearchMoviesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() paginationLoading,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -27,6 +28,7 @@ mixin _$SearchMoviesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? paginationLoading,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +36,7 @@ mixin _$SearchMoviesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? paginationLoading,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -42,6 +45,7 @@ mixin _$SearchMoviesState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(PaginationLoading value) paginationLoading,
     required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +53,7 @@ mixin _$SearchMoviesState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(PaginationLoading value)? paginationLoading,
     TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +61,7 @@ mixin _$SearchMoviesState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(Loaded value)? loaded,
+    TResult Function(PaginationLoading value)? paginationLoading,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
@@ -120,6 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() paginationLoading,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -130,6 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? paginationLoading,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -140,6 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? paginationLoading,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -154,6 +163,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(PaginationLoading value) paginationLoading,
     required TResult Function(Error value) error,
   }) {
     return initial(this);
@@ -164,6 +174,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(PaginationLoading value)? paginationLoading,
     TResult? Function(Error value)? error,
   }) {
     return initial?.call(this);
@@ -174,6 +185,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(Loaded value)? loaded,
+    TResult Function(PaginationLoading value)? paginationLoading,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -260,6 +272,7 @@ class _$LoadedImpl implements Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() paginationLoading,
     required TResult Function(String message) error,
   }) {
     return loaded(movies);
@@ -270,6 +283,7 @@ class _$LoadedImpl implements Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? paginationLoading,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(movies);
@@ -280,6 +294,7 @@ class _$LoadedImpl implements Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? paginationLoading,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -294,6 +309,7 @@ class _$LoadedImpl implements Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(PaginationLoading value) paginationLoading,
     required TResult Function(Error value) error,
   }) {
     return loaded(this);
@@ -304,6 +320,7 @@ class _$LoadedImpl implements Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(PaginationLoading value)? paginationLoading,
     TResult? Function(Error value)? error,
   }) {
     return loaded?.call(this);
@@ -314,6 +331,7 @@ class _$LoadedImpl implements Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(Loaded value)? loaded,
+    TResult Function(PaginationLoading value)? paginationLoading,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -331,6 +349,120 @@ abstract class Loaded implements SearchMoviesState {
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaginationLoadingImplCopyWith<$Res> {
+  factory _$$PaginationLoadingImplCopyWith(_$PaginationLoadingImpl value,
+          $Res Function(_$PaginationLoadingImpl) then) =
+      __$$PaginationLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PaginationLoadingImplCopyWithImpl<$Res>
+    extends _$SearchMoviesStateCopyWithImpl<$Res, _$PaginationLoadingImpl>
+    implements _$$PaginationLoadingImplCopyWith<$Res> {
+  __$$PaginationLoadingImplCopyWithImpl(_$PaginationLoadingImpl _value,
+      $Res Function(_$PaginationLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PaginationLoadingImpl implements PaginationLoading {
+  const _$PaginationLoadingImpl();
+
+  @override
+  String toString() {
+    return 'SearchMoviesState.paginationLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$PaginationLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() paginationLoading,
+    required TResult Function(String message) error,
+  }) {
+    return paginationLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? paginationLoading,
+    TResult? Function(String message)? error,
+  }) {
+    return paginationLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? paginationLoading,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (paginationLoading != null) {
+      return paginationLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loaded value) loaded,
+    required TResult Function(PaginationLoading value) paginationLoading,
+    required TResult Function(Error value) error,
+  }) {
+    return paginationLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loaded value)? loaded,
+    TResult? Function(PaginationLoading value)? paginationLoading,
+    TResult? Function(Error value)? error,
+  }) {
+    return paginationLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loaded value)? loaded,
+    TResult Function(PaginationLoading value)? paginationLoading,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (paginationLoading != null) {
+      return paginationLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaginationLoading implements SearchMoviesState {
+  const factory PaginationLoading() = _$PaginationLoadingImpl;
 }
 
 /// @nodoc
@@ -399,6 +531,7 @@ class _$ErrorImpl implements Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(List<MovieModel> movies) loaded,
+    required TResult Function() paginationLoading,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -409,6 +542,7 @@ class _$ErrorImpl implements Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(List<MovieModel> movies)? loaded,
+    TResult? Function()? paginationLoading,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -419,6 +553,7 @@ class _$ErrorImpl implements Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(List<MovieModel> movies)? loaded,
+    TResult Function()? paginationLoading,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -433,6 +568,7 @@ class _$ErrorImpl implements Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(Loaded value) loaded,
+    required TResult Function(PaginationLoading value) paginationLoading,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -443,6 +579,7 @@ class _$ErrorImpl implements Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(Loaded value)? loaded,
+    TResult? Function(PaginationLoading value)? paginationLoading,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -453,6 +590,7 @@ class _$ErrorImpl implements Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(Loaded value)? loaded,
+    TResult Function(PaginationLoading value)? paginationLoading,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {

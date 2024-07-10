@@ -42,7 +42,9 @@ class _SimilarTvBlocConsumerState extends State<SimilarTvBlocConsumer> {
           loading: () => const Center(child: CircularProgressIndicator()),
           paginationLoading: ()=> SimilarTvListView(tvs: tvs, id: widget.id),
           loaded: (tv) {
-            return SimilarTvListView(tvs: tvs, id: widget.id);
+                         return tv.isEmpty
+                ? const NoDataWidget()
+                :SimilarTvListView(tvs: tvs, id: widget.id);
           },
           error: (error) => const NoDataWidget(),
         );

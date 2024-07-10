@@ -7,7 +7,7 @@ abstract class MovieRepo {
 
   Future<ApiResult<List<MovieModel>>> getTopRatedMovies(int page);
 
-  Future<ApiResult<List<MovieModel>>> searchMovie(String query);
+  Future<ApiResult<List<MovieModel>>> searchMovie(String query,int page);
 
   Future<ApiResult<List<MovieModel>>> getSimilarMovie(int id,int page);
 

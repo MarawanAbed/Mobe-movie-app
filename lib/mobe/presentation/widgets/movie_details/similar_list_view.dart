@@ -53,7 +53,8 @@ class _SimilarListViewState extends State<SimilarListView> {
             arguments: widget.movies[index].id,
           );
         },
-        separatorBuilder: (context, index) => const SizedBox(width: AppSizes.kDefaultWidth15),
+        separatorBuilder: (context, index) =>
+            const SizedBox(width: AppSizes.kDefaultWidth15),
       ),
     );
   }

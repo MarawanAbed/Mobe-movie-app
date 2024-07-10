@@ -4,11 +4,17 @@ import 'package:movie_app/mobe/presentation/widgets/tv_details/similar_tv_bloc_c
 
 import '../../../../../lib_imports.dart';
 
-class TvDetails extends StatelessWidget {
+class TvDetails extends StatefulWidget {
   const TvDetails({super.key, required this.tv});
 
   final TvDetailsModel tv;
 
+  @override
+  State<TvDetails> createState() => _TvDetailsState();
+}
+
+class _TvDetailsState extends State<TvDetails> {
+  List<GenresModel> noGenre = [GenresModel(id: 0, name: 'No Genre')];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,35 +26,35 @@ class TvDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            tv.name!,
+            widget.tv.name?? 'No Title',
             style: TextStyles.kTextFont24Bold,
           ),
           const SizedBox(
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            '${AppStrings.season}:${tv.numberOfSeasons}  ${AppStrings.episodes}:${tv.numberOfEpisodes}',
+            '${AppStrings.season}:${widget.tv.numberOfSeasons}  ${AppStrings.episodes}:${widget.tv.numberOfEpisodes}',
             style: TextStyles.font16NormalGrey,
           ),
           const SizedBox(
             height: AppSizes.kDefaultHeight10,
           ),
           InfoItems(
-            releaseDate: tv.firstAirDate!,
-            voteAverage: tv.voteAverage!,
+            releaseDate: widget.tv.firstAirDate?? 'No Date',
+            voteAverage: widget.tv.voteAverage?? 0.0,
           ),
           const SizedBox(
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            tv.overview!,
+            widget.tv.overview!,
             style: TextStyles.font16NormalGrey,
           ),
           const SizedBox(
             height: AppSizes.kDefaultHeight10,
           ),
           Text(
-            '${AppStrings.genre} : ${HelperMethod.showGenres(tv.genres!)}',
+            '${AppStrings.genre} : ${HelperMethod.showGenres(widget.tv.genres??noGenre)}',
             style: TextStyles.font16NormalGrey.copyWith(
               color: Colors.white54,
             ),
@@ -63,7 +69,7 @@ class TvDetails extends StatelessWidget {
           const SizedBox(
             height: AppSizes.kDefaultHeight20,
           ),
-          SimilarTvBlocConsumer(id: tv.id!),
+          SimilarTvBlocConsumer(id: widget.tv.id!),
         ],
       ),
     );

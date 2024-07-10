@@ -111,9 +111,9 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<ApiResult<List<MovieModel>>> searchMovie(String query) async {
+  Future<ApiResult<List<MovieModel>>> searchMovie(String query,int page) async {
     try {
-      final result = await _remoteDataSource.searchMovie(query);
+      final result = await _remoteDataSource.searchMovie(query,page);
       return ApiResult.success(result);
     } catch (error) {
       HelperMethod.showErrorToast(

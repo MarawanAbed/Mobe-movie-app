@@ -9,7 +9,7 @@ abstract class TvRemoteDataSource {
 
   Future<List<TvModel>> getTvByGenre(int id, int page);
 
-  Future<List<TvModel>> searchTv(String query);
+  Future<List<TvModel>> searchTv(String query,int page);
 
   Future<TvDetailsModel> getTvDetail(int id);
 
@@ -82,11 +82,12 @@ class TvRemoteDataSourceImpl implements TvRemoteDataSource {
   }
 
   @override
-  Future<List<TvModel>> searchTv(String query) async {
+  Future<List<TvModel>> searchTv(String query,int page) async {
     return _getTvModels(
       await apiService.searchTv(
         query,
         AppSecured.apiKey,
+        page
       ),
     );
   }

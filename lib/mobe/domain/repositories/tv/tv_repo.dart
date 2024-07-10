@@ -7,7 +7,7 @@ abstract class TvRepo {
 
   Future<ApiResult<List<TvModel>>> getTopRatedTv(int page);
 
-  Future<ApiResult<List<TvModel>>> searchTv(String query);
+  Future<ApiResult<List<TvModel>>> searchTv(String query,int page);
 
   Future<ApiResult<TvDetailsModel>> getTvDetail(int id);
 

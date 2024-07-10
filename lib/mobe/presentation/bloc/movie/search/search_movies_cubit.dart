@@ -12,7 +12,7 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
   final SearchMovie _searchMovie;
   final List<MovieModel> movies = [];
   void searchMovies(String query) async {
-    final result = await _searchMovie(query);
+    final result = await _searchMovie(query,1);
     result.when(
       success: (movies) {
         this.movies.clear();
@@ -23,5 +23,11 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
         emit(SearchMoviesState.error(error.toString()));
       },
     );
+  }
+
+  void clear()
+  {
+    movies.clear();
+    emit(const SearchMoviesState.initial());
   }
 }

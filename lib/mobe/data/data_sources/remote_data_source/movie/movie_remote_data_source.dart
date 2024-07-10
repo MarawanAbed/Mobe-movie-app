@@ -4,7 +4,7 @@ abstract class MovieRemoteDataSource
   Future<List<MovieModel>> getUpcomingMovies(int page);
   Future<List<MovieModel>> getPopularMovies(int page);
   Future<List<MovieModel>> getTopRatedMovies(int page);
-  Future<List<MovieModel>> searchMovie(String query);
+  Future<List<MovieModel>> searchMovie(String query,int page);
   Future<MovieDetailsModel> getMovieDetail(int id);
   Future<List<MovieModel>> getSimilarMovie(int id,int page);
   Future<List<GenresModel>> getMovieGenres();
@@ -71,8 +71,8 @@ class MovieRemoteDataSourceImpl implements MovieRemoteDataSource
   }
 
   @override
-  Future<List<MovieModel>> searchMovie(String query) async{
-    return _getMovieModels(await apiService.searchMovie(query, AppSecured.apiKey));
+  Future<List<MovieModel>> searchMovie(String query,int page) async{
+    return _getMovieModels(await apiService.searchMovie(query, AppSecured.apiKey,page));
   }
 
 }

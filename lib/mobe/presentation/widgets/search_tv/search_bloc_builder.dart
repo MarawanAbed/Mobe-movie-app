@@ -12,6 +12,11 @@ class SearchTvBlocBuilder extends StatelessWidget {
     return BlocBuilder<SearchTvCubit, SearchTvState>(
       builder: (context, state) {
         return state.when(
+          paginationLoading: () => const Expanded(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
           initial: () => const Expanded(
             child: Center(
               child: Text(AppStrings.searchTv),

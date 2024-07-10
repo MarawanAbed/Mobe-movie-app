@@ -11,19 +11,18 @@ class SearchBlocBuilder extends StatelessWidget {
     return BlocBuilder<SearchMoviesCubit, SearchMoviesState>(
       builder: (context, state) {
         return state.when(
+          paginationLoading: () => const Expanded(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
           initial: () => const Expanded(
             child: Center(
               child: Text(AppStrings.searchMovies),
             ),
           ),
           loaded: (movies) {
-            return movies.isEmpty
-                ? const Expanded(
-              child: Center(
-                child: Text(AppStrings.noMovieFound),
-              ),
-            )
-                : Expanded(
+            return  Expanded(
               child: BuildSearchMovies(
                 movies: movies,
               ),

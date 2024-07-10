@@ -1,5 +1,3 @@
-
-
 import '../../lib_imports.dart';
 
 class ReleaseDate extends StatelessWidget {
@@ -12,15 +10,26 @@ class ReleaseDate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.red.withOpacity(0.9),
-      ),
-      child: Text(
-        releaseDate.split('-')[0],
-      ),
-    )??Container();
+    return releaseDate == ''
+        ? Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.red.withOpacity(0.9),
+            ),
+            child: const Text(
+              'No Date',
+            ),
+          )
+        : Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.red.withOpacity(0.9),
+            ),
+            child: Text(
+              releaseDate.split('-')[0],
+            ),
+          );
   }
 }

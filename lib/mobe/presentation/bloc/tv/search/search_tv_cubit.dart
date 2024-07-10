@@ -15,7 +15,7 @@ class SearchTvCubit extends Cubit<SearchTvState> {
 
 
   void searchTv(String query) async {
-    final result = await _searchTv(query);
+    final result = await _searchTv(query,1);
     result.when(
       success: (tv) {
         this.tv.clear();

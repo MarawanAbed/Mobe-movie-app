@@ -1,4 +1,3 @@
-
 import 'package:movie_app/mobe/presentation/widgets/search_movie/search_bloc_builder.dart';
 
 import '../../../../../lib_imports.dart';
@@ -18,7 +17,11 @@ class SearchMovieBody extends StatelessWidget {
           AppTextFormField(
             hintText: AppStrings.search,
             onChanged: (value) {
-              cubit.searchMovies(value);
+              if (value.isNotEmpty) {
+                cubit.searchMovies(value);
+              } else {
+                cubit.clear();
+              }
             },
             hintStyle: const TextStyle(
               color: Colors.grey,

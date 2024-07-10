@@ -19,19 +19,15 @@ class BuildSearchMovies extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         if (index < movies.length) {
-          return Expanded(
-            child: ImageItems(
-              image: image + (movies[index].posterPath??AppImages.placeholder),
-              screen: Routes.movieDetails,
-              arguments: movies[index].id,
-            ),
+          return ImageItems(
+            image: image + (movies[index].posterPath??AppImages.placeholder),
+            screen: Routes.movieDetails,
+            arguments: movies[index].id,
           );
         } else {
-          return Expanded(
-            child: Image.asset(
-              AppImages.placeholder,
-              fit: BoxFit.cover,
-            ),
+          return Image.asset(
+            AppImages.placeholder,
+            fit: BoxFit.cover,
           );
         }
       },

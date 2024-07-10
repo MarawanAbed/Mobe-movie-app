@@ -33,7 +33,7 @@ class MoviesDetailsItems extends StatelessWidget {
                     id: movies.id!,
                     title: movies.title!,
                     voteAverage: movies.voteAverage,
-                    posterPath: movies.posterPath!,
+                    posterPath: movies.posterPath?? AppImages.placeholder,
                     releaseDate: movies.releaseDate!,
                     overview: movies.overview!,
                     isMovie: true,
