@@ -3,10 +3,9 @@ import 'package:movie_app/mobe/presentation/bloc/tv/search/search_tv_cubit.dart'
 import '../../../../../lib_imports.dart';
 
 class BuildSearchTv extends StatefulWidget {
-  const BuildSearchTv({super.key, required this.tv, required this.query});
+  const BuildSearchTv({super.key, required this.tv});
 
   final List<TvModel> tv;
-  final String query;
 
   @override
   State<BuildSearchTv> createState() => _BuildSearchTvState();

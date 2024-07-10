@@ -7,9 +7,8 @@ import '../../../../core/utils/strings.dart';
 import '../../bloc/tv/search/search_tv_cubit.dart';
 
 class SearchTvBlocBuilder extends StatelessWidget {
-  const SearchTvBlocBuilder({super.key, required this.query});
+  const SearchTvBlocBuilder({super.key});
 
-  final String query;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +24,10 @@ class SearchTvBlocBuilder extends StatelessWidget {
               ? const Expanded(child: NoDataWidget())
               : Expanded(
                   child: BuildSearchTv(
-                      query: query, tv: context.read<SearchTvCubit>().tvs),
+                       tv: context.read<SearchTvCubit>().tvs),
                 ),
           loaded: (tvs) => Expanded(
-            child: BuildSearchTv(query: query, tv: tvs),
+            child: BuildSearchTv( tv: tvs),
           ),
           error: (message) => const Expanded(
             child: Center(

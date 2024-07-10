@@ -18,8 +18,13 @@ class SearchMovieBody extends StatelessWidget {
             hintText: AppStrings.search,
             onChanged: (value) {
               if (value.isNotEmpty) {
-                cubit.searchMovies(value);
+                if (cubit.query != value) {
+                  cubit.query = value;
+                  cubit.clear();
+                  cubit.searchMovies(value);
+                }
               } else {
+                cubit.query = '';
                 cubit.clear();
               }
             },

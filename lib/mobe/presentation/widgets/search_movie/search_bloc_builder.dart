@@ -1,4 +1,6 @@
 
+import 'package:movie_app/core/widgets/no_data.dart';
+
 import '../../../../../lib_imports.dart';
 import '../../bloc/movie/search/search_movies_cubit.dart';
 import 'build_search_movies.dart';
@@ -11,11 +13,12 @@ class SearchBlocBuilder extends StatelessWidget {
     return BlocBuilder<SearchMoviesCubit, SearchMoviesState>(
       builder: (context, state) {
         return state.when(
-          paginationLoading: () => const Expanded(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
+          paginationLoading: () => context.read<SearchMoviesCubit>().movies.isEmpty
+            ? const Expanded(child: NoDataWidget())
+            : Expanded(
+          child: BuildSearchMovies(
+              movies: context.read<SearchMoviesCubit>().movies),
+        ),
           initial: () => const Expanded(
             child: Center(
               child: Text(AppStrings.searchMovies),

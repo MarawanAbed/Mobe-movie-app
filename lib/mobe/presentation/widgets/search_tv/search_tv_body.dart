@@ -41,8 +41,7 @@ class _SearchTvBodyState extends State<SearchTvBody> {
           const SizedBox(
             height: AppSizes.kDefaultHeight20,
           ),
-          SearchTvBlocBuilder(
-            query: cubit.query,
+          const SearchTvBlocBuilder(
           ),
         ],
       ),

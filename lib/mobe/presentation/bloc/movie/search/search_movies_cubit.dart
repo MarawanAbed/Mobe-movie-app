@@ -11,12 +11,19 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
 
   final SearchMovie _searchMovie;
   final List<MovieModel> movies = [];
+  int _nextPage=1;
+  String query='';
   void searchMovies(String query) async {
-    final result = await _searchMovie(query,1);
+    if (_nextPage == 1) {
+      null;
+    } else {
+      emit( const SearchMoviesState.paginationLoading());
+    }
+    final result = await _searchMovie(query,_nextPage);
     result.when(
-      success: (movies) {
-        this.movies.clear();
-        this.movies.addAll(movies);
+      success: (newMovies) {
+        movies.addAll(newMovies);
+        _nextPage++;
         emit(SearchMoviesState.loaded(movies));
       },
       failure: (error) {
@@ -25,8 +32,8 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
     );
   }
 
-  void clear()
-  {
+  void clear() {
+    _nextPage = 1;
     movies.clear();
     emit(const SearchMoviesState.initial());
   }
