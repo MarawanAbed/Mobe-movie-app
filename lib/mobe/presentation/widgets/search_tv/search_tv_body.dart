@@ -1,4 +1,3 @@
-
 import 'package:movie_app/core/utils/sizes.dart';
 import 'package:movie_app/mobe/presentation/widgets/search_tv/search_bloc_builder.dart';
 
@@ -16,9 +15,13 @@ class SearchTvBody extends StatelessWidget {
       child: Column(
         children: [
           AppTextFormField(
-            hintText:AppStrings.search,
+            hintText: AppStrings.search,
             onChanged: (value) {
-              cubit.searchTv(value);
+              if (value.isNotEmpty) {
+                cubit.searchTv(value);
+              } else {
+                cubit.clear();
+              }
             },
             hintStyle: const TextStyle(
               color: Colors.grey,

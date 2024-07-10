@@ -12,10 +12,17 @@ class SearchTvCubit extends Cubit<SearchTvState> {
   final SearchTv _searchTv;
 
   final List<TvModel> tv = [];
-
+  int _nextPage=1;
 
   void searchTv(String query) async {
-    final result = await _searchTv(query,1);
+    if(_nextPage==1)
+    {
+      null;
+    }else
+    {
+      emit(const SearchTvState.paginationLoading());
+    }
+    final result = await _searchTv(query,_nextPage);
     result.when(
       success: (tv) {
         this.tv.clear();
@@ -28,4 +35,9 @@ class SearchTvCubit extends Cubit<SearchTvState> {
     );
   }
 
+  void clear()
+  {
+    tv.clear();
+    emit(const SearchTvState.initial());
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:movie_app/lib_imports.dart';
-import 'package:movie_app/mobe/presentation/widgets/search_tv/build_search_movies.dart';
+import 'package:movie_app/mobe/presentation/widgets/search_tv/build_search_tvs.dart';
 
 import '../../bloc/tv/search/search_tv_cubit.dart';
 
@@ -23,13 +23,7 @@ class SearchTvBlocBuilder extends StatelessWidget {
             ),
           ),
           loaded: (tv) {
-            return tv.isEmpty
-                ? const Expanded(
-                    child: Center(
-                      child: Text(AppStrings.noTvFound),
-                    ),
-                  )
-                : Expanded(
+            return  Expanded(
                     child: BuildSearchTv(
                       tv: tv,
                     ),
